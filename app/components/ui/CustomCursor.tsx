@@ -28,16 +28,34 @@ export function CustomCursor() {
 
     if (!cursorDot || !cursorOutline) return
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const posX = e.clientX
-      const posY = e.clientY
+    let requestRef: number
+    let previousTime: number
+    let cursorX = 0
+    let cursorY = 0
+    let outlineX = 0
+    let outlineY = 0
 
-      cursorDot.style.left = `${posX}px`
-      cursorDot.style.top = `${posY}px`
-
-      cursorOutline.style.left = `${posX}px`
-      cursorOutline.style.top = `${posY}px`
+    const animate = (time: number) => {
+      if (previousTime !== undefined) {
+        // Linear interpolation for smooth trailing effect on the outline
+        outlineX += (cursorX - outlineX) * 0.15
+        outlineY += (cursorY - outlineY) * 0.15
+        
+        cursorDot.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`
+        cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`
+      }
+      
+      previousTime = time
+      requestRef = requestAnimationFrame(animate)
     }
+  
+    const handleMouseMove = (e: MouseEvent) => {
+      cursorX = e.clientX
+      cursorY = e.clientY
+    }
+    
+    // Start animation loop
+    requestRef = requestAnimationFrame(animate)
 
     const handleMouseEnter = () => {
       document.body.classList.add('hovering')
@@ -59,6 +77,7 @@ export function CustomCursor() {
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
+      cancelAnimationFrame(requestRef)
       interactiveElements.forEach((el) => {
         el.removeEventListener('mouseenter', handleMouseEnter)
         el.removeEventListener('mouseleave', handleMouseLeave)

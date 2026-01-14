@@ -59,9 +59,9 @@ html {
 .cursor-dot,
 .cursor-outline {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    /* transform is handled by JS */
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;

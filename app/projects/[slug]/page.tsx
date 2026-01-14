@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import type { Project } from '@/app/lib/supabase/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ArrowSquareOut, GithubLogo, CheckCircle } from '@phosphor-icons/react'
+import { ArrowLeftIcon, ArrowSquareOutIcon, GithubLogoIcon, CheckCircleIcon } from '@phosphor-icons/react'
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Left Column: Content */}
         <div className="lg:col-span-6 flex flex-col items-start text-left order-2 lg:order-1">
           <Link href="/#work" className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-sm font-medium group">
-            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeftIcon size={20} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Projects</span>
           </Link>
 
@@ -86,7 +86,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-white text-black font-bold text-sm rounded-full inline-flex items-center gap-2 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
               >
-                <ArrowSquareOut size={20} />
+                <ArrowSquareOutIcon size={20} />
                 <span>View Live</span>
               </a>
             )}
@@ -97,7 +97,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-white/5 text-white border border-white/10 font-bold text-sm rounded-full inline-flex items-center gap-2 transition-all duration-200 hover:bg-white/10 hover:border-white/30"
               >
-                <GithubLogo size={20} />
+                <GithubLogoIcon size={20} />
                 <span>View Code</span>
               </a>
             )}
@@ -203,7 +203,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.results.map((result, index) => (
                 <div key={index} className="flex items-start gap-4 p-6 bg-white/3 border border-white/5 rounded-2xl hover:bg-white/5 transition-all hover:-translate-y-1">
-                  <CheckCircle size={24} className="text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <CheckCircleIcon size={24} className="text-emerald-400 flex-shrink-0 mt-0.5" />
                   <span className="text-lg leading-relaxed text-gray-300">{result}</span>
                 </div>
               ))}

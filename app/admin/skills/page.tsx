@@ -4,7 +4,7 @@ import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
 import { createClient } from '@/app/lib/supabase/client'
 import type { Skill } from '@/app/lib/supabase/types'
-import { Plus, Pencil, Trash } from '@phosphor-icons/react'
+import { PlusCircleIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react'
 
 export default function AdminSkillsPage() {
   const { skills, refetch } = usePortfolio()
@@ -85,7 +85,7 @@ export default function AdminSkillsPage() {
           onClick={() => { setShowForm(true); setEditing(null) }}
           className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all flex items-center"
         >
-          <Plus size={20} className="mr-2" />
+          <PlusCircleIcon size={20} className="mr-2" />
           Add Skill
         </button>
       </div>
@@ -116,7 +116,7 @@ export default function AdminSkillsPage() {
             disabled={saving}
             className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all disabled:opacity-50"
           >
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add All
           </button>
         </div>
@@ -168,10 +168,10 @@ export default function AdminSkillsPage() {
                   <span>{skill.name}</span>
                   <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onClick={() => { setEditing(skill); setShowForm(true) }} className="text-gray-400 hover:text-white">
-                      <Pencil size={18} />
+                      <PencilIcon size={18} />
                     </button>
                     <button onClick={() => handleDelete(skill.id)} className="text-red-400 hover:text-red-300">
-                      <Trash size={18} />
+                      <TrashIcon size={18} />
                     </button>
                   </div>
                 </div>

@@ -4,24 +4,24 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { 
-  House, 
-  Briefcase, 
-  TrendUp, 
-  Stack, 
-  User, 
-  Envelope, 
-  List, 
-  X, 
-  CaretRight 
+  HouseIcon, 
+  BriefcaseIcon, 
+  TrendUpIcon, 
+  StackIcon, 
+  UserIcon, 
+  EnvelopeIcon, 
+  ListIcon, 
+  XIcon, 
+  CaretRightIcon 
 } from '@phosphor-icons/react'
 
 const navItems = [
-  { href: '#home', icon: House, title: 'Home' },
-  { href: '#work', icon: Briefcase, title: 'Work' },
-  { href: '#experience', icon: TrendUp, title: 'Experience' },
-  { href: '#skills', icon: Stack, title: 'Skills' },
-  { href: '#about', icon: User, title: 'About' },
-  { href: '#contact', icon: Envelope, title: 'Contact' },
+  { href: '#home', icon: HouseIcon, title: 'Home' },
+  { href: '#work', icon: BriefcaseIcon, title: 'Work' },
+  { href: '#experience', icon: TrendUpIcon, title: 'Experience' },
+  { href: '#skills', icon: StackIcon, title: 'Skills' },
+  { href: '#about', icon: UserIcon, title: 'About' },
+  { href: '#contact', icon: EnvelopeIcon, title: 'Contact' },
 ]
 
 export function Navbar() {
@@ -92,7 +92,7 @@ export function Navbar() {
           onClick={() => setIsMobileMenuOpen(true)}
           className="md:hidden text-2xl text-white/80 hover:text-white transition-colors"
         >
-          <List size={24} />
+          <ListIcon size={24} />
         </button>
       </nav>
 
@@ -121,7 +121,7 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-all"
             >
-              <X size={20} />
+              <XIcon size={20} />
             </button>
           </div>
 
@@ -141,7 +141,7 @@ export function Navbar() {
                 <item.icon size={24} />
                 <span className="font-medium text-lg">{item.title}</span>
                 {activeSection === item.href.slice(1) && (
-                  <CaretRight size={16} className="ml-auto text-white/50" />
+                  <CaretRightIcon size={16} className="ml-auto text-white/50" />
                 )}
               </Link>
             ))}

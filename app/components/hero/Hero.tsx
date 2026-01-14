@@ -1,17 +1,31 @@
 'use client'
 
+import { usePortfolio } from '@/app/context/PortfolioContext'
 import { 
-  ArrowDownRight, 
-  GithubLogo, 
-  LinkedinLogo, 
-  XLogo, 
-  Code, 
-  Database, 
-  Rocket, 
-  Cloud 
+  ArrowDownRightIcon, 
+  CodeIcon, 
+  DatabaseIcon, 
+  RocketIcon, 
+  CloudIcon 
 } from '@phosphor-icons/react'
+import * as PhosphorIcons from '@phosphor-icons/react'
+
+const getIconComponent = (iconName: string) => {
+  if (!iconName) return PhosphorIcons.QuestionIcon
+  
+  // Convert kebab-case to PascalCase and append 'Icon' (e.g., rocket-launch -> RocketLaunchIcon)
+  const pascalName = iconName
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('') + 'Icon'
+  
+  const Icon = (PhosphorIcons as any)[pascalName]
+  return Icon ? Icon : PhosphorIcons.QuestionIcon
+}
 
 export function Hero() {
+  const { about } = usePortfolio()
+  
   return (
     <section className="min-h-[100vh-64px] grid md:grid-cols-[1.2fr_0.8fr] items-center gap-12 py-8 md:py-0 relative overflow-hidden" id="home">
       <div className="max-w-3xl">
@@ -33,42 +47,26 @@ export function Hero() {
             data-magnetic
           >
             <span>View My Work</span>
-            <ArrowDownRight size={20} />
+            <ArrowDownRightIcon size={20} />
           </a>
           <div className="flex gap-4 m-4 ">
-            <a 
-              href="https://github.com/asifrazapk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white text-xl transition-all duration-200 hover:bg-white hover:text-black hover:border-white"
-              data-magnetic
-              title="GitHub"
-              aria-label="GitHub Profile"
-            >
-              <GithubLogo size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/dev-asifraza"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white text-xl transition-all duration-200 hover:bg-white hover:text-black hover:border-white"
-              data-magnetic
-              title="LinkedIn"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinLogo size={24} />
-            </a>
-            <a
-              href="https://x.com/Dev_AsifRaza"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white text-xl transition-all duration-200 hover:bg-white hover:text-black hover:border-white"
-              data-magnetic
-              title="X (Twitter)"
-              aria-label="X Profile"
-            >
-              <XLogo size={24} />
-            </a>
+            {about?.social_links?.map((link, index) => {
+              const Icon = getIconComponent(link.icon)
+              return (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white text-xl transition-all duration-200 hover:bg-white hover:text-black hover:border-white"
+                  data-magnetic
+                  title={link.platform}
+                  aria-label={`${link.platform} Profile`}
+                >
+                  <Icon size={20} />
+                </a>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -79,7 +77,7 @@ export function Hero() {
         <div className="absolute top-[15%] right-[75%] group animate-[float_6s_ease-in-out_infinite]">
           <div className="relative">
             <div className="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <Code weight="fill" className="text-7xl text-blue-400 relative z-10 drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] group-hover:scale-110 transition-transform duration-300" />
+            <CodeIcon weight="fill" className="text-7xl text-blue-400 relative z-10 drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] group-hover:scale-110 transition-transform duration-300" />
           </div>
         </div>
 
@@ -87,7 +85,7 @@ export function Hero() {
         <div className="absolute top-1/2 right-[10%] -translate-y-1/2 group animate-[float_6s_ease-in-out_infinite_2s]">
           <div className="relative">
             <div className="absolute inset-0 bg-emerald-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <Database weight="fill" className="text-7xl text-emerald-400 relative z-10 drop-shadow-[0_0_20px_rgba(52,211,153,0.8)] group-hover:scale-110 transition-transform duration-300" />
+            <DatabaseIcon weight="fill" className="text-7xl text-emerald-400 relative z-10 drop-shadow-[0_0_20px_rgba(52,211,153,0.8)] group-hover:scale-110 transition-transform duration-300" />
           </div>
         </div>
 
@@ -95,7 +93,7 @@ export function Hero() {
         <div className="absolute bottom-[15%] right-[75%] group animate-[float_6s_ease-in-out_infinite_4s]">
           <div className="relative">
             <div className="absolute inset-0 bg-orange-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <Rocket weight="fill" className="text-7xl text-orange-400 relative z-10 drop-shadow-[0_0_20px_rgba(251,146,60,0.8)] group-hover:scale-110 transition-transform duration-300" />
+            <RocketIcon weight="fill" className="text-7xl text-orange-400 relative z-10 drop-shadow-[0_0_20px_rgba(251,146,60,0.8)] group-hover:scale-110 transition-transform duration-300" />
           </div>
         </div>
 
@@ -103,7 +101,7 @@ export function Hero() {
         <div className="absolute top-[40%] right-[50%] group animate-[float_6s_ease-in-out_infinite_3s]">
           <div className="relative">
             <div className="absolute inset-0 bg-purple-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <Cloud weight="fill" className="text-7xl text-purple-400 relative z-10 drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] group-hover:scale-110 transition-transform duration-300" />
+            <CloudIcon weight="fill" className="text-7xl text-purple-400 relative z-10 drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] group-hover:scale-110 transition-transform duration-300" />
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
 import { createClient } from '@/app/lib/supabase/client'
 import type { Experience } from '@/app/lib/supabase/types'
-import { Plus, Pencil, Trash, X } from '@phosphor-icons/react'
+import { PlusCircleIcon, PencilIcon, TrashIcon, XIcon } from '@phosphor-icons/react'
 
 export default function AdminExperiencePage() {
   const { experience, refetch } = usePortfolio()
@@ -83,7 +83,7 @@ export default function AdminExperiencePage() {
           onClick={() => openForm()}
           className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all flex items-center"
         >
-          <Plus size={20} className="mr-2" />
+          <PlusCircleIcon size={20} className="mr-2" />
           Add Experience
         </button>
       </div>
@@ -127,7 +127,7 @@ export default function AdminExperiencePage() {
                 className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
               />
               <button type="button" onClick={addAchievements} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-                <Plus size={20} className="mr-2" />
+                <PlusCircleIcon size={20} className="mr-2" />
                 Add
               </button>
             </div>
@@ -136,7 +136,7 @@ export default function AdminExperiencePage() {
                 <span key={achievement} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/20 border border-green-500/30 text-green-300 rounded-lg text-sm">
                   {achievement}
                   <button type="button" onClick={() => removeAchievement(achievement)} className="hover:text-green-100">
-                    <X size={14} />
+                    <XIcon size={14} />
                   </button>
                 </span>
               ))}
@@ -172,10 +172,10 @@ export default function AdminExperiencePage() {
             </div>
             <div className="flex gap-2">
               <button onClick={() => openForm(exp)} className="px-4 py-2 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
-                <Pencil size={20} />
+                <PencilIcon size={20} />
               </button>
               <button onClick={() => handleDelete(exp.id)} className="px-4 py-2 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-all">
-                <Trash size={20} />
+                <TrashIcon size={20} />
               </button>
             </div>
           </div>

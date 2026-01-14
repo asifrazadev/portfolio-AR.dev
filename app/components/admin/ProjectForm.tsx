@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import type { Project } from '@/app/lib/supabase/types'
 import { createClient } from '@/app/lib/supabase/client'
 import Link from 'next/link'
-import { Plus, X, UploadSimple, Spinner } from '@phosphor-icons/react'
+import { PlusCircleIcon, XIcon, UploadSimpleIcon, SpinnerIcon } from '@phosphor-icons/react'
 
 interface ProjectFormProps {
   initialData?: Project
@@ -279,7 +279,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
           />
           <button type="button" onClick={addTags} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add
           </button>
         </div>
@@ -288,7 +288,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             <span key={tag} className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/20 border border-blue-500/30 text-blue-300 rounded-lg text-sm">
               {tag}
               <button type="button" onClick={() => removeTag(tag)} className="hover:text-blue-100">
-                <X size={14} />
+                <XIcon size={14} />
               </button>
             </span>
           ))}
@@ -307,7 +307,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
                <label className={`block w-full border-2 border-dashed border-white/10 rounded-xl p-8 text-center cursor-pointer hover:border-white/30 transition-colors ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
                   <input type="file" accept="image/*" onChange={handleMainImageUpload} className="hidden" />
                   <div className="flex flex-col items-center gap-2">
-                     <UploadSimple size={32} className="text-gray-400" />
+                     <UploadSimpleIcon size={32} className="text-gray-400" />
                      <span className="text-sm text-gray-400">Click to upload main image</span>
                   </div>
                </label>
@@ -330,7 +330,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
                    onClick={() => setMainImage('')}
                    className="absolute top-2 right-2 w-8 h-8 bg-red-500/80 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
                  >
-                   <X size={18} />
+                   <XIcon size={18} />
                  </button>
               </div>
             )}
@@ -380,7 +380,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
           />
           <button type="button" onClick={addTech} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add
           </button>
         </div>
@@ -389,7 +389,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             <span key={tech} className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-500/20 border border-purple-500/30 text-purple-300 rounded-lg text-sm">
               {tech}
               <button type="button" onClick={() => removeTech(tech)} className="hover:text-purple-100">
-                <X size={14} />
+                <XIcon size={14} />
               </button>
             </span>
           ))}
@@ -408,7 +408,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
           />
           <button type="button" onClick={addFeatures} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add
           </button>
         </div>
@@ -417,7 +417,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             <span key={feature} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/20 border border-green-500/30 text-green-300 rounded-lg text-sm">
               {feature}
               <button type="button" onClick={() => removeFeature(feature)} className="hover:text-green-100">
-                <X size={14} />
+                <XIcon size={14} />
               </button>
             </span>
           ))}
@@ -436,7 +436,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
           />
           <button type="button" onClick={addChallenges} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add
           </button>
         </div>
@@ -445,7 +445,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             <span key={challenge} className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-500/20 border border-orange-500/30 text-orange-300 rounded-lg text-sm">
               {challenge}
               <button type="button" onClick={() => removeChallenge(challenge)} className="hover:text-orange-100">
-                <X size={14} />
+                <XIcon size={14} />
               </button>
             </span>
           ))}
@@ -464,7 +464,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
           />
           <button type="button" onClick={addResults} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add
           </button>
         </div>
@@ -473,7 +473,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             <span key={result} className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 rounded-lg text-sm">
               {result}
               <button type="button" onClick={() => removeResult(result)} className="hover:text-cyan-100">
-                <X size={14} />
+                <XIcon size={14} />
               </button>
             </span>
           ))}
@@ -491,12 +491,12 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
                 <div className="flex flex-col items-center gap-2">
                     {uploading ? (
                         <>
-                            <Spinner size={24} className="animate-spin text-blue-400" />
+                            <SpinnerIcon size={24} className="animate-spin text-blue-400" />
                             <span className="text-sm text-gray-400">Uploading...</span>
                         </>
                     ) : (
                         <>
-                            <UploadSimple size={32} className="text-gray-400" />
+                            <UploadSimpleIcon size={32} className="text-gray-400" />
                             <span className="text-sm text-gray-400">Click to upload images</span>
                             <span className="text-xs text-gray-500">(Supports PNG, JPG, WEBP)</span>
                         </>
@@ -515,7 +515,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
             className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
           />
           <button type="button" onClick={addGalleryImages} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-            <Plus size={20} className="mr-2" />
+            <PlusCircleIcon size={20} className="mr-2" />
             Add
           </button>
         </div>
@@ -530,7 +530,7 @@ export default function ProjectForm({ initialData, onSubmit, saving }: ProjectFo
                 onClick={() => removeGalleryImage(image)} 
                 className="absolute top-2 right-2 w-8 h-8 bg-red-500/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
               >
-                <X size={18} />
+                <XIcon size={18} />
               </button>
             </div>
           ))}

@@ -53,6 +53,11 @@ export interface About {
         title: string
         description: string
     }[]
+    social_links?: {
+        platform: string
+        url: string
+        icon: string
+    }[]
     updated_at: string
 }
 

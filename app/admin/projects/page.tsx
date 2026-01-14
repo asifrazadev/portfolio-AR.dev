@@ -2,7 +2,7 @@
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import Link from 'next/link'
-import { Plus, Pencil, Trash } from '@phosphor-icons/react'
+import { PlusCircleIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react'
 
 export default function AdminProjectsPage() {
   const { projects, deleteProject } = usePortfolio()
@@ -21,7 +21,7 @@ export default function AdminProjectsPage() {
           href="/admin/projects/new"
           className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all flex items-center"
         >
-          <Plus size={20} className="mr-2" />
+          <PlusCircleIcon size={20} className="mr-2" />
           Add Project
         </Link>
       </div>
@@ -45,10 +45,10 @@ export default function AdminProjectsPage() {
             </div>
             <div className="flex gap-2">
               <Link href={`/admin/projects/${project.id}`} className="px-4 py-2 bg-white/5 rounded-lg hover:bg-white/10 transition-all flex items-center">
-                <Pencil size={20} />
+                <PencilIcon size={20} />
               </Link>
               <button onClick={() => handleDelete(project.id)} className="px-4 py-2 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-all">
-                <Trash size={20} />
+                <TrashIcon size={20} />
               </button>
             </div>
           </div>

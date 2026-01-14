@@ -5,13 +5,13 @@ import { createClient } from '@/app/lib/supabase/client'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { 
-  House, 
-  Briefcase, 
-  TrendUp, 
-  Stack, 
-  User, 
-  ArrowSquareOut, 
-  SignOut 
+  HouseIcon, 
+  BriefcaseIcon, 
+  TrendUpIcon, 
+  StackIcon, 
+  UserIcon, 
+  ArrowSquareOutIcon, 
+  SignOutIcon 
 } from '@phosphor-icons/react'
 
 export default function AdminLayout({
@@ -39,11 +39,11 @@ export default function AdminLayout({
   }
 
   const navItems = [
-    { href: '/admin', label: 'Dashboard', icon: House },
-    { href: '/admin/projects', label: 'Projects', icon: Briefcase },
-    { href: '/admin/experience', label: 'Experience', icon: TrendUp },
-    { href: '/admin/skills', label: 'Skills', icon: Stack },
-    { href: '/admin/about', label: 'About', icon: User },
+    { href: '/admin', label: 'Dashboard', icon: HouseIcon },
+    { href: '/admin/projects', label: 'Projects', icon: BriefcaseIcon },
+    { href: '/admin/experience', label: 'Experience', icon: TrendUpIcon },
+    { href: '/admin/skills', label: 'Skills', icon: StackIcon },
+    { href: '/admin/about', label: 'About', icon: UserIcon },
   ]
 
   // If login page, render children without header/sidebar
@@ -71,14 +71,14 @@ export default function AdminLayout({
             target="_blank"
             className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
           >
-            <ArrowSquareOut size={18} />
+            <ArrowSquareOutIcon size={18} />
             <span>View Site</span>
           </Link>
           <button
             onClick={handleLogout}
             className="px-4 py-2 text-sm bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-colors flex items-center gap-2"
           >
-            <SignOut size={18} />
+            <SignOutIcon size={18} />
             <span>Logout</span>
           </button>
         </div>

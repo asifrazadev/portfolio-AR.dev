@@ -23,6 +23,7 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                   alt={project.title} 
                   fill 
                   priority={index === 0}
+                  {...(index === 0 ? { fetchPriority: "high" } : {})}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
                   className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-700" 
                />

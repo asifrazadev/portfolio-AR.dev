@@ -1,9 +1,12 @@
+import dynamic from 'next/dynamic'
 import { Hero } from "./components/hero/Hero"
 import { Work } from "./components/work/Work"
-import { Experience } from "./components/experience/Experience"
-import { Skills } from "./components/skills/Skills"
-import { About } from "./components/about/About"
-import { Contact } from "./components/contact/Contact"
+
+// Dynamic imports for below-the-fold content to reduce initial JS bundle
+const Experience = dynamic(() => import("./components/experience/Experience").then(mod => mod.Experience), { ssr: true })
+const Skills = dynamic(() => import("./components/skills/Skills").then(mod => mod.Skills), { ssr: true })
+const About = dynamic(() => import("./components/about/About").then(mod => mod.About), { ssr: true })
+const Contact = dynamic(() => import("./components/contact/Contact").then(mod => mod.Contact), { ssr: true })
 
 export default function Home() {
   return (

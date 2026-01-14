@@ -1,5 +1,7 @@
 'use client'
 
+import { GithubLogo, LinkedinLogo, XLogo, InstagramLogo } from '@phosphor-icons/react'
+
 export function Contact() {
   return (
     <section id="contact" className="py-12 md:py-16 text-center">
@@ -23,7 +25,7 @@ export function Contact() {
             data-magnetic
             aria-label="GitHub Profile"
           >
-            <i className="ph ph-github-logo"></i>
+            <GithubLogo size={20} />
           </a>
           <a
             href="https://www.linkedin.com/in/dev-asifraza"
@@ -33,7 +35,7 @@ export function Contact() {
             data-magnetic
             aria-label="LinkedIn Profile"
           >
-            <i className="ph ph-linkedin-logo"></i>
+            <LinkedinLogo size={24} />
           </a>
           <a
             href="https://x.com/Dev_AsifRaza"
@@ -43,7 +45,7 @@ export function Contact() {
             data-magnetic
             aria-label="X Profile"
           >
-            <i className="ph ph-x-logo"></i>
+            <XLogo size={24} />
           </a>
           <a
             href="https://instagram.com"
@@ -53,7 +55,7 @@ export function Contact() {
             data-magnetic
             aria-label="Instagram Profile"
           >
-            <i className="ph ph-instagram-logo"></i>
+            <InstagramLogo size={24} />
           </a>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export function SmoothScroll() {
   useEffect(() => {
     // Dynamically import Lenis to avoid SSR issues
-    import('@studio-freight/lenis').then(({ default: Lenis }) => {
+    import('lenis').then(({ default: Lenis }) => {
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

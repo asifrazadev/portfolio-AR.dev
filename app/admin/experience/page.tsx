@@ -4,6 +4,7 @@ import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
 import { createClient } from '@/app/lib/supabase/client'
 import type { Experience } from '@/app/lib/supabase/types'
+import { Plus, Pencil, Trash, X } from '@phosphor-icons/react'
 
 export default function AdminExperiencePage() {
   const { experience, refetch } = usePortfolio()
@@ -80,9 +81,9 @@ export default function AdminExperiencePage() {
         <h1 className="font-heading text-4xl font-bold">Experience</h1>
         <button
           onClick={() => openForm()}
-          className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all"
+          className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all flex items-center"
         >
-          <i className="ph ph-plus mr-2"></i>
+          <Plus size={20} className="mr-2" />
           Add Experience
         </button>
       </div>
@@ -126,7 +127,7 @@ export default function AdminExperiencePage() {
                 className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
               />
               <button type="button" onClick={addAchievements} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-                <i className="ph ph-plus mr-2"></i>
+                <Plus size={20} className="mr-2" />
                 Add
               </button>
             </div>
@@ -135,7 +136,7 @@ export default function AdminExperiencePage() {
                 <span key={achievement} className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/20 border border-green-500/30 text-green-300 rounded-lg text-sm">
                   {achievement}
                   <button type="button" onClick={() => removeAchievement(achievement)} className="hover:text-green-100">
-                    <i className="ph ph-x text-sm"></i>
+                    <X size={14} />
                   </button>
                 </span>
               ))}
@@ -171,10 +172,10 @@ export default function AdminExperiencePage() {
             </div>
             <div className="flex gap-2">
               <button onClick={() => openForm(exp)} className="px-4 py-2 bg-white/5 rounded-lg hover:bg-white/10 transition-all">
-                <i className="ph ph-pencil"></i>
+                <Pencil size={20} />
               </button>
               <button onClick={() => handleDelete(exp.id)} className="px-4 py-2 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-all">
-                <i className="ph ph-trash"></i>
+                <Trash size={20} />
               </button>
             </div>
           </div>

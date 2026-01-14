@@ -4,6 +4,15 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/app/lib/supabase/client'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { 
+  House, 
+  Briefcase, 
+  TrendUp, 
+  Stack, 
+  User, 
+  ArrowSquareOut, 
+  SignOut 
+} from '@phosphor-icons/react'
 
 export default function AdminLayout({
   children,
@@ -30,11 +39,11 @@ export default function AdminLayout({
   }
 
   const navItems = [
-    { href: '/admin', label: 'Dashboard', icon: 'ph-house' },
-    { href: '/admin/projects', label: 'Projects', icon: 'ph-briefcase' },
-    { href: '/admin/experience', label: 'Experience', icon: 'ph-trend-up' },
-    { href: '/admin/skills', label: 'Skills', icon: 'ph-stack' },
-    { href: '/admin/about', label: 'About', icon: 'ph-user' },
+    { href: '/admin', label: 'Dashboard', icon: House },
+    { href: '/admin/projects', label: 'Projects', icon: Briefcase },
+    { href: '/admin/experience', label: 'Experience', icon: TrendUp },
+    { href: '/admin/skills', label: 'Skills', icon: Stack },
+    { href: '/admin/about', label: 'About', icon: User },
   ]
 
   // If login page, render children without header/sidebar
@@ -62,14 +71,14 @@ export default function AdminLayout({
             target="_blank"
             className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
           >
-            <i className="ph ph-arrow-square-out"></i>
+            <ArrowSquareOut size={18} />
             <span>View Site</span>
           </Link>
           <button
             onClick={handleLogout}
             className="px-4 py-2 text-sm bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-colors flex items-center gap-2"
           >
-            <i className="ph ph-sign-out"></i>
+            <SignOut size={18} />
             <span>Logout</span>
           </button>
         </div>
@@ -92,7 +101,7 @@ export default function AdminLayout({
                           : 'text-gray-400 hover:bg-white/5 hover:text-white'
                       }`}
                     >
-                      <i className={`ph ${item.icon} text-xl`}></i>
+                      <item.icon size={20} className="text-xl" />
                       <span className="font-medium">{item.label}</span>
                     </Link>
                   </li>

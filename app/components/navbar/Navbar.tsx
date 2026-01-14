@@ -3,13 +3,25 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
+import { 
+  House, 
+  Briefcase, 
+  TrendUp, 
+  Stack, 
+  User, 
+  Envelope, 
+  List, 
+  X, 
+  CaretRight 
+} from '@phosphor-icons/react'
+
 const navItems = [
-  { href: '#home', icon: 'ph-house', title: 'Home' },
-  { href: '#work', icon: 'ph-briefcase', title: 'Work' },
-  { href: '#experience', icon: 'ph-trend-up', title: 'Experience' },
-  { href: '#skills', icon: 'ph-stack', title: 'Skills' },
-  { href: '#about', icon: 'ph-user', title: 'About' },
-  { href: '#contact', icon: 'ph-envelope', title: 'Contact' },
+  { href: '#home', icon: House, title: 'Home' },
+  { href: '#work', icon: Briefcase, title: 'Work' },
+  { href: '#experience', icon: TrendUp, title: 'Experience' },
+  { href: '#skills', icon: Stack, title: 'Skills' },
+  { href: '#about', icon: User, title: 'About' },
+  { href: '#contact', icon: Envelope, title: 'Contact' },
 ]
 
 export function Navbar() {
@@ -70,7 +82,7 @@ export function Navbar() {
               }`}
               title={item.title}
             >
-              <i className={`ph ${item.icon}`}></i>
+              <item.icon size={24} />
             </Link>
           ))}
         </div>
@@ -80,7 +92,7 @@ export function Navbar() {
           onClick={() => setIsMobileMenuOpen(true)}
           className="md:hidden text-2xl text-white/80 hover:text-white transition-colors"
         >
-          <i className="ph ph-list"></i>
+          <List size={24} />
         </button>
       </nav>
 
@@ -109,7 +121,7 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-all"
             >
-              <i className="ph ph-x text-xl"></i>
+              <X size={20} />
             </button>
           </div>
 
@@ -126,10 +138,10 @@ export function Navbar() {
                     : 'text-white/50 hover:text-white hover:bg-white/5'
                 }`}
               >
-                <i className={`ph ${item.icon} text-2xl`}></i>
+                <item.icon size={24} />
                 <span className="font-medium text-lg">{item.title}</span>
                 {activeSection === item.href.slice(1) && (
-                  <i className="ph ph-caret-right ml-auto text-white/50"></i>
+                  <CaretRight size={16} className="ml-auto text-white/50" />
                 )}
               </Link>
             ))}

@@ -4,9 +4,7 @@ import { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePortfolio } from '@/app/context/PortfolioContext'
-
-
-
+import { GithubLogo, Globe, ArrowRight } from '@phosphor-icons/react'
 
 // Project Card Component
 type CardVariant = 'hero' | 'pillar' | 'standard' | 'banner'
@@ -46,10 +44,10 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                
                <div className="flex-1"></div>
                <div className="flex items-center gap-2">
-                <Link href={project.github_url} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><i className="ph hidden md:block ph-github-logo text-sm"></i>{" "} GitHub</Link>
-                <Link href={project.live_url} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><i className="ph hidden md:block ph-globe text-sm"></i>{" "} Live</Link>
+                <Link href={project.github_url} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GithubLogo size={14} className="hidden md:block" />{" "} GitHub</Link>
+                <Link href={project.live_url} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><Globe size={14} className="hidden md:block" />{" "} Live</Link>
  <Link href={`/projects/${project.slug}`} className="group/btn flex items-center gap-2 bg-white text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105">
-                  View Case Study <i className="ph hidden md:block ph-arrow-right group-hover/btn:translate-x-1 transition-transform"></i>
+                  View Case Study <ArrowRight className="hidden md:block group-hover/btn:translate-x-1 transition-transform" />
                </Link>
 
                </div>
@@ -127,7 +125,7 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
           <span className="mr-2 block md:hidden font-medium text-xs">
             View Case Study
           </span>
-              <i className="ph ph-arrow-right font-bold text-lg"></i>
+              <ArrowRight size={18} weight="bold" />
          
            </Link>
            
@@ -171,12 +169,12 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
             </div>
         {/* Footer: Tags + View Button */}
         <div className="flex text-xs items-center justify-start pt-3">
-             {project.github_url && <a href={project.github_url} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all "><i className="ph ph-github-logo text-sm"></i>{" "} GitHub</a>}
+             {project.github_url && <a href={project.github_url} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all "><GithubLogo size={14} />{" "} GitHub</a>}
 
-             {project.live_url && <a href={project.live_url} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"><i className="ph ph-globe text-sm"></i>{" "} Live</a>}
+             {project.live_url && <a href={project.live_url} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"><Globe size={14} />{" "} Live</a>}
 
             <Link href={`/projects/${project.slug}`} className="flex items-center gap-1  font-bold text-white hover:text-blue-400 transition-colors uppercase tracking-wider group/link bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10">
-               View <i className="ph ph-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+               View <ArrowRight className="group-hover/link:translate-x-1 transition-transform" />
             </Link>
         </div>
     </div>

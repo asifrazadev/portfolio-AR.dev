@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
       </head>
       <body>
         <Providers>

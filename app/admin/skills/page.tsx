@@ -4,6 +4,7 @@ import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
 import { createClient } from '@/app/lib/supabase/client'
 import type { Skill } from '@/app/lib/supabase/types'
+import { Plus, Pencil, Trash } from '@phosphor-icons/react'
 
 export default function AdminSkillsPage() {
   const { skills, refetch } = usePortfolio()
@@ -82,9 +83,9 @@ export default function AdminSkillsPage() {
         <h1 className="font-heading text-4xl font-bold">Skills</h1>
         <button
           onClick={() => { setShowForm(true); setEditing(null) }}
-          className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all"
+          className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all flex items-center"
         >
-          <i className="ph ph-plus mr-2"></i>
+          <Plus size={20} className="mr-2" />
           Add Skill
         </button>
       </div>
@@ -115,7 +116,7 @@ export default function AdminSkillsPage() {
             disabled={saving}
             className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all disabled:opacity-50"
           >
-            <i className="ph ph-plus mr-2"></i>
+            <Plus size={20} className="mr-2" />
             Add All
           </button>
         </div>
@@ -167,10 +168,10 @@ export default function AdminSkillsPage() {
                   <span>{skill.name}</span>
                   <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button onClick={() => { setEditing(skill); setShowForm(true) }} className="text-gray-400 hover:text-white">
-                      <i className="ph ph-pencil"></i>
+                      <Pencil size={18} />
                     </button>
                     <button onClick={() => handleDelete(skill.id)} className="text-red-400 hover:text-red-300">
-                      <i className="ph ph-trash"></i>
+                      <Trash size={18} />
                     </button>
                   </div>
                 </div>

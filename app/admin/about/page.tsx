@@ -2,6 +2,21 @@
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
+import * as PhosphorIcons from '@phosphor-icons/react'
+import { Pencil, Plus, Trash, X } from '@phosphor-icons/react'
+
+const getIconComponent = (iconName: string) => {
+  if (!iconName) return PhosphorIcons.Question
+  
+  // Convert kebab-case to PascalCase (e.g., rocket-launch -> RocketLaunch)
+  const pascalName = iconName
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('')
+  
+  const Icon = (PhosphorIcons as any)[pascalName]
+  return Icon ? Icon : PhosphorIcons.Question
+}
 
 export default function AdminAboutPage() {
   const { about, updateAbout } = usePortfolio()
@@ -70,9 +85,9 @@ export default function AdminAboutPage() {
         {!editing && (
           <button
             onClick={startEditing}
-            className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all"
+            className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all flex items-center"
           >
-            <i className="ph ph-pencil mr-2"></i>
+            <Pencil size={20} className="mr-2" />
             Edit About
           </button>
         )}
@@ -107,8 +122,8 @@ export default function AdminAboutPage() {
                 className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
                 rows={3}
               />
-              <button type="button" onClick={addBioParagraph} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all self-start">
-                <i className="ph ph-plus mr-2"></i>
+              <button type="button" onClick={addBioParagraph} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
+                <Plus size={20} className="mr-2" />
                 Add
               </button>
             </div>
@@ -117,7 +132,7 @@ export default function AdminAboutPage() {
                 <div key={index} className="flex gap-2 items-start p-3 bg-white/5 rounded-xl">
                   <span className="flex-1 text-sm text-gray-300">{paragraph}</span>
                   <button type="button" onClick={() => removeBioParagraph(index)} className="px-3 py-1.5 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-all">
-                    <i className="ph ph-trash"></i>
+                    <Trash size={18} />
                   </button>
                 </div>
               ))}
@@ -148,26 +163,29 @@ export default function AdminAboutPage() {
                   className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
                 />
               </div>
-              <button type="button" onClick={addHighlight} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all w-full">
-                <i className="ph ph-plus mr-2"></i>
+              <button type="button" onClick={addHighlight} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all w-full flex items-center justify-center">
+                <Plus size={20} className="mr-2" />
                 Add Highlight
               </button>
             </div>
             <div className="grid grid-cols-3 gap-4">
-              {highlights.map((highlight, index) => (
-                <div key={index} className="p-4 bg-white/5 border border-white/10 rounded-xl relative group">
-                  <button 
-                    type="button" 
-                    onClick={() => removeHighlight(index)} 
-                    className="absolute top-2 right-2 w-6 h-6 bg-red-500/20 text-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                  >
-                    <i className="ph ph-x text-xs"></i>
-                  </button>
-                  <i className={`ph ph-${highlight.icon} text-2xl mb-2 block`}></i>
-                  <h4 className="font-semibold mb-1">{highlight.title}</h4>
-                  <p className="text-sm text-gray-400">{highlight.description}</p>
-                </div>
-              ))}
+              {highlights.map((highlight, index) => {
+                const Icon = getIconComponent(highlight.icon)
+                return (
+                  <div key={index} className="p-4 bg-white/5 border border-white/10 rounded-xl relative group">
+                    <button 
+                      type="button" 
+                      onClick={() => removeHighlight(index)} 
+                      className="absolute top-2 right-2 w-6 h-6 bg-red-500/20 text-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                    >
+                      <X size={12} />
+                    </button>
+                    <Icon size={32} className="mb-2 block" />
+                    <h4 className="font-semibold mb-1">{highlight.title}</h4>
+                    <p className="text-sm text-gray-400">{highlight.description}</p>
+                  </div>
+                )
+              })}
             </div>
             <p className="text-xs text-gray-400 mt-2">
               Common icons: code, rocket, users, lightbulb, chart-line, shield-check
@@ -202,13 +220,16 @@ export default function AdminAboutPage() {
           <div>
             <h3 className="text-lg font-semibold mb-2">Highlights ({about?.highlights.length || 0})</h3>
             <div className="grid grid-cols-3 gap-4">
-              {about?.highlights.map((highlight, i) => (
-                <div key={i} className="p-4 bg-white/5 rounded-xl">
-                  <i className={`ph ph-${highlight.icon} text-2xl mb-2 block`}></i>
-                  <h4 className="font-semibold mb-1">{highlight.title}</h4>
-                  <p className="text-sm text-gray-400">{highlight.description}</p>
-                </div>
-              ))}
+              {about?.highlights.map((highlight, i) => {
+                 const Icon = getIconComponent(highlight.icon)
+                 return (
+                  <div key={i} className="p-4 bg-white/5 rounded-xl">
+                    <Icon size={32} className="mb-2 block" />
+                    <h4 className="font-semibold mb-1">{highlight.title}</h4>
+                    <p className="text-sm text-gray-400">{highlight.description}</p>
+                  </div>
+                 )
+              })}
             </div>
           </div>
         </div>

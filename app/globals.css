@@ -55,16 +55,29 @@ html {
     }
 }
 
+
+@media (min-width: 769px) {
+
+    *,
+    *::before,
+    *::after {
+        cursor: none !important;
+    }
+}
+
 /* Custom Cursor */
 .cursor-dot,
 .cursor-outline {
     position: fixed;
     top: 0;
     left: 0;
-    /* transform is handled by JS */
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: difference;
+    /* Inverts color for visibility on all backgrounds */
 }
 
 .cursor-dot {
@@ -76,8 +89,9 @@ html {
 .cursor-outline {
     width: 30px;
     height: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* Increased opacity for better difference */
+    transition: width 0.2s, height 0.2s;
 }
 
 body.hovering .cursor-outline {

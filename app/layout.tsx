@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import { Space_Grotesk, Inter } from "next/font/google"
 import "./globals.css"
-import { Providers } from "./providers"
+import { PortfolioWrapper } from "./components/PortfolioWrapper"
 import { CustomCursor } from "./components/ui/CustomCursor"
 import { SmoothScroll } from "./components/ui/SmoothScroll"
 
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
+import { Providers } from "./providers"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -64,8 +65,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://chexuaukmzlbavwtehvp.supabase.co" />
       </head>
       <body>
-        <Providers>
-
+        <PortfolioWrapper>
           <CustomCursor />
           <SmoothScroll />
           <div className="aurora-hero"></div>
@@ -73,8 +73,8 @@ export default function RootLayout({
           <ConditionalLayout>
             {children}
           </ConditionalLayout>
-        </Providers>
-      </body>
+        </PortfolioWrapper>
+      </body> 
     </html>
   )
 }

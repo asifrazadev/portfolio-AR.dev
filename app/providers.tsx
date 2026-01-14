@@ -2,9 +2,9 @@
 
 import { PortfolioProvider } from './context/PortfolioContext'
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children, initialData }: { children: React.ReactNode, initialData?: any }) {
   return (
-    <PortfolioProvider>
+    <PortfolioProvider initialData={initialData}>
       {children}
     </PortfolioProvider>
   )

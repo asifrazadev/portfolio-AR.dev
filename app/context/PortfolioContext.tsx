@@ -34,17 +34,31 @@ interface PortfolioContextType {
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined)
 
-export function PortfolioProvider({ children }: { children: ReactNode }) {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [experience, setExperience] = useState<Experience[]>([])
-  const [skills, setSkills] = useState<Skill[]>([])
-  const [about, setAbout] = useState<About | null>(null)
-  const [loading, setLoading] = useState(true)
+interface PortfolioProviderProps {
+  children: ReactNode
+  initialData?: {
+    projects: Project[]
+    experience: Experience[]
+    skills: Skill[]
+    about: About | null
+  }
+}
+
+export function PortfolioProvider({ children, initialData }: PortfolioProviderProps) {
+  const [projects, setProjects] = useState<Project[]>(initialData?.projects || [])
+  const [experience, setExperience] = useState<Experience[]>(initialData?.experience || [])
+  const [skills, setSkills] = useState<Skill[]>(initialData?.skills || [])
+  const [about, setAbout] = useState<About | null>(initialData?.about || null)
+  const [loading, setLoading] = useState(!initialData)
 
   const supabase = createClient()
 
   const fetchData = async () => {
-    setLoading(true)
+    // If we already have data (from initialData), we don't need to set loading=true for a background refresh
+    // unless explicit refetch is requested. But for simplicity, we can keep loading behavior or optimize.
+    // For now, let's allow background updates without full loading spinner if we have data.
+    if (!initialData) setLoading(true)
+    
     try {
       const [projectsRes, experienceRes, skillsRes, aboutRes] = await Promise.all([
         supabase.from('projects').select('*').order('order'),
@@ -69,8 +83,12 @@ export function PortfolioProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    // Only fetch if no initial data, or if we want to ensure fresh data on mount (optional)
+    // Given the aggressive caching goal, we can skip client fetch if we have initialData
+    if (!initialData) {
+      fetchData()
+    }
+  }, [initialData])
 
   // Project methods
   const createProject = async (project: any) => {

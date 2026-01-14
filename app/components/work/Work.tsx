@@ -300,11 +300,33 @@ export function Work() {
     return (
       <section id="work" className="py-12">
         <div className="max-w-[1600px] mx-auto px-4">
-          <h2 className="text-5xl mb-12 text-white">Featured Work</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             {[1,2,3].map(i => (
-                 <div key={i} className="h-96 bg-white/5 animate-pulse rounded-3xl"></div>
-             ))}
+          <SectionHeading title="Featured Work" />
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-max md:auto-rows-[140px]">
+             {/* Skeleton 1: Hero (Large) */}
+             <div className="col-span-12 md:col-span-8 row-span-2 bg-white/5 animate-pulse rounded-3xl border border-white/5 p-8 flex flex-col justify-end">
+                <div className="w-32 h-6 bg-white/10 rounded mb-4"></div>
+                <div className="w-48 md:w-96 h-8 md:h-12 bg-white/10 rounded mb-4"></div>
+                <div className="w-full max-w-lg h-16 bg-white/10 rounded mb-6 opacity-50"></div>
+                <div className="flex gap-2">
+                   <div className="w-20 h-8 bg-white/10 rounded-full"></div>
+                   <div className="w-20 h-8 bg-white/10 rounded-full"></div>
+                </div>
+             </div>
+             {/* Skeleton 2: Standard (Tall) */}
+             <div className="col-span-12 md:col-span-4 row-span-2 bg-white/5 animate-pulse rounded-3xl border border-white/5 p-6 flex flex-col">
+                <div className="w-full h-8 bg-white/10 rounded mb-2"></div>
+                <div className="w-24 h-4 bg-white/10 rounded mb-auto opacity-50"></div>
+                <div className="w-full h-32 bg-white/10 rounded mt-4 opacity-50"></div>
+             </div>
+             {/* Skeleton 3: Banner (Wide) */}
+             <div className="col-span-12 row-span-1 bg-white/5 animate-pulse rounded-3xl border border-white/5 p-6 flex items-center gap-6">
+                 <div className="w-48 h-8 bg-white/10 rounded flex-shrink-0"></div>
+                 <div className="h-8 w-px bg-white/10"></div>
+                 <div className="flex-1 space-y-2 opacity-50">
+                    <div className="h-3 w-3/4 bg-white/10 rounded"></div>
+                    <div className="h-3 w-1/2 bg-white/10 rounded"></div>
+                 </div>
+             </div>
           </div>
         </div>
       </section>

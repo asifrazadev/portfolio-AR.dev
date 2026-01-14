@@ -4,7 +4,7 @@ import "./globals.css"
 import { Providers } from "./providers"
 import { CustomCursor } from "./components/ui/CustomCursor"
 import { SmoothScroll } from "./components/ui/SmoothScroll"
-import { GlobalLoader } from "./components/ui/GlobalLoader"
+
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
 
 const spaceGrotesk = Space_Grotesk({
@@ -65,7 +65,7 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>
-          <GlobalLoader />
+
           <CustomCursor />
           <SmoothScroll />
           <div className="aurora-hero"></div>

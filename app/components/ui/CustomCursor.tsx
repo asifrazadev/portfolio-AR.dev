@@ -1,24 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useIsMobile } from '@/app/hooks/useIsMobile'
 
 export function CustomCursor() {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    // Detect mobile devices
-    const checkMobile = () => {
-      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      ) || window.innerWidth < 768
-      setIsMobile(mobile)
-    }
-
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     if (isMobile) return // Don't initialize cursor on mobile

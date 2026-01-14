@@ -34,7 +34,7 @@ export const SocialIconsMap: Record<string, any> = {
   'twitch': TwitchLogoIcon,
   'dribbble': DribbbleLogoIcon,
   'behance': BehanceLogoIcon,
-  'email': EnvelopeSimpleIcon,
+  'envelope': EnvelopeSimpleIcon,
   'mail': EnvelopeSimpleIcon,
   'link': LinkIcon,
   'website': GlobeIcon,

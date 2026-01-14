@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import type { Project } from '@/app/lib/supabase/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeftIcon, ArrowSquareOutIcon, GithubLogoIcon, CheckCircleIcon } from '@phosphor-icons/react'
+import { ArrowLeftIcon, ArrowSquareOutIcon, GithubLogoIcon, CheckCircleIcon } from '@/app/components/ui/ClientIcons'
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>

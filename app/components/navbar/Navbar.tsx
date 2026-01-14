@@ -20,7 +20,6 @@ const navItems = [
   { href: '#work', icon: BriefcaseIcon, title: 'Work' },
   { href: '#experience', icon: TrendUpIcon, title: 'Experience' },
   { href: '#skills', icon: StackIcon, title: 'Skills' },
-  { href: '#about', icon: UserIcon, title: 'About' },
   { href: '#contact', icon: EnvelopeIcon, title: 'Contact' },
 ]
 
@@ -61,10 +60,9 @@ export function Navbar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/5 border border-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center justify-center font-heading font-bold text-sm text-white/90 transition-transform duration-300 hover:scale-105 group-hover:border-white/10">
-            AR
-          </div>
-          <span className="font-heading text-base font-semibold tracking-tight hidden md:block">
+          {/* Monogram removed for professional look */}
+          {/* <div className="w-10 h-10 rounded-full bg-white/5 ...">AR</div> */}
+          <span className="font-heading text-base font-semibold tracking-tight block">
             Asif Raza
           </span>
         </div>

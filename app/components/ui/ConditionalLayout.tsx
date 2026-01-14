@@ -14,7 +14,6 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
     <>
       {!isAdminRoute && <Navbar />}
       {children}
-      {!isAdminRoute && <Footer />}
     </>
   )
 }

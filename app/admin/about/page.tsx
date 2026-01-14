@@ -3,7 +3,8 @@
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
 import * as PhosphorIcons from '@phosphor-icons/react'
-import { PencilIcon, PlusCircleIcon, TrashIcon, XIcon, ArrowUpIcon, ArrowDownIcon } from '@phosphor-icons/react'
+import { PencilIcon, PlusCircleIcon, TrashIcon, XIcon, ArrowUpIcon, ArrowDownIcon, UploadSimpleIcon, SpinnerIcon } from '@phosphor-icons/react'
+import { createClient } from '@/app/lib/supabase/client'
 
 const getIconComponent = (iconName: string) => {
   if (!iconName) return PhosphorIcons.QuestionIcon
@@ -24,20 +25,16 @@ export default function AdminAboutPage() {
   const [saving, setSaving] = useState(false)
 
   // Form state
-  const [intro, setIntro] = useState(about?.intro || '')
-  const [bioParagraphs, setBioParagraphs] = useState<string[]>(about?.bio || [])
-  const [highlights, setHighlights] = useState<Array<{icon: string, title: string, description: string}>>(about?.highlights || [])
+  const [imageUrl, setImageUrl] = useState(about?.image_url || '')
   const [socialLinks, setSocialLinks] = useState<Array<{platform: string, url: string, icon: string}>>(about?.social_links || [])
 
+  const [uploading, setUploading] = useState(false)
+
   // Input states
-  const [bioInput, setBioInput] = useState('')
-  const [highlightForm, setHighlightForm] = useState({ icon: '', title: '', description: '' })
   const [socialForm, setSocialForm] = useState({ platform: '', url: '', icon: '' })
 
   const startEditing = () => {
-    setIntro(about?.intro || '')
-    setBioParagraphs(about?.bio || [])
-    setHighlights(about?.highlights || [])
+    setImageUrl(about?.image_url || '')
     setSocialLinks(about?.social_links || [])
     setEditing(true)
   }
@@ -47,9 +44,7 @@ export default function AdminAboutPage() {
     setSaving(true)
 
     const aboutData = {
-      intro,
-      bio: bioParagraphs,
-      highlights,
+      image_url: imageUrl,
       social_links: socialLinks
     }
 
@@ -58,29 +53,7 @@ export default function AdminAboutPage() {
     setSaving(false)
   }
 
-  // Bio handlers
-  const addBioParagraph = () => {
-    if (bioInput.trim()) {
-      setBioParagraphs([...bioParagraphs, bioInput.trim()])
-      setBioInput('')
-    }
-  }
 
-  const removeBioParagraph = (index: number) => {
-    setBioParagraphs(bioParagraphs.filter((_, i) => i !== index))
-  }
-
-  // Highlight handlers
-  const addHighlight = () => {
-    if (highlightForm.icon && highlightForm.title && highlightForm.description) {
-      setHighlights([...highlights, { ...highlightForm }])
-      setHighlightForm({ icon: '', title: '', description: '' })
-    }
-  }
-
-  const removeHighlight = (index: number) => {
-    setHighlights(highlights.filter((_, i) => i !== index))
-  }
 
   // Social Link handlers
   const addSocialLink = () => {
@@ -128,46 +101,69 @@ export default function AdminAboutPage() {
           <h2 className="text-2xl font-bold mb-6">Edit About Section</h2>
           
           {/* Intro */}
+
+
+          {/* Profile Image */}
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">Intro (Main Headline) *</label>
-            <textarea 
-              value={intro}
-              onChange={(e) => setIntro(e.target.value)}
-              placeholder="e.g., I'm a Full Stack Developer passionate about creating exceptional digital experiences."
-              required 
-              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30" 
-              rows={2} 
-            />
+            <label className="block text-sm font-medium mb-2">Profile Image</label>
+            <div className="mb-3">
+               <label className={`block w-full border-2 border-dashed border-white/10 rounded-xl p-8 text-center cursor-pointer hover:border-white/30 transition-colors ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    onChange={async (e) => {
+                      if (!e.target.files || e.target.files.length === 0) return
+                      setUploading(true)
+                      const supabase = createClient()
+                      const file = e.target.files[0]
+                      try {
+                        const fileExt = file.name.split('.').pop()
+                        const fileName = `about-${Math.random().toString(36).substring(2, 15)}.${fileExt}`
+                        const { error: uploadError } = await supabase.storage
+                          .from('Project Images') // Reusing existing bucket for simplicity
+                          .upload(fileName, file)
+                        if (uploadError) throw uploadError
+                        const { data } = supabase.storage.from('Project Images').getPublicUrl(fileName)
+                        if (data) setImageUrl(data.publicUrl)
+                      } catch (error: any) {
+                        alert('Error uploading image: ' + error.message)
+                      } finally {
+                        setUploading(false)
+                      }
+                    }} 
+                    className="hidden" 
+                  />
+                  <div className="flex flex-col items-center gap-2">
+                     {uploading ? (
+                         <>
+                             <SpinnerIcon size={24} className="animate-spin text-blue-400" />
+                             <span className="text-sm text-gray-400">Uploading...</span>
+                         </>
+                     ) : (
+                         <>
+                             <UploadSimpleIcon size={32} className="text-gray-400" />
+                             <span className="text-sm text-gray-400">Click to upload profile photo</span>
+                         </>
+                     )}
+                  </div>
+               </label>
+            </div>
+            {imageUrl && (
+              <div className="relative w-32 h-32 bg-white/5 border border-white/10 rounded-xl overflow-hidden group">
+                 <img src={imageUrl} alt="Profile" className="w-full h-full object-cover" />
+                 <button 
+                   type="button"
+                   onClick={() => setImageUrl('')}
+                   className="absolute top-1 right-1 w-6 h-6 bg-red-500/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                 >
+                   <XIcon size={14} />
+                 </button>
+              </div>
+            )}
           </div>
 
           {/* Bio Paragraphs */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">Bio Paragraphs *</label>
-            <div className="flex gap-2 mb-3">
-              <textarea
-                value={bioInput}
-                onChange={(e) => setBioInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && e.ctrlKey && (e.preventDefault(), addBioParagraph())}
-                placeholder="Add a paragraph about yourself (Ctrl+Enter to add)"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                rows={3}
-              />
-              <button type="button" onClick={addBioParagraph} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all">
-                <PlusCircleIcon size={20} className="mr-2" />
-                Add
-              </button>
-            </div>
-            <div className="space-y-2">
-              {bioParagraphs.map((paragraph, index) => (
-                <div key={index} className="flex gap-2 items-start p-3 bg-white/5 rounded-xl">
-                  <span className="flex-1 text-sm text-gray-300">{paragraph}</span>
-                  <button type="button" onClick={() => removeBioParagraph(index)} className="px-3 py-1.5 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-all">
-                    <TrashIcon size={18} />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
+
 
           {/* Social Links */}
           <div className="mb-6">
@@ -242,58 +238,7 @@ export default function AdminAboutPage() {
             </p>
           </div>
 
-          {/* Highlights */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">Highlights *</label>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-3">
-              <div className="grid grid-cols-3 gap-4 mb-3">
-                <input
-                  value={highlightForm.icon}
-                  onChange={(e) => setHighlightForm({...highlightForm, icon: e.target.value})}
-                  placeholder="Icon (e.g., code, rocket, users)"
-                  className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                />
-                <input
-                  value={highlightForm.title}
-                  onChange={(e) => setHighlightForm({...highlightForm, title: e.target.value})}
-                  placeholder="Title"
-                  className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                />
-                <input
-                  value={highlightForm.description}
-                  onChange={(e) => setHighlightForm({...highlightForm, description: e.target.value})}
-                  placeholder="Description"
-                  className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-white/30"
-                />
-              </div>
-              <button type="button" onClick={addHighlight} className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-all w-full flex items-center justify-center">
-                <PlusCircleIcon size={20} className="mr-2" />
-                Add Highlight
-              </button>
-            </div>
-            <div className="grid grid-cols-3 gap-4">
-              {highlights.map((highlight, index) => {
-                const Icon = getIconComponent(highlight.icon)
-                return (
-                  <div key={index} className="p-4 bg-white/5 border border-white/10 rounded-xl relative group">
-                    <button 
-                      type="button" 
-                      onClick={() => removeHighlight(index)} 
-                      className="absolute top-2 right-2 w-6 h-6 bg-red-500/20 text-red-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                    >
-                      <XIcon size={12} />
-                    </button>
-                    <Icon size={32} className="mb-2 block" />
-                    <h4 className="font-semibold mb-1">{highlight.title}</h4>
-                    <p className="text-sm text-gray-400">{highlight.description}</p>
-                  </div>
-                )
-              })}
-            </div>
-            <p className="text-xs text-gray-400 mt-2">
-              Common icons: code, rocket, users, lightbulb, chart-line, shield-check
-            </p>
-          </div>
+
 
           <div className="flex gap-4 pt-4 border-t border-white/10">
             <button type="submit" disabled={saving} className="px-6 py-3 bg-white text-black font-semibold rounded-xl hover:-translate-y-0.5 transition-all disabled:opacity-50">
@@ -307,18 +252,16 @@ export default function AdminAboutPage() {
       ) : (
         <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-2">Intro</h3>
-            <p className="text-gray-300">{about?.intro}</p>
+            <h3 className="text-lg font-semibold mb-2">Profile Image</h3>
+            {about?.image_url ? (
+              <div className="mt-4 w-32 h-32 rounded-xl overflow-hidden border border-white/10">
+                <img src={about.image_url} alt="Profile" className="w-full h-full object-cover" />
+              </div>
+            ) : (
+                <p className="text-gray-400">No profile image set</p>
+            )}
           </div>
 
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-2">Bio Paragraphs ({about?.bio.length || 0})</h3>
-            <div className="space-y-3">
-              {about?.bio.map((paragraph, i) => (
-                <p key={i} className="text-gray-400 p-3 bg-white/5 rounded-xl">{paragraph}</p>
-              ))}
-            </div>
-          </div>
           
            <div className="mb-6">
             <h3 className="text-lg font-semibold mb-2">Social Links ({about?.social_links?.length || 0})</h3>
@@ -335,21 +278,7 @@ export default function AdminAboutPage() {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Highlights ({about?.highlights.length || 0})</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {about?.highlights.map((highlight, i) => {
-                 const Icon = getIconComponent(highlight.icon)
-                 return (
-                  <div key={i} className="p-4 bg-white/5 rounded-xl">
-                    <Icon size={32} className="mb-2 block" />
-                    <h4 className="font-semibold mb-1">{highlight.title}</h4>
-                    <p className="text-sm text-gray-400">{highlight.description}</p>
-                  </div>
-                 )
-              })}
-            </div>
-          </div>
+
         </div>
       )}
     </div>

@@ -14,86 +14,53 @@ import { getSocialIcon } from '@/app/components/ui/SocialIcons'
 
 export function Hero() {
   const { about } = usePortfolio()
+  console.log(about)
   
   return (
-    <section className="min-h-[100vh-64px] grid md:grid-cols-[1.2fr_0.8fr] items-center gap-12 py-8 md:py-0 relative overflow-hidden" id="home">
-      <div className="max-w-3xl">
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/5 border border-emerald-500/10 backdrop-blur-sm text-xs font-medium text-emerald-400 mb-8 transition-colors hover:bg-emerald-500/10 hover:border-emerald-500/20">
-          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.5)] animate-pulse"></span>
-          <span>Open to opportunities</span>
-        </div>
+      
+      <div className="max-w-9xl w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center ">
+        
+        {/* Content */}
+        <div className="max-w-5xl mx-auto">
 
-        <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight font-semibold mb-8">
-         <span className="">Hi,</span>
-          <br /> <span className=" bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent font-bold"></span> <span className=" bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-6xl md:text-7xl lg:text-8xl text-transparent font-bold">Asif Raza</span><br/>
-          <span className="bg-gradient-to-r  block from-blue-300 to-purple-300 bg-clip-text text-transparent font-medium">Full Stack Developer</span>
-        </h1>
+           <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-8">
+             HELLO,<br />
+             <span className="text-white/50 text-5xl md:text-7xl lg:text-8xl">I&apos;M</span> <span className="text-white text-5xl md:text-7xl lg:text-8xl">ASIF</span>
+           </h1>
+           
+           <h2 className="text-2xl md:text-3xl font-light text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">
+             FULL STACK DEVELOPER<br />
+             <span className="text-gray-500">BASED IN PAKISTAN.</span>
+           </h2>
 
-        <div className="flex flex-wrap flex-col sm:flex-row items-start sm:items-center ">
-          <a 
-            href="#work"
-            className="px-10 py-4 bg-white text-black font-semibold rounded-full text-sm md:text-md flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,255,255,0.2)]"
-            data-magnetic
-          >
-            <span>View My Work</span>
-            <ArrowDownRightIcon size={20} />
-          </a>
-          <div className="flex gap-4 m-4 ">
-            {about?.social_links?.map((link, index) => {
-              const Icon = getSocialIcon(link.icon)
-              return (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white text-xl transition-all duration-200 hover:bg-white hover:text-black hover:border-white"
-                  data-magnetic
-                  title={link.platform}
-                  aria-label={`${link.platform} Profile`}
-                >
-                  <Icon size={20} />
-                </a>
-              )
-            })}
-          </div>
-        </div>
-      </div>
+           <div className="flex flex-wrap justify-center gap-4 mb-6">
+              {about?.social_links?.map((link, index) => {
+                const Icon = getSocialIcon(link.icon)
+                return (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110"
+                    title={link.platform}
+                  >
+                    <Icon size={24} />
+                  </a>
+                )
+              })}
+           </div>
 
-      {/* Floating icons with glow effects - no cards */}
-      <div className="relative h-[500px] hidden md:flex items-center justify-center" aria-hidden="true">
-        {/* Frontend Icon - top left */}
-        <div className="absolute top-[15%] right-[75%] group animate-[float_6s_ease-in-out_infinite]">
-          <div className="relative">
-            <div className="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <CodeIcon weight="fill" className="text-7xl text-blue-400 relative z-10 drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] group-hover:scale-110 transition-transform duration-300" />
-          </div>
-        </div>
-
-        {/* Backend Icon - right center */}
-        <div className="absolute top-1/2 right-[10%] -translate-y-1/2 group animate-[float_6s_ease-in-out_infinite_2s]">
-          <div className="relative">
-            <div className="absolute inset-0 bg-emerald-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <DatabaseIcon weight="fill" className="text-7xl text-emerald-400 relative z-10 drop-shadow-[0_0_20px_rgba(52,211,153,0.8)] group-hover:scale-110 transition-transform duration-300" />
-          </div>
-        </div>
-
-        {/* Deploy Icon - bottom left */}
-        <div className="absolute bottom-[15%] right-[75%] group animate-[float_6s_ease-in-out_infinite_4s]">
-          <div className="relative">
-            <div className="absolute inset-0 bg-orange-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <RocketIcon weight="fill" className="text-7xl text-orange-400 relative z-10 drop-shadow-[0_0_20px_rgba(251,146,60,0.8)] group-hover:scale-110 transition-transform duration-300" />
-          </div>
-        </div>
-
-        {/* Cloud Icon - center */}
-        <div className="absolute top-[40%] right-[50%] group animate-[float_6s_ease-in-out_infinite_3s]">
-          <div className="relative">
-            <div className="absolute inset-0 bg-purple-500 rounded-full blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <CloudIcon weight="fill" className="text-7xl text-purple-400 relative z-10 drop-shadow-[0_0_20px_rgba(168,85,247,0.8)] group-hover:scale-110 transition-transform duration-300" />
-          </div>
+           <div className="flex items-center justify-center gap-6">
+              <a 
+                href="#work"
+                className="px-10 py-5 bg-white text-black font-semibold rounded-full flex items-center gap-2 transition-transform hover:-translate-y-1 text-lg"
+              >
+                <span>View My Work</span>
+                <ArrowDownRightIcon size={20} />
+              </a>
+            </div>
         </div>
       </div>
-    </section>
   )
 }

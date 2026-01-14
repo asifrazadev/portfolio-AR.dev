@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { Space_Grotesk, Inter } from "next/font/google"
 import "./globals.css"
 import { PortfolioWrapper } from "./components/PortfolioWrapper"
-import { CustomCursor } from "./components/ui/CustomCursor"
 import { SmoothScroll } from "./components/ui/SmoothScroll"
+import { Footer } from "./components/footer/footer"
 
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
 import { Providers } from "./providers"
@@ -66,12 +66,12 @@ export default function RootLayout({
       </head>
       <body>
         <PortfolioWrapper>
-          <CustomCursor />
           <SmoothScroll />
           <div className="aurora-hero"></div>
           <div className="noise-overlay"></div>
           <ConditionalLayout>
             {children}
+            <Footer />
           </ConditionalLayout>
         </PortfolioWrapper>
       </body> 

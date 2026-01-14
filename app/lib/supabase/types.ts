@@ -46,18 +46,12 @@ export interface Skill {
 
 export interface About {
     id: string
-    intro: string
-    bio: string[]
-    highlights: {
-        icon: string
-        title: string
-        description: string
-    }[]
     social_links?: {
         platform: string
         url: string
         icon: string
     }[]
+    image_url?: string
     updated_at: string
 }
 

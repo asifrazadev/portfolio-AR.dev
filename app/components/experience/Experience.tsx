@@ -42,7 +42,7 @@ export function Experience() {
     <section id="experience" className="py-16 md:py-24">
       <SectionHeading title="Professional Journey" />
 
-      <div className="pl-0 md:pl-8 border-l-0 md:border-l border-white/10 flex flex-col gap-8">
+      <div className="pl-0 md:pl-8 border-l-0 md:border-l-0  border-white/10 flex flex-col gap-8">
         {experience.map((item, index) => (
           <ExperienceItem key={item.id} item={item} index={index} />
         ))}

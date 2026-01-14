@@ -5,7 +5,6 @@ import { Work } from "./components/work/Work"
 // Dynamic imports for below-the-fold content to reduce initial JS bundle
 const Experience = dynamic(() => import("./components/experience/Experience").then(mod => mod.Experience), { ssr: true })
 const Skills = dynamic(() => import("./components/skills/Skills").then(mod => mod.Skills), { ssr: true })
-const About = dynamic(() => import("./components/about/About").then(mod => mod.About), { ssr: true })
 const Contact = dynamic(() => import("./components/contact/Contact").then(mod => mod.Contact), { ssr: true })
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
       <Work />
       <Experience />
       <Skills />
-      <About />
       <Contact />
     </main>
   )

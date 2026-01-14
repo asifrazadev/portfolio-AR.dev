@@ -33,7 +33,7 @@ export function Skills() {
     <section id="skills" className="py-12 md:py-16">
       <div className="flex items-center gap-6 mb-10">
         <h2 className="font-heading text-xl md:text-2xl uppercase tracking-wider text-white">Skills & Technologies</h2>
-        <div className="flex-grow h-px bg-white/10"></div>
+        <div className="flex-grow h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

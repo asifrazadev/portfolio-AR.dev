@@ -29,9 +29,9 @@ export function Hero() {
   return (
     <section className="min-h-[100vh-64px] grid md:grid-cols-[1.2fr_0.8fr] items-center gap-12 py-8 md:py-0 relative overflow-hidden" id="home">
       <div className="max-w-3xl">
-        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/3 border border-white/8 backdrop-blur-sm text-sm text-gray-400 mb-8">
-          <span className="w-2 h-2 bg-emerald-400 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.5)] animate-pulse"></span>
-          <span>Available for Projects</span>
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/5 border border-emerald-500/10 backdrop-blur-sm text-xs font-medium text-emerald-400 mb-8 transition-colors hover:bg-emerald-500/10 hover:border-emerald-500/20">
+          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.5)] animate-pulse"></span>
+          <span>Open to opportunities</span>
         </div>
 
         <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight font-semibold mb-8">

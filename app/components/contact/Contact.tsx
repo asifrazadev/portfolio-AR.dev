@@ -31,42 +31,33 @@ export function Contact() {
           Interested in building something awesome? I&apos;m currently available for freelance projects and open to new opportunities.
         </p>
 
-        <div className="flex flex-col items-center gap-8">
-          {about?.social_links?.map((link, index) => {
-            if(link.platform !== 'Email') return null
-            return (
-              <a
-                key={index}
-                href={`mailto:${link.url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="md:text-2xl text-lg font-semibold"
-                data-magnetic
-                aria-label={`${link.platform} Profile`}
-              >
-               {link.url} 
-              </a>
-            )
-          })}
-         
-          
-          <div className="flex flex-wrap gap-4 justify-center">
-            {about?.social_links?.map((link, index) => {
+        <div className="flex flex-col items-center gap-8 w-full max-w-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full group/socials">
+            {about?.social_links?.slice().sort((a, b) => (a.platform === 'Email' ? -1 : 1)).map((link) => {
               const Icon = getIconComponent(link.icon)
-              if(link.platform =='Email') return null
+              const isEmail = link.platform === 'Email'
+              const href = isEmail && !link.url.startsWith('mailto:') ? `mailto:${link.url}` : link.url
+              
               return (
-                <a
-                  key={index}
-                  href={link.url}
+              <a 
+                  key={link.platform}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110 border border-white/10"
+                  className="flex items-center gap-4 group p-4 rounded-2xl border border-white/5 bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/10 hover:!opacity-100 group-hover/socials:opacity-40"
                   data-magnetic
                   aria-label={`${link.platform} Profile`}
                 >
-                  <Icon size={24} />
-                </a>
-              )
+                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-blue-500/30 group-hover:bg-blue-500/10 transition-all duration-300">
+                  <Icon size={24} weight="light" className="text-white group-hover:text-blue-400 transition-colors" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-gray-400 mb-1 group-hover:text-blue-400/80 transition-colors">{link.platform}</div>
+                  <div className="text-sm font-medium text-white group-hover:text-blue-400 transition-colors">
+                    {isEmail ? 'Send Email' : 'Connect'}
+                  </div>
+                </div>
+              </a>)
             })}
           </div>
         </div>

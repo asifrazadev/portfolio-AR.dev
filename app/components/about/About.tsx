@@ -1,6 +1,7 @@
 'use client'
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
+import { SectionHeading } from '../ui/SectionHeading'
 
 export function About() {
   const { about, loading } = usePortfolio()
@@ -8,21 +9,15 @@ export function About() {
   if (loading || !about) {
     return (
       <section id="about" className="py-16 md:py-24">
-        <div className="flex items-center gap-8 mb-16">
-          <h2 className="font-heading text-2xl md:text-3xl uppercase tracking-wider text-white">About Me</h2>
-          <div className="flex-grow h-px bg-white/10"></div>
-        </div>
+        <SectionHeading title="About Me" />
         <div className="text-center py-16 text-gray-400">Loading about...</div>
       </section>
     )
   }
 
   return (
-    <section id="about" className="py-12 md:py-16">
-      <div className="flex items-center gap-6 mb-10">
-        <h2 className="font-heading text-xl md:text-2xl uppercase tracking-wider text-white">About Me</h2>
-        <div className="flex-grow h-px bg-white/10"></div>
-      </div>
+    <section id="about" className="py-16 md:py-24">
+      <SectionHeading title="About Me" />
 
       <div className="max-w-4xl mx-auto">
         <div className="bg-white/2 backdrop-blur-2xl border border-white/5 rounded-2xl p-6 md:p-8">

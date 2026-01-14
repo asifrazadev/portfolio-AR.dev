@@ -2,6 +2,7 @@
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { ExperienceItem } from './ExperienceItem'
+import { SectionHeading } from '../ui/SectionHeading'
 
 export function Experience() {
   const { experience, loading } = usePortfolio()
@@ -20,10 +21,7 @@ export function Experience() {
 
   return (
     <section id="experience" className="py-16 md:py-24">
-      <div className="flex items-center gap-8 mb-16">
-        <h2 className="font-heading text-2xl md:text-3xl uppercase tracking-wider text-white">Professional Journey</h2>
-        <div className="flex-grow h-px bg-white/10"></div>
-      </div>
+      <SectionHeading title="Professional Journey" />
 
       <div className="pl-0 md:pl-8 border-l-0 md:border-l border-white/10 flex flex-col gap-8">
         {experience.map((item, index) => (

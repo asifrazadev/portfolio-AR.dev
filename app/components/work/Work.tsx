@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { GithubLogoIcon, GlobeIcon, ArrowRightIcon } from '@phosphor-icons/react'
+import { SectionHeading } from '../ui/SectionHeading'
 
 // Project Card Component
 type CardVariant = 'hero' | 'pillar' | 'standard' | 'banner'
@@ -51,8 +52,8 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                
                <div className="flex-1"></div>
                <div className="flex items-center gap-2">
-                <Link href={project.github_url} aria-label={`View ${project.title} source code on GitHub`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</Link>
-                <Link href={project.live_url} aria-label={`Visit ${project.title} live site`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</Link>
+                <Link href={project.github_url} aria-label={`View ${project.title} source code on GitHub`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</Link>
+                <Link href={project.live_url} aria-label={`Visit ${project.title} live site`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</Link>
  <Link href={`/projects/${project.slug}`} aria-label={`View case study for ${project.title}`} className="group/btn flex items-center gap-2 bg-white text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105">
                   View Case Study <ArrowRightIcon className="hidden md:block group-hover/btn:translate-x-1 transition-transform" />
                </Link>
@@ -176,9 +177,9 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
             </div>
         {/* Footer: Tags + View Button */}
         <div className="flex text-xs items-center justify-start pt-3">
-             {project.github_url && <a href={project.github_url} aria-label={`View ${project.title} source on GitHub`} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all "><GithubLogoIcon size={14} />{" "} GitHub</a>}
+             {project.github_url && <a href={project.github_url} aria-label={`View ${project.title} source on GitHub`} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all "><GithubLogoIcon size={14} />{" "} GitHub</a>}
 
-             {project.live_url && <a href={project.live_url} aria-label={`Visit ${project.title} live`} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"><GlobeIcon size={14} />{" "} Live</a>}
+             {project.live_url && <a href={project.live_url} aria-label={`Visit ${project.title} live`} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all"><GlobeIcon size={14} />{" "} Live</a>}
 
             <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title} details`} className="flex items-center gap-1  font-bold text-white hover:text-blue-400 transition-colors uppercase tracking-wider group/link bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10">
                View <ArrowRightIcon className="group-hover/link:translate-x-1 transition-transform" />
@@ -313,10 +314,7 @@ export function Work() {
   return (
     <section id="work" className="py-12">
       <div className="max-w-[1600px] mx-auto px-4">
-       <div className="flex items-center gap-8 mb-8">
-        <h2 className="font-heading text-2xl md:text-3xl uppercase tracking-wider text-white">Featured Work</h2>
-        <div className="flex-grow h-px bg-white/10"></div>
-      </div>
+        <SectionHeading title="Featured Work" />
         
         {/* Dynamic Grid Layout (Responsive) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-max md:auto-rows-[140px]">

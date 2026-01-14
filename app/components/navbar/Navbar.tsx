@@ -81,6 +81,7 @@ export function Navbar() {
                   : 'text-white/40 hover:text-white hover:-translate-y-0.5'
               }`}
               title={item.title}
+              aria-label={item.title}
             >
               <item.icon size={24} />
             </Link>
@@ -91,6 +92,7 @@ export function Navbar() {
         <button 
           onClick={() => setIsMobileMenuOpen(true)}
           className="md:hidden text-2xl text-white/80 hover:text-white transition-colors"
+          aria-label="Toggle mobile menu"
         >
           <ListIcon size={24} />
         </button>
@@ -120,6 +122,7 @@ export function Navbar() {
             <button 
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-all"
+              aria-label="Close mobile menu"
             >
               <XIcon size={20} />
             </button>

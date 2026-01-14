@@ -39,7 +39,7 @@ export function About() {
               <div key={index} className="flex gap-3 items-start">
                 <i className={`ph ph-${highlight.icon} text-2xl text-white/80`}></i>
                 <div>
-                  <h4 className="text-sm font-semibold mb-1 text-white">{highlight.title}</h4>
+                  <h3 className="text-sm font-semibold mb-1 text-white">{highlight.title}</h3>
                   <p className="text-xs text-gray-400 leading-relaxed">{highlight.description}</p>
                 </div>
               </div>

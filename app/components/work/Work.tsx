@@ -17,7 +17,14 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
          {/* Background Image */}
          {project.image_url && (
             <div className="absolute inset-0 z-0">
-               <Image src={project.image_url} alt={project.title} fill className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-700" />
+               <Image 
+                  src={project.image_url} 
+                  alt={project.title} 
+                  fill 
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                  className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-700" 
+               />
                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
             </div>
          )}
@@ -44,9 +51,9 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                
                <div className="flex-1"></div>
                <div className="flex items-center gap-2">
-                <Link href={project.github_url} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</Link>
-                <Link href={project.live_url} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</Link>
- <Link href={`/projects/${project.slug}`} className="group/btn flex items-center gap-2 bg-white text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105">
+                <Link href={project.github_url} aria-label={`View ${project.title} source code on GitHub`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</Link>
+                <Link href={project.live_url} aria-label={`Visit ${project.title} live site`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</Link>
+ <Link href={`/projects/${project.slug}`} aria-label={`View case study for ${project.title}`} className="group/btn flex items-center gap-2 bg-white text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:scale-105">
                   View Case Study <ArrowRightIcon className="hidden md:block group-hover/btn:translate-x-1 transition-transform" />
                </Link>
 
@@ -88,7 +95,7 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                 </div>
              </div>
              
-             <Link href={`/projects/${project.slug}`} className="w-full py-3 mt-2 border border-white/10 rounded-xl text-center text-xs font-bold hover:bg-white/5 transition-all text-white uppercase tracking-widest hover:border-white/20">
+             <Link href={`/projects/${project.slug}`} aria-label={`Explore ${project.title} details`} className="w-full py-3 mt-2 border border-white/10 rounded-xl text-center text-xs font-bold hover:bg-white/5 transition-all text-white uppercase tracking-widest hover:border-white/20">
                 Explore
              </Link>
           </div>
@@ -121,7 +128,7 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                </div>
            </div>
            
-           <Link href={`/projects/${project.slug}`} className="mt-2 md:w-12 md:h-12 md:mt-0 flex-shrink-0 py-2 md:py-0 md:px-0 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+           <Link href={`/projects/${project.slug}`} aria-label={`View case study for ${project.title}`} className="mt-2 md:w-12 md:h-12 md:mt-0 flex-shrink-0 py-2 md:py-0 md:px-0 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
           <span className="mr-2 block md:hidden font-medium text-xs">
             View Case Study
           </span>
@@ -169,11 +176,11 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
             </div>
         {/* Footer: Tags + View Button */}
         <div className="flex text-xs items-center justify-start pt-3">
-             {project.github_url && <a href={project.github_url} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all "><GithubLogoIcon size={14} />{" "} GitHub</a>}
+             {project.github_url && <a href={project.github_url} aria-label={`View ${project.title} source on GitHub`} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all "><GithubLogoIcon size={14} />{" "} GitHub</a>}
 
-             {project.live_url && <a href={project.live_url} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"><GlobeIcon size={14} />{" "} Live</a>}
+             {project.live_url && <a href={project.live_url} aria-label={`Visit ${project.title} live`} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"><GlobeIcon size={14} />{" "} Live</a>}
 
-            <Link href={`/projects/${project.slug}`} className="flex items-center gap-1  font-bold text-white hover:text-blue-400 transition-colors uppercase tracking-wider group/link bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10">
+            <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title} details`} className="flex items-center gap-1  font-bold text-white hover:text-blue-400 transition-colors uppercase tracking-wider group/link bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10">
                View <ArrowRightIcon className="group-hover/link:translate-x-1 transition-transform" />
             </Link>
         </div>

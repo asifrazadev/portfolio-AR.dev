@@ -1,0 +1,64 @@
+import { MetadataRoute } from 'next'
+import { createClient } from '@supabase/supabase-js'
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
+    )
+    const baseUrl = 'https://asif-raza-dev.vercel.app/'
+
+    // Fetch all projects for dynamic routes
+    const { data: projects } = await supabase
+        .from('projects')
+        .select('slug, updated_at')
+
+    const projectRoutes = projects?.map((project) => ({
+        url: `${baseUrl}/projects/${project.slug}`,
+        lastModified: new Date(project.updated_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+    })) || []
+
+    // Static routes
+    const routes = [
+        {
+            url: baseUrl,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 1,
+        },
+        {
+            url: `${baseUrl}/#work`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/#about`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/#experience`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/#skills`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+        },
+        {
+            url: `${baseUrl}/#contact`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly' as const,
+            priority: 0.5,
+        },
+    ]
+
+    return [...routes, ...projectRoutes]
+}

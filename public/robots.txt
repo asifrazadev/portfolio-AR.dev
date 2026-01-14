@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asif-raza-dev.vercel.app/sitemap.xml

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { 
-  HouseIcon, 
   BriefcaseIcon, 
   TrendUpIcon, 
   StackIcon, 
@@ -16,7 +15,7 @@ import {
 } from '@phosphor-icons/react'
 
 const navItems = [
-  { href: '#home', icon: HouseIcon, title: 'Home' },
+  { href: '#about', icon: UserIcon, title: 'About' },
   { href: '#work', icon: BriefcaseIcon, title: 'Work' },
   { href: '#experience', icon: TrendUpIcon, title: 'Experience' },
   { href: '#skills', icon: StackIcon, title: 'Skills' },

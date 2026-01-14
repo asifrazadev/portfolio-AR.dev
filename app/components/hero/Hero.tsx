@@ -10,15 +10,13 @@ import {
 } from '@phosphor-icons/react'
 import { getSocialIcon } from '@/app/components/ui/SocialIcons'
 
-// Removed dynamic getIconComponent to avoid bundling the entire icon library
 
 export function Hero() {
   const { about } = usePortfolio()
-  console.log(about)
   
   return (
       
-      <div className="max-w-9xl w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center ">
+      <div className="max-w-9xl w-full flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center " id="about">
         
         {/* Content */}
         <div className="max-w-5xl mx-auto">

@@ -1,20 +1,7 @@
 'use client'
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
-import * as PhosphorIcons from '@phosphor-icons/react'
-
-const getIconComponent = (iconName: string) => {
-  if (!iconName) return PhosphorIcons.QuestionIcon
-  
-  // Convert kebab-case to PascalCase and append 'Icon' (e.g., rocket-launch -> RocketLaunchIcon)
-  const pascalName = iconName
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('') + 'Icon'
-  
-  const Icon = (PhosphorIcons as any)[pascalName]
-  return Icon ? Icon : PhosphorIcons.QuestionIcon
-}
+import { getSocialIcon } from '@/app/components/ui/SocialIcons'
 
 export function Contact() {
   const { about } = usePortfolio()
@@ -34,7 +21,7 @@ export function Contact() {
         <div className="flex flex-col items-center gap-8 w-full max-w-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full group/socials">
             {about?.social_links?.slice().sort((a, b) => (a.platform === 'Email' ? -1 : 1)).map((link) => {
-              const Icon = getIconComponent(link.icon)
+              const Icon = getSocialIcon(link.icon)
               const isEmail = link.platform === 'Email'
               const href = isEmail && !link.url.startsWith('mailto:') ? `mailto:${link.url}` : link.url
               

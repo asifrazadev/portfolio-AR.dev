@@ -8,20 +8,9 @@ import {
   RocketIcon, 
   CloudIcon 
 } from '@phosphor-icons/react'
-import * as PhosphorIcons from '@phosphor-icons/react'
+import { getSocialIcon } from '@/app/components/ui/SocialIcons'
 
-const getIconComponent = (iconName: string) => {
-  if (!iconName) return PhosphorIcons.QuestionIcon
-  
-  // Convert kebab-case to PascalCase and append 'Icon' (e.g., rocket-launch -> RocketLaunchIcon)
-  const pascalName = iconName
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('') + 'Icon'
-  
-  const Icon = (PhosphorIcons as any)[pascalName]
-  return Icon ? Icon : PhosphorIcons.QuestionIcon
-}
+// Removed dynamic getIconComponent to avoid bundling the entire icon library
 
 export function Hero() {
   const { about } = usePortfolio()
@@ -51,7 +40,7 @@ export function Hero() {
           </a>
           <div className="flex gap-4 m-4 ">
             {about?.social_links?.map((link, index) => {
-              const Icon = getIconComponent(link.icon)
+              const Icon = getSocialIcon(link.icon)
               return (
                 <a
                   key={index}

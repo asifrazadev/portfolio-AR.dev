@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+const logo = require('../../../public/logo.svg')
 
 import { 
   BriefcaseIcon, 
@@ -15,7 +16,6 @@ import {
   XIcon, 
   CaretRightIcon 
 } from '@phosphor-icons/react'
-import { string } from 'zod'
 
 const navItems = [
   { href: '#about', icon: UserIcon, title: 'About' },
@@ -66,7 +66,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link href="#about" aria-label="Asif Raza Home">
             <Image 
-              src="/logo.svg" 
+              src={logo} 
               alt="Asif Raza" 
               width={150} 
               height={40} 

@@ -64,7 +64,7 @@ export function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5"
       >
         <div className="flex items-center gap-3">
-          <Link href="#about" aria-label="Asif Raza Home">
+          <Link href="/" aria-label="Asif Raza Home">
             <Image 
               src={logo} 
               alt="Asif Raza" 

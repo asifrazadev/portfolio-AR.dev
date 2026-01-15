@@ -163,7 +163,6 @@ export function Navbar() {
           {/* Links */}
           <div className="flex flex-col gap-2">
             {navItems.map((item) => {
-              console.log(item.href.slice(2),activeSection)
               return  (
               <Link
                 key={item.href}

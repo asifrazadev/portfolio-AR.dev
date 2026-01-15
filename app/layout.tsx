@@ -22,7 +22,49 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Asif Raza | Full Stack Developer",
   description: "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building scalable, performant web applications with exceptional user experiences.",
-  keywords: ["Full Stack Developer", "React Developer", "Next.js", "TypeScript", "Node.js", "Web Developer", "Asif Raza"],
+  keywords: [
+  "Full Stack Developer",
+  "Asif Raza",
+  "Asif Raza Full Stack Developer",
+  "asif raza dev",
+  "asif raza full stack developer",
+  "asif raza full stack developer in rawalpindi",
+  "asif raza full stack developer in islamabad",
+  "asif raza full stack developer in pakistan",
+  "React Developer",
+  "Next.js Developer",
+  "TypeScript Developer",
+  "Node.js Developer",
+  "Web Developer",
+  "MERN Stack Developer",
+  "React Next.js Developer",
+  "Full Stack Web Developer Pakistan",
+  "Best Full Stack Developer in Rawalpindi",
+  "Top React Developer in Islamabad",
+  "Asif Raza React Developer",
+  "Asif Raza Next.js Developer",
+  "Asif Raza Node.js Developer",
+  "Asif Raza MERN Developer",
+  "Freelance Full Stack Developer Rawalpindi",
+  "Freelance Web Developer Islamabad",
+  "Hire Full Stack Developer in Pakistan",
+  "Hire React Developer Rawalpindi",
+  "Asif Raza portfolio",
+  "Asif Raza developer portfolio",
+  "Full Stack Developer near me Rawalpindi",
+  "React Next.js TypeScript Node.js Developer",
+  "Modern Web Developer Pakistan",
+  "JavaScript Full Stack Developer",
+  "Asif Raza web development",
+  "Asif Raza software engineer",
+  "Rawalpindi full stack developer",
+  "Islamabad full stack developer",
+  "Pakistan full stack developer 2026",
+  "Remote Full Stack Developer Pakistan",
+  "Asif Raza GitHub",
+  "Asif Raza Twitter",
+  "Asif Raza X developer"
+],
   authors: [{ name: "Asif Raza" }],
   creator: "Asif Raza",
   openGraph: {
@@ -37,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Asif Raza | Full Stack Developer",
     description: "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-    creator: "@Dev_AsifRaza",
+    creator: "@asifrazadev",
   },
   robots: {
     index: true,
@@ -63,6 +105,23 @@ export default function RootLayout({
         <meta name="google-site-verification" content="1M3XO-nCmHH0kjiq-CXHBSBy8novSU2UZpwZOODP1rs" />
         <link rel="preconnect" href="https://chexuaukmzlbavwtehvp.supabase.co" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://chexuaukmzlbavwtehvp.supabase.co" />
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Asif Raza",
+      "url": "https://asif-raza-dev.vercel.app",
+      "sameAs": [
+        "https://www.linkedin.com/in/asifraza-dev/",
+        "https://github.com/asifrazadev",
+        "https://x.com/asifrazadev"
+      ],
+      "jobTitle": "Full Stack Developer",
+    }),
+  }}
+/>
       </head>
       <body>
         <GoogleAnalytics /> {/* Add this */}

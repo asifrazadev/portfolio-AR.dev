@@ -18,11 +18,11 @@ import {
 } from '@phosphor-icons/react'
 
 const navItems = [
-  { href: '#about', icon: UserIcon, title: 'About' },
-  { href: '#work', icon: BriefcaseIcon, title: 'Work' },
-  { href: '#experience', icon: TrendUpIcon, title: 'Experience' },
-  { href: '#skills', icon: StackIcon, title: 'Skills' },
-  { href: '#contact', icon: EnvelopeIcon, title: 'Contact' },
+  { href: '/#about', icon: UserIcon, title: 'About' },
+  { href: '/#work', icon: BriefcaseIcon, title: 'Work' },
+  { href: '/#experience', icon: TrendUpIcon, title: 'Experience' },
+  { href: '/#skills', icon: StackIcon, title: 'Skills' },
+  { href: '/#contact', icon: EnvelopeIcon, title: 'Contact' },
 ]
 
 export function Navbar() {

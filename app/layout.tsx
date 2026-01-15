@@ -5,7 +5,7 @@ import { PortfolioWrapper } from "./components/PortfolioWrapper"
 import { SmoothScroll } from "./components/ui/SmoothScroll"
 import { Footer } from "./components/footer/footer"
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
-import GoogleAnalytics from "./components/Gtag" // Add this import
+import GoogleAnalytics from "./components/Gtag"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -20,25 +20,25 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Asif Raza | Full Stack Developer & Next.js Expert",
-  description: "Experienced Full Stack Developer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
+  title: "Asif Raza | Software Engineer & Next.js Expert",
+  description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
   alternates: {
     canonical: "https://asif-raza-dev.vercel.app",
   },
-   other: {
+  other: {
        linkedin:"https://www.linkedin.com/in/asifraza-dev/",
        github: "https://github.com/asifrazadev",
         x:"https://x.com/asifrazadev"
     },
   keywords: [
-  "Full Stack Developer",
+  "Software Engineer",
   "Asif Raza",
-  "Asif Raza Full Stack Developer",
+  "Asif Raza Software Engineer",
   "asif raza dev",
-  "asif raza full stack developer",
-  "asif raza full stack developer in rawalpindi",
-  "asif raza full stack developer in islamabad",
-  "asif raza full stack developer in pakistan",
+  "asif raza software engineer",
+  "asif raza software engineer in rawalpindi",
+  "asif raza software engineer in islamabad",
+  "asif raza software engineer in pakistan",
   "React Developer",
   "Next.js Developer",
   "TypeScript Developer",
@@ -46,29 +46,29 @@ export const metadata: Metadata = {
   "Web Developer",
   "MERN Stack Developer",
   "React Next.js Developer",
-  "Full Stack Web Developer Pakistan",
-  "Best Full Stack Developer in Rawalpindi",
+  "Software Engineer Pakistan",
+  "Best Software Engineer in Rawalpindi",
   "Top React Developer in Islamabad",
   "Asif Raza React Developer",
   "Asif Raza Next.js Developer",
   "Asif Raza Node.js Developer",
   "Asif Raza MERN Developer",
-  "Freelance Full Stack Developer Rawalpindi",
+  "Freelance Software Engineer Rawalpindi",
   "Freelance Web Developer Islamabad",
-  "Hire Full Stack Developer in Pakistan",
+  "Hire Software Engineer in Pakistan",
   "Hire React Developer Rawalpindi",
   "Asif Raza portfolio",
   "Asif Raza developer portfolio",
-  "Full Stack Developer near me Rawalpindi",
+  "Software Engineer near me Rawalpindi",
   "React Next.js TypeScript Node.js Developer",
   "Modern Web Developer Pakistan",
-  "JavaScript Full Stack Developer",
+  "JavaScript Software Engineer",
   "Asif Raza web development",
   "Asif Raza software engineer",
-  "Rawalpindi full stack developer",
-  "Islamabad full stack developer",
-  "Pakistan full stack developer 2026",
-  "Remote Full Stack Developer Pakistan",
+  "Rawalpindi software engineer",
+  "Islamabad software engineer",
+  "Pakistan software engineer 2026",
+  "Remote Software Engineer Pakistan",
   "Asif Raza GitHub",
   "Asif Raza Twitter",
   "Asif Raza X developer"
@@ -79,14 +79,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://asif-raza-dev.vercel.app",
-    title: "Asif Raza | Full Stack Developer & Next.js Expert",
-    description: "Experienced Full Stack Developer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
+    title: "Asif Raza | Software Engineer & Next.js Expert",
+    description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     siteName: "Asif Raza Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Asif Raza | Full Stack Developer & Next.js Expert",
-    description: "Experienced Full Stack Developer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
+    title: "Asif Raza | Software Engineer & Next.js Expert",
+    description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     creator: "@asifrazadev",
   },
   robots: {
@@ -126,7 +126,7 @@ export default function RootLayout({
         "https://github.com/asifrazadev",
         "https://x.com/asifrazadev"
       ],
-      "jobTitle": "Full Stack Developer",
+      "jobTitle": "Software Engineer",
     }),
   }}
 />

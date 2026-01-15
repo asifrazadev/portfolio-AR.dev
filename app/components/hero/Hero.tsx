@@ -27,7 +27,7 @@ export function Hero() {
              </h1>
            
              <h2 className="text-2xl md:text-3xl font-light text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">
-               FULL STACK DEVELOPER<br />
+               SOFTWARE ENGINEER<br />
                <span className="text-gray-500">BASED IN PAKISTAN.</span>
              </h2>
 

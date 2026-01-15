@@ -216,7 +216,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {project.gallery_images && project.gallery_images.length > 0 && (
         <section className="mb-24 max-w-6xl mx-auto">
           <h2 className="font-heading text-3xl mb-12 text-center text-white">Gallery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className={`grid grid-cols-1 ${project.tags.some(tag => tag.toLowerCase().includes('mobile')) ? 'md:grid-cols-4' : 'md:grid-cols-2'} gap-8`}>
             {project.gallery_images.map((image, index) => (
               <div key={index} className="relative w-full h-fit rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
                 <Image

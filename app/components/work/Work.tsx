@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { GithubLogoIcon, GlobeIcon, ArrowRightIcon } from '@phosphor-icons/react'
 import { SectionHeading } from '../ui/SectionHeading'
+import { FadeIn } from '../ui/FadeIn'
 
 // Project Card Component
 type CardVariant = 'hero' | 'pillar' | 'standard' | 'banner'
@@ -40,7 +41,7 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                {project.title}
             </h3>
             
-            <p className="text-gray-200 text-xs md:text-sm line-clamp-2 max-w-2xl mb-8 font-medium leading-relaxed drop-shadow-md">
+            <p className="text-gray-200 text-xs md:text-sm line-clamp-4 md:line-clamp-2 max-w-2xl mb-8 font-medium leading-relaxed drop-shadow-md">
                {project.description}
             </p>
             
@@ -116,8 +117,8 @@ const ProjectCardContent = ({ project, variant,index }: { project: any, variant:
                </div>
                
                <div className="block w-full md:w-auto truncate">
-                  <p className="text-gray-400 text-xs md:text-sm max-w-xl text-nowrap font-medium mb-3 line-clamp-2 truncate mr-3">
-                     {(project.description?.length || 0) > 80 ? project.description.slice(0, 80) + "..." : project.description}
+                  <p className="text-gray-400 text-xs md:text-sm max-w-xl text-wrap font-medium mb-3 line-clamp-4 md:line-clamp-2 mr-2">
+                     {project.description}
                   </p>
                   
                   <div className="flex gap-2 flex-wrap h-7 overflow-hidden content-start">
@@ -346,8 +347,9 @@ export function Work() {
              const layout = layoutPattern[index] || { col: 'col-span-12 md:col-span-4', row: 'row-span-1', variant: 'standard' }
 
              return ( 
-                <div
+                <FadeIn
                     key={project.id}
+                    delay={index * 0.1}
                     className={`
                         group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl 
                         overflow-hidden transition-all duration-300 hover:bg-white/10 hover:shadow-2xl 
@@ -360,7 +362,7 @@ export function Work() {
                         index={index}
                         variant={layout.variant as CardVariant} 
                     />
-                </div>
+                </FadeIn>
              )
           })}
         </div>

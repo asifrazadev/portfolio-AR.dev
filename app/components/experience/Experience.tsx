@@ -3,6 +3,7 @@
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { ExperienceItem } from './ExperienceItem'
 import { SectionHeading } from '../ui/SectionHeading'
+import { FadeIn } from '../ui/FadeIn'
 
 export function Experience() {
   const { experience, loading } = usePortfolio()
@@ -44,7 +45,9 @@ export function Experience() {
 
       <div className="pl-0 md:pl-8 border-l-0 md:border-l-0  border-white/10 flex flex-col gap-8">
         {experience.map((item, index) => (
-          <ExperienceItem key={item.id} item={item} index={index} />
+          <FadeIn key={item.id} delay={index * 0.1}>
+            <ExperienceItem item={item} index={index} />
+          </FadeIn>
         ))}
       </div>
     </section>

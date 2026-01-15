@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 import { 
   BriefcaseIcon, 
@@ -13,6 +15,7 @@ import {
   XIcon, 
   CaretRightIcon 
 } from '@phosphor-icons/react'
+import { string } from 'zod'
 
 const navItems = [
   { href: '#about', icon: UserIcon, title: 'About' },
@@ -23,7 +26,7 @@ const navItems = [
 ]
 
 export function Navbar() {
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('about')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -32,7 +35,7 @@ export function Navbar() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id')
-            if (id) setActiveSection(id)
+            if (id) setActiveSection(id.toString())
           }
         })
       },
@@ -41,9 +44,9 @@ export function Navbar() {
 
     const sections = document.querySelectorAll('section[id]')
     sections.forEach((section) => observer.observe(section))
-
     return () => sections.forEach((section) => observer.unobserve(section))
   }, [])
+
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -57,42 +60,74 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
+      <nav 
+        className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5"
+      >
         <div className="flex items-center gap-3">
-          {/* Monogram removed for professional look */}
-          {/* <div className="w-10 h-10 rounded-full bg-white/5 ...">AR</div> */}
-          <span className="font-heading text-base font-semibold tracking-tight block">
-            Asif Raza
-          </span>
+          <Link href="#about" aria-label="Asif Raza Home">
+            <Image 
+              src="/logo.svg" 
+              alt="Asif Raza" 
+              width={150} 
+              height={40} 
+              priority
+              className="w-auto h-8 md:h-10 object-contain"
+            />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 items-center">
-          {navItems.map((item) => (
-            <Link
+          {navItems.map((item, index) => {
+             return(
+            <motion.div
               key={item.href}
-              href={item.href}
-              className={`text-2xl transition-all duration-300 ${
-                activeSection === item.href.slice(1)
-                  ? 'text-white -translate-y-0.5'
-                  : 'text-white/40 hover:text-white hover:-translate-y-0.5'
-              }`}
-              title={item.title}
-              aria-label={item.title}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.5 }}
             >
-              <item.icon size={24} />
-            </Link>
-          ))}
+              <Link
+                href={item.href}
+                className={`text-2xl transition-all duration-300 block relative ${
+                  activeSection == item.href.slice(1)
+                    ? 'text-white'
+                    : 'text-white/40'
+                }`}
+                title={item.title}
+                aria-label={item.title}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.2, color: '#ffffff' }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <item.icon size={24} />
+                </motion.div>
+                
+                {activeSection === item.href.slice(1) && (
+                  <motion.div
+                    layoutId="active-nav-pill"
+                    className="absolute -bottom-2 left-1/2 w-1 h-1 bg-white rounded-full"
+                    style={{ translateX: '-50%' }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+            </motion.div>
+          )})}
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <motion.button 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
           onClick={() => setIsMobileMenuOpen(true)}
           className="md:hidden text-2xl text-white/80 hover:text-white transition-colors"
           aria-label="Toggle mobile menu"
+          whileTap={{ scale: 0.9 }}
         >
           <ListIcon size={24} />
-        </button>
+        </motion.button>
       </nav>
 
       {/* Mobile Sidebar Overlay */}

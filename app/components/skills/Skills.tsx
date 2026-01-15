@@ -2,6 +2,7 @@
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { SectionHeading } from '../ui/SectionHeading'
+import { FadeIn } from '../ui/FadeIn'
 
 export function Skills() {
   const { skills, loading } = usePortfolio()
@@ -46,23 +47,25 @@ export function Skills() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {Object.entries(skillsByCategory).map(([category, items]) => (
-          <article key={category} className="bg-white/2 backdrop-blur-2xl rounded-2xl p-6 border border-white/5">
-            <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/10">
-              <i className={`ph ${categoryIcons[category as keyof typeof categoryIcons]} text-3xl text-white`}></i>
-              <h3 className="font-heading text-lg font-semibold">{category}</h3>
-            </div>
-            <ul className="space-y-2 list-disc list-inside text-gray-400">
-              {items.map((skill) => (
-                <li
-                  key={skill.id}
-                  className="text-sm"
-                >
-                  {skill.name}
-                </li>
-              ))}
-            </ul>
-          </article>
+        {Object.entries(skillsByCategory).map(([category, items], index) => (
+          <FadeIn key={category} delay={index * 0.1} className="h-full">
+            <article className="bg-white/2 backdrop-blur-2xl rounded-2xl p-6 border border-white/5 h-full">
+              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/10">
+                <i className={`ph ${categoryIcons[category as keyof typeof categoryIcons]} text-3xl text-white`}></i>
+                <h3 className="font-heading text-lg font-semibold">{category}</h3>
+              </div>
+              <ul className="space-y-2  sm:grid md:grid-cols-1 sm:grid-cols-2 xl:grid-cols-2  list-disc list-inside text-gray-400">
+                {items.map((skill) => (
+                  <li
+                    key={skill.id}
+                    className="text-sm"
+                  >
+                    {skill.name}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </FadeIn>
         ))}
       </div>
     </section>

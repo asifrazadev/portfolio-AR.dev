@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Asif Raza" }],
   creator: "Asif Raza",
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
     url: "https://asif-raza-dev.vercel.app",
     title: "Asif Raza | Software Engineer & Next.js Expert",

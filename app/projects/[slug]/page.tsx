@@ -107,14 +107,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Right Column: Image */}
         <div className="lg:col-span-6 order-1 lg:order-2">
            {project.image_url && (
-            <div className="relative  h-fit w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a] group">
+            <div className={`relative  h-fit ${project.tags.map(tag => tag.toLowerCase()).includes('mobile') ? 'w-fit mx-auto' : 'w-full'} rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a] group`}>
               <Image
                 src={project.image_url}
                 alt={project.title}
                 fill
                 style={{ objectFit: 'contain' }}
                 priority
-                className="group-hover:scale-105 !static !h-fit transition-transform duration-700"
+                className="group-hover:scale-105 max-h-[400px] !static !h-fit transition-transform duration-700"
               />
               {/* Ambient glow behind image */}
               <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/20 via-purple-500/10 to-emerald-500/20 blur-3xl -z-10 opacity-60"></div>

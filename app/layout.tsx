@@ -113,20 +113,28 @@ export default function RootLayout({
         <meta name="google-site-verification" content="1M3XO-nCmHH0kjiq-CXHBSBy8novSU2UZpwZOODP1rs" />
         <link rel="preconnect" href="https://chexuaukmzlbavwtehvp.supabase.co" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://chexuaukmzlbavwtehvp.supabase.co" />
-        <script
+       <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{
     __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Asif Raza",
-      "url": "https://asif-raza-dev.vercel.app",
-      "sameAs": [
-        "https://www.linkedin.com/in/asifraza-dev/",
-        "https://github.com/asifrazadev",
-        "https://x.com/asifrazadev"
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Asif Raza',
+      url: 'https://asif-raza-dev.vercel.app',
+      sameAs: [
+        'https://www.linkedin.com/in/asifraza-dev/',
+        'https://github.com/asifrazadev',
+        'https://x.com/asifrazadev',
       ],
-      "jobTitle": "Software Engineer",
+      jobTitle: 'Software Engineer',
+      description: 'Experienced Software Engineer in Rawalpindi, Pakistan specializing in React, Next.js, TypeScript, Node.js.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Rawalpindi',
+        addressRegion: 'Punjab',
+        addressCountry: 'PK',
+      },
+      knowsAbout: ['React', 'Next.js', 'TypeScript', 'Node.js', 'MERN Stack'],
     }),
   }}
 />

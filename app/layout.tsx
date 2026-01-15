@@ -28,7 +28,10 @@ export const metadata: Metadata = {
   other: {
        linkedin:"https://www.linkedin.com/in/asifraza-dev/",
        github: "https://github.com/asifrazadev",
-        x:"https://x.com/asifrazadev"
+        x:"https://x.com/asifrazadev",
+        'profile:first_name': 'Asif',
+  'profile:last_name': 'Raza',
+  'profile:username': 'asifraza-dev',
     },
   keywords: [
   "Software Engineer",

@@ -10,6 +10,8 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>
 }
 
+export const dynamic = 'force-dynamic'
+
 async function getProject(slug: string): Promise<Project | null> {
   const supabase = await createClient()
   const { data, error } = await supabase
@@ -38,6 +40,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: `${project.title} | Asif Raza`,
     description: project.overview || project.description,
+    alternates: {
+      canonical: `https://asif-raza-dev.vercel.app/projects/${project.slug}`,
+    },
     openGraph: {
       title: project.title,
       description: project.overview || project.description,
@@ -54,8 +59,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound()
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: project.title,
+    description: project.description,
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'Any',
+    author: {
+        '@type': 'Person',
+        name: 'Asif Raza',
+    },
+    offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+    },
+  }
+
   return (
     <main  className="max-w-[1400px] mx-auto px-6 md:px-12 pt-28 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section - Side-by-Side Layout to reduce bulk */}
       <section id='work' className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         

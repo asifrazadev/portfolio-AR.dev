@@ -89,7 +89,7 @@ export function Navbar() {
               <Link
                 href={item.href}
                 className={`text-2xl transition-all duration-300 block relative ${
-                  activeSection == item.href.slice(1)
+                  activeSection == item.href.slice(2)
                     ? 'text-white'
                     : 'text-white/40'
                 }`}
@@ -103,7 +103,7 @@ export function Navbar() {
                   <item.icon size={24} />
                 </motion.div>
                 
-                {activeSection === item.href.slice(1) && (
+                {activeSection === item.href.slice(2) && (
                   <motion.div
                     layoutId="active-nav-pill"
                     className="absolute -bottom-2 left-1/2 w-1 h-1 bg-white rounded-full"
@@ -162,24 +162,26 @@ export function Navbar() {
 
           {/* Links */}
           <div className="flex flex-col gap-2">
-            {navItems.map((item) => (
+            {navItems.map((item) => {
+              console.log(item.href.slice(2),activeSection)
+              return  (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center gap-4 px-4 py-4 rounded-xl transition-all ${
-                  activeSection === item.href.slice(1)
+                  activeSection === item.href.slice(2)
                     ? 'bg-white/10 text-white'
                     : 'text-white/50 hover:text-white hover:bg-white/5'
                 }`}
               >
                 <item.icon size={24} />
                 <span className="font-medium text-lg">{item.title}</span>
-                {activeSection === item.href.slice(1) && (
+                {activeSection === item.href.slice(2) && (
                   <CaretRightIcon size={16} className="ml-auto text-white/50" />
                 )}
               </Link>
-            ))}
+            )})}
           </div>
 
           {/* Footer */}

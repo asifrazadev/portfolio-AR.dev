@@ -60,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
+        <meta name="google-site-verification" content="1M3XO-nCmHH0kjiq-CXHBSBy8novSU2UZpwZOODP1rs" />
         <link rel="preconnect" href="https://chexuaukmzlbavwtehvp.supabase.co" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://chexuaukmzlbavwtehvp.supabase.co" />
       </head>

@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   'profile:last_name': 'Raza',
   'profile:username': 'asifraza-dev',
     },
+    
+      icons:"https://asif-raza-dev.vercel.app/favicon.ico",
+    
   keywords: [
   "Software Engineer",
   "Asif Raza",

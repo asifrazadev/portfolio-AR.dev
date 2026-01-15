@@ -20,8 +20,16 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Asif Raza | Full Stack Developer",
-  description: "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building scalable, performant web applications with exceptional user experiences.",
+  title: "Asif Raza | Full Stack Developer & Next.js Expert",
+  description: "Experienced Full Stack Developer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
+  alternates: {
+    canonical: "https://asif-raza-dev.vercel.app",
+  },
+   other: {
+       linkedin:"https://www.linkedin.com/in/asifraza-dev/",
+       github: "https://github.com/asifrazadev",
+        x:"https://x.com/asifrazadev"
+    },
   keywords: [
   "Full Stack Developer",
   "Asif Raza",
@@ -71,14 +79,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://asif-raza-dev.vercel.app",
-    title: "Asif Raza | Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
+    title: "Asif Raza | Full Stack Developer & Next.js Expert",
+    description: "Experienced Full Stack Developer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     siteName: "Asif Raza Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Asif Raza | Full Stack Developer",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
+    title: "Asif Raza | Full Stack Developer & Next.js Expert",
+    description: "Experienced Full Stack Developer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     creator: "@asifrazadev",
   },
   robots: {
@@ -124,7 +132,7 @@ export default function RootLayout({
 />
       </head>
       <body>
-        <GoogleAnalytics /> {/* Add this */}
+        <GoogleAnalytics /> 
         
         <PortfolioWrapper>
           <SmoothScroll />

@@ -4,9 +4,8 @@ import "./globals.css"
 import { PortfolioWrapper } from "./components/PortfolioWrapper"
 import { SmoothScroll } from "./components/ui/SmoothScroll"
 import { Footer } from "./components/footer/footer"
-
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
-import { Providers } from "./providers"
+import GoogleAnalytics from "./components/Gtag" // Add this import
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -65,6 +64,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://chexuaukmzlbavwtehvp.supabase.co" />
       </head>
       <body>
+        <GoogleAnalytics /> {/* Add this */}
+        
         <PortfolioWrapper>
           <SmoothScroll />
           <div className="aurora-hero"></div>

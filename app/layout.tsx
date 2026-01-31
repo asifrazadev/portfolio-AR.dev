@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: "Asif Raza | Software Engineer & Next.js Expert",
   description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
   alternates: {
-    canonical: "https://asif-raza-dev.vercel.app",
+  canonical: "https://asifraza.site/",
   },
   other: {
        linkedin:"https://www.linkedin.com/in/asifraza-dev/",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   'profile:username': 'asifraza-dev',
     },
     
-      icons:"https://asif-raza-dev.vercel.app/favicon.ico",
+      icons:"https://asifraza.site/favicon.ico",
     
   keywords: [
   "Software Engineer",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "profile",
     locale: "en_US",
-    url: "https://asif-raza-dev.vercel.app",
+    url: "http://asifraza.site/",
     title: "Asif Raza | Software Engineer & Next.js Expert",
     description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     siteName: "Asif Raza Portfolio",
@@ -126,7 +126,7 @@ export default function RootLayout({
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Asif Raza',
-      url: 'https://asif-raza-dev.vercel.app',
+      url: 'http://asifraza.site/',
       sameAs: [
         'https://www.linkedin.com/in/asifraza-dev/',
         'https://github.com/asifrazadev',

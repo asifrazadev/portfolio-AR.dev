@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
     )
-    const baseUrl = 'https://asif-raza-dev.vercel.app/'
+    const baseUrl = 'https://asifraza.site'
 
     // Fetch all projects for dynamic routes
     const { data: projects } = await supabase

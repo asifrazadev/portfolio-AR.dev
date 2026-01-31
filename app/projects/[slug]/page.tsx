@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     title: `${project.title} | Asif Raza`,
     description: project.overview || project.description,
     alternates: {
-      canonical: `https://asif-raza-dev.vercel.app/projects/${project.slug}`,
+      canonical: `http://asifraza.site/projects/${project.slug}`,
     },
     openGraph: {
       title: project.title,

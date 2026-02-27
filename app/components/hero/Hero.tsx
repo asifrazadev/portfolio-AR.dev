@@ -34,10 +34,11 @@ export function Hero() {
            <div className="flex flex-wrap justify-center gap-4 mb-6">
               {about?.social_links?.map((link, index) => {
                 const Icon = getSocialIcon(link.icon)
+                console.log('Rendering social link:', link.platform, 'with icon:', Icon)
                 return (
                   <FadeIn key={index} delay={0.3 + (index * 0.1)}>
                     <a
-                      href={link.url}
+                      href={link.platform=="Email"?"mailto:"+link.url:link.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 hover:bg-white hover:text-black hover:scale-110"

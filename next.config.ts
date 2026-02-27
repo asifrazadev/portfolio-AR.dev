@@ -11,6 +11,16 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-}
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'asifraza.site' }],
+        destination: 'https://www.asifraza.site/:path*',
+        permanent: true,
+      },
+    ];
+  },
+};
 
-export default nextConfig
+export default nextConfig;

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: "Asif Raza | Software Engineer & Next.js Expert",
   description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
   alternates: {
-  canonical: "https://asifraza.site/",
+  canonical: "https://www.asifraza.site/",
   },
   other: {
        linkedin:"https://www.linkedin.com/in/asifraza-dev/",

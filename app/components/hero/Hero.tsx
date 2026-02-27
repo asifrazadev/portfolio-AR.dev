@@ -3,10 +3,6 @@
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { 
   ArrowDownRightIcon, 
-  CodeIcon, 
-  DatabaseIcon, 
-  RocketIcon, 
-  CloudIcon 
 } from '@phosphor-icons/react'
 import { getSocialIcon } from '@/app/components/ui/SocialIcons'
 import { FadeIn } from '../ui/FadeIn'
@@ -34,7 +30,6 @@ export function Hero() {
            <div className="flex flex-wrap justify-center gap-4 mb-6">
               {about?.social_links?.map((link, index) => {
                 const Icon = getSocialIcon(link.icon)
-                console.log('Rendering social link:', link.platform, 'with icon:', Icon)
                 return (
                   <FadeIn key={index} delay={0.3 + (index * 0.1)}>
                     <a

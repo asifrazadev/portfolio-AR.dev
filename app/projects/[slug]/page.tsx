@@ -87,8 +87,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <section id='work' className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Content */}
-        <div className="lg:col-span-6 flex flex-col items-start text-left order-2 lg:order-1">
-          <Link href="/#work" className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-sm font-medium group">
+        <div className="lg:col-span-6 flex flex-col items-start text-left">
+          <Link href="/#work" className="inline-flex items-center gap-2 text-gray-100 hover:text-white transition-colors mb-6 text-sm font-medium group">
             <ArrowLeftIcon size={20} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Projects</span>
           </Link>
@@ -132,7 +132,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         {/* Right Column: Image */}
-        <div className="lg:col-span-6 order-1 lg:order-2">
+        <div className="lg:col-span-6 ">
            {project.image_url && (
             <div className={`relative  h-fit ${project.tags.map(tag => tag.toLowerCase()).includes('mobile') ? 'w-fit mx-auto' : 'w-full'} rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a] group`}>
               <Image

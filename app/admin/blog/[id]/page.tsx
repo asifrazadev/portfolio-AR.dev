@@ -35,17 +35,18 @@ export default function EditBlogPostPage() {
       const supabase = createClient()
       const { data } = await supabase.from('blog_posts').select('*').eq('id', id).single()
       if (data) {
-        setPost(data)
+        const postData = data as unknown as BlogPost
+        setPost(postData)
         setForm({
-          title: data.title,
-          slug: data.slug,
-          excerpt: data.excerpt || '',
-          cover_image: data.cover_image || '',
-          tags: data.tags.join(', '),
-          reading_time: data.reading_time,
-          published: data.published,
+          title: postData.title,
+          slug: postData.slug,
+          excerpt: postData.excerpt || '',
+          cover_image: postData.cover_image || '',
+          tags: (postData.tags || []).join(', '),
+          reading_time: postData.reading_time,
+          published: postData.published,
         })
-        setContent((data.content as Record<string, unknown>) || {})
+        setContent((postData.content as Record<string, unknown>) || {})
       }
       setLoading(false)
     }
@@ -72,7 +73,7 @@ export default function EditBlogPostPage() {
         reading_time: form.reading_time,
         published,
         updated_at: new Date().toISOString(),
-      }).eq('id', id)
+      } as never).eq('id', id)
       if (error) throw error
       router.push('/admin/blog')
     } catch (err: unknown) {

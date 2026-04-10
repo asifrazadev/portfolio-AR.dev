@@ -93,7 +93,7 @@ export default function NewBlogPostPage() {
         tags,
         reading_time: form.reading_time,
         published,
-      })
+      } as never)
       if (error) throw error
       router.push('/admin/blog')
     } catch (err: unknown) {

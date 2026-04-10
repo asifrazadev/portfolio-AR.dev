@@ -31,7 +31,7 @@ export default function AdminBlogPage() {
 
   const togglePublish = async (post: BlogPost) => {
     const supabase = createClient()
-    await supabase.from('blog_posts').update({ published: !post.published }).eq('id', post.id)
+    await supabase.from('blog_posts').update({ published: !post.published } as never).eq('id', post.id)
     fetchPosts()
   }
 

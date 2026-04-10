@@ -20,6 +20,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.8,
     })) || []
 
+    // Fetch all published blog posts for dynamic routes
+    const { data: blogPosts } = await supabase
+        .from('blog_posts')
+        .select('slug, updated_at')
+        .eq('published', true)
+
+    const blogRoutes = blogPosts?.map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.updated_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    })) || []
+
     // Static routes
     const routes = [
         {
@@ -58,7 +71,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'yearly' as const,
             priority: 0.5,
         },
+        {
+            url: `${baseUrl}/blog`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.8,
+        },
     ]
 
-    return [...routes, ...projectRoutes]
+    return [...routes, ...projectRoutes, ...blogRoutes]
 }

@@ -11,7 +11,8 @@ import {
   StackIcon, 
   UserIcon, 
   ArrowSquareOutIcon, 
-  SignOutIcon 
+  SignOutIcon,
+  ArticleIcon,
 } from '@phosphor-icons/react'
 
 export default function AdminLayout({
@@ -41,6 +42,7 @@ export default function AdminLayout({
   const navItems = [
     { href: '/admin', label: 'Dashboard', icon: HouseIcon },
     { href: '/admin/projects', label: 'Projects', icon: BriefcaseIcon },
+    { href: '/admin/blog', label: 'Blog', icon: ArticleIcon },
     { href: '/admin/experience', label: 'Experience', icon: TrendUpIcon },
     { href: '/admin/skills', label: 'Skills', icon: StackIcon },
     { href: '/admin/about', label: 'About', icon: UserIcon },

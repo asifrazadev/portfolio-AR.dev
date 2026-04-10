@@ -55,6 +55,20 @@ export interface About {
     updated_at: string
 }
 
+export interface BlogPost {
+    id: string
+    title: string
+    slug: string
+    excerpt: string | null
+    content: Record<string, unknown> | null
+    cover_image: string | null
+    published: boolean
+    tags: string[]
+    reading_time: number
+    created_at: string
+    updated_at: string
+}
+
 export interface Database {
     public: {
         Tables: {
@@ -77,6 +91,11 @@ export interface Database {
                 Row: About
                 Insert: Omit<About, 'id' | 'updated_at'>
                 Update: Partial<Omit<About, 'id' | 'updated_at'>>
+            }
+            blog_posts: {
+                Row: BlogPost
+                Insert: Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>
+                Update: Partial<Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>>
             }
         }
     }

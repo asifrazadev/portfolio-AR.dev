@@ -20,6 +20,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://asifraza.site"),
   title: "Asif Raza | Software Engineer & Next.js Expert",
   description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
   alternates: {
@@ -84,16 +85,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "profile",
     locale: "en_US",
-    url: "http://asifraza.site/",
+    url: "https://asifraza.site/",
     title: "Asif Raza | Software Engineer & Next.js Expert",
     description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     siteName: "Asif Raza Portfolio",
+    images: [{
+      url: '/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Asif Raza | Software Engineer & Next.js Expert',
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Asif Raza | Software Engineer & Next.js Expert",
     description: "Experienced Software Engineer specializing in React, Next.js, and Node.js. I build scalable, high-performance web applications and custom software solutions.",
     creator: "@asifrazadev",
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,

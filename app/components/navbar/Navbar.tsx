@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-const logo = require('../../../public/logo.svg')
+import logo from '../../../public/logo.svg'
 
 import { 
   BriefcaseIcon, 
@@ -14,10 +14,12 @@ import {
   EnvelopeIcon, 
   ListIcon, 
   XIcon, 
-  CaretRightIcon 
+  CaretRightIcon,
+  ArticleIcon,
 } from '@phosphor-icons/react'
+import { createClient } from '@/app/lib/supabase/client'
 
-const navItems = [
+const baseNavItems = [
   { href: '/#about', icon: UserIcon, title: 'About' },
   { href: '/#work', icon: BriefcaseIcon, title: 'Work' },
   { href: '/#experience', icon: TrendUpIcon, title: 'Experience' },
@@ -28,6 +30,27 @@ const navItems = [
 export function Navbar() {
   const [activeSection, setActiveSection] = useState('about')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [hasBlogs, setHasBlogs] = useState(false)
+
+  useEffect(() => {
+    const checkBlogs = async () => {
+      const supabase = createClient()
+      const { data } = await supabase
+        .from('blog_posts')
+        .select('id', { count: 'exact' })
+        .eq('published', true)
+        .limit(1)
+      
+      setHasBlogs(!!data && data.length > 0)
+    }
+    
+    checkBlogs()
+  }, [])
+
+  const navItems = [
+    ...baseNavItems,
+    ...(hasBlogs ? [{ href: '/blog', icon: ArticleIcon, title: 'Blog', external: true }] : [])
+  ]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,7 +102,9 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 items-center">
           {navItems.map((item, index) => {
-             return(
+            const sectionId = item.href.startsWith('/#') ? item.href.slice(2) : null
+            const isActive = sectionId ? activeSection === sectionId : false
+            return(
             <motion.div
               key={item.href}
               initial={{ opacity: 0, y: -20 }}
@@ -89,9 +114,7 @@ export function Navbar() {
               <Link
                 href={item.href}
                 className={`text-2xl transition-all duration-300 block relative ${
-                  activeSection == item.href.slice(2)
-                    ? 'text-white'
-                    : 'text-white/40'
+                  isActive ? 'text-white' : 'text-white/40'
                 }`}
                 title={item.title}
                 aria-label={item.title}
@@ -103,7 +126,7 @@ export function Navbar() {
                   <item.icon size={24} />
                 </motion.div>
                 
-                {activeSection === item.href.slice(2) && (
+                {isActive && (
                   <motion.div
                     layoutId="active-nav-pill"
                     className="absolute -bottom-2 left-1/2 w-1 h-1 bg-white rounded-full"
@@ -163,20 +186,22 @@ export function Navbar() {
           {/* Links */}
           <div className="flex flex-col gap-2">
             {navItems.map((item) => {
+              const sectionId = item.href.startsWith('/#') ? item.href.slice(2) : null
+              const isActive = sectionId ? activeSection === sectionId : false
               return  (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center gap-4 px-4 py-4 rounded-xl transition-all ${
-                  activeSection === item.href.slice(2)
+                  isActive
                     ? 'bg-white/10 text-white'
                     : 'text-white/50 hover:text-white hover:bg-white/5'
                 }`}
               >
                 <item.icon size={24} />
                 <span className="font-medium text-lg">{item.title}</span>
-                {activeSection === item.href.slice(2) && (
+                {isActive && (
                   <CaretRightIcon size={16} className="ml-auto text-white/50" />
                 )}
               </Link>
@@ -185,7 +210,7 @@ export function Navbar() {
 
           {/* Footer */}
           <div className="mt-auto pt-8 border-t border-white/10 text-center">
-             <p className="text-white/30 text-xs font-mono">© 2024 Asif Raza</p>
+             <p className="text-white/30 text-xs font-mono">© {new Date().getFullYear()} Asif Raza</p>
           </div>
         </div>
       </div>

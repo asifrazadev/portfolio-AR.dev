@@ -2,6 +2,7 @@
 
 export { 
   ArrowLeftIcon, 
+  ArrowRightIcon,
   ArrowSquareOutIcon, 
   GithubLogoIcon, 
   CheckCircleIcon 

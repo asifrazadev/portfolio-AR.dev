@@ -9,20 +9,20 @@ export function Skills() {
 
   if (loading) {
     return (
-      <section id="skills" className="py-16 md:py-24">
+      <section id="skills" className="py-16 max-w-7xl mx-auto md:py-24">
         <SectionHeading title="Expertise" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-           {[1, 2, 3].map((i) => (
-             <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/5 animate-pulse h-[320px] flex flex-col">
-                <div className="w-10 h-10 bg-white/10 rounded mb-6"></div>
-                <div className="h-8 w-40 bg-white/10 rounded mb-8"></div>
-                <div className="space-y-4 flex-1">
-                    {[1,2,3,4].map(j => (
-                        <div key={j} className="h-4 w-full bg-white/5 rounded"></div>
-                    ))}
-                </div>
-             </div>
-           ))}
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/5 animate-pulse h-[320px] flex flex-col">
+              <div className="w-10 h-10 bg-white/10 rounded mb-6"></div>
+              <div className="h-8 w-40 bg-white/10 rounded mb-8"></div>
+              <div className="space-y-4 flex-1">
+                {[1, 2, 3, 4].map(j => (
+                  <div key={j} className="h-4 w-full bg-white/5 rounded"></div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     )

@@ -48,14 +48,14 @@ export default function NewBlogPostPage() {
     setUploading(true)
     const supabase = createClient()
     const file = e.target.files[0]
-    
+
     try {
       const fileExt = file.name.split('.').pop()
       const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`
-      const filePath = `${fileName}`
+      const filePath = `blogs/${fileName}`
 
       const { error: uploadError } = await supabase.storage
-        .from('Blog Images')
+        .from('Project Images')
         .upload(filePath, file)
 
       if (uploadError) {
@@ -64,7 +64,7 @@ export default function NewBlogPostPage() {
         return
       }
 
-      const { data } = supabase.storage.from('Blog Images').getPublicUrl(filePath)
+      const { data } = supabase.storage.from('Project Images').getPublicUrl(filePath)
       if (data) {
         setForm(f => ({ ...f, cover_image: data.publicUrl }))
       }

@@ -82,14 +82,14 @@ export default function TipTapEditor({ content, onChange, editable = true }: Tip
     setUploadingImage(true)
     const supabase = createClient()
     const file = e.target.files[0]
-    
+
     try {
       const fileExt = file.name.split('.').pop()
       const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`
       const filePath = `${fileName}`
 
       const { error: uploadError } = await supabase.storage
-        .from('Blog Images')
+        .from('Project Images')
         .upload(filePath, file)
 
       if (uploadError) {
@@ -139,11 +139,10 @@ export default function TipTapEditor({ content, onChange, editable = true }: Tip
       type="button"
       onClick={onClick}
       title={title}
-      className={`px-2 py-1.5 rounded text-sm transition-all ${
-        active
+      className={`px-2 py-1.5 rounded text-sm transition-all ${active
           ? 'bg-white text-black'
           : 'text-gray-400 hover:text-white hover:bg-white/10'
-      }`}
+        }`}
     >
       {children}
     </button>

@@ -52,7 +52,7 @@ export default function NewBlogPostPage() {
     try {
       const fileExt = file.name.split('.').pop()
       const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`
-      const filePath = `blogs/${fileName}`
+      const filePath = `${fileName}`
 
       const { error: uploadError } = await supabase.storage
         .from('Project Images')

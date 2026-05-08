@@ -1,0 +1,26 @@
+# Asif Raza — Full Stack Developer Portfolio
+
+Welcome to the personal portfolio and blog of Asif Raza.
+This website showcases my professional experience, technical skills, featured projects, and insights from my journey as a full stack developer.
+
+Explore my work in modern web technologies including React, Next.js, Node.js, MongoDB, and scalable full-stack applications.
+
+## Explore
+
+* **Projects** — `/projects`
+  Discover my latest web and software development projects.
+
+* **Blog** — `/blog`
+  Read articles, tutorials, and development insights.
+
+* **About Me** — `/#about`
+  Learn more about my background, goals, and development journey.
+
+* **Experience** — `/#experience`
+  View my professional experience and technical contributions.
+
+* **Skills** — `/#skills`
+  Explore the technologies and tools I work with.
+
+* **Contact** — `/#contact`
+  Get in touch for collaborations, freelance work, or opportunities.

@@ -11,6 +11,19 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Link',
+            value: '</.well-known/llms.txt>; rel="describedby"',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

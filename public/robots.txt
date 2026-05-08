@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin/*
+
+Content-Signal: ai-train=no, search=yes, ai-input=no
 
 Sitemap: https://asifraza.site/sitemap.xml

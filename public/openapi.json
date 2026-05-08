@@ -2,18 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Portfolio API",
-    "version": "1.0.0"
+    "version": "v1"
   },
-  "paths": {
-    "/api/premium": {
-      "get": {
-        "summary": "Get premium content",
-        "responses": {
-          "200": {
-            "description": "Premium content successfully retrieved"
-          }
-        }
-      }
-    }
-  }
+  "paths": {}
 }

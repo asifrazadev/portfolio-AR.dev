@@ -19,7 +19,7 @@ export async function GET() {
         ],
         status: [
           {
-            href: "https://asifraza.site/api/health",
+            href: "https://asifraza.site/api/v1/health",
             type: "application/json"
           }
         ]

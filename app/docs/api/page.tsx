@@ -13,25 +13,28 @@ export default function ApiDocs() {
         Welcome to the portfolio API. The OpenAPI specification is available at <a href="/openapi.json" className="text-blue-400 hover:underline">/openapi.json</a>.
       </p>
       
-      <h2 className="text-2xl font-semibold mt-12 mb-6">Available Endpoints</h2>
-      <ul className="space-y-6">
+      <h2 className="text-2xl font-semibold mt-12 mb-6">General Endpoints</h2>
+      <ul className="space-y-8 mb-12">
         <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-blue-300 mb-2">GET /api/health</h3>
-          <p className="text-gray-400">Returns the basic health status of the API services.</p>
-        </li>
-        <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-purple-300 mb-2">GET /api/premium</h3>
-          <p className="text-gray-400">Premium content endpoint secured by the Machine Payment Protocol (MPP). Requires a tempo payment transaction.</p>
-        </li>
-        <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-green-300 mb-2">GET /api/x402-premium</h3>
-          <p className="text-gray-400">Premium content endpoint secured by the x402 payment protocol. Returns a 402 challenge for automated agent fulfillment.</p>
+          <h3 className="text-xl font-mono text-blue-300 mb-2">GET /api/v1/health</h3>
+          <p className="text-gray-400 mb-4">Returns the basic health status of the API services.</p>
+          <div className="bg-black/50 p-4 rounded text-sm font-mono text-gray-300">
+            <div className="mb-2 text-gray-500">// Request</div>
+            <div>GET /api/v1/health</div>
+            <div className="mt-4 mb-2 text-gray-500">// Response</div>
+            <pre>{`{
+  "status": "pass",
+  "description": "Health check OK"
+}`}</pre>
+          </div>
         </li>
         <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
           <h3 className="text-xl font-mono text-orange-300 mb-2">GET /api/markdown</h3>
-          <p className="text-gray-400">Utility endpoint used by Content Negotiation middleware to convert HTML pages into Agent-readable Markdown.</p>
+          <p className="text-gray-400">Converts HTML responses into clean Markdown for AI agents and LLM-based tools.</p>
         </li>
       </ul>
+
+
     </main>
   );
 }

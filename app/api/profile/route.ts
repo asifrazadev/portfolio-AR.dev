@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
         status: 401, 
         headers: {
           'Content-Type': 'application/json',
-          'WWW-Authenticate': 'Bearer realm="api", resource_metadata="https://asifraza.site/.well-known/oauth-protected-resource", error="invalid_token", error_description="The access token expired or is missing"'
+          'WWW-Authenticate': 'Bearer realm="api", resource_metadata="https://www.asifraza.site/.well-known/oauth-protected-resource", error="invalid_token", error_description="The access token expired or is missing"'
         }
       }
     );
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
         status: 401, 
         headers: {
           'Content-Type': 'application/json',
-          'WWW-Authenticate': 'Bearer realm="api", resource_metadata="https://asifraza.site/.well-known/oauth-protected-resource", error="invalid_token", error_description="The access token is invalid"'
+          'WWW-Authenticate': 'Bearer realm="api", resource_metadata="https://www.asifraza.site/.well-known/oauth-protected-resource", error="invalid_token", error_description="The access token is invalid"'
         }
       }
     );

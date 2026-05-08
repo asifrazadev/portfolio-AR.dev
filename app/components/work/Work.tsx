@@ -311,7 +311,7 @@ export function Work() {
       return (
          <section id="work" className="py-12 md:py-24">
             <div className="max-w-[1600px] mx-auto px-4">
-               <SectionHeading title="Case Studies" />
+               <SectionHeading title="Selected Projects I've Built" />
                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-max md:auto-rows-[140px]">
                   {/* Skeleton 1: Hero (Large) */}
                   <div className="col-span-12 md:col-span-8 row-span-2 bg-white/5 animate-pulse rounded-3xl border border-white/5 p-8 flex flex-col justify-end">
@@ -347,7 +347,7 @@ export function Work() {
    return (
       <section id="work" className="py-12">
          <div className="max-w-[1600px] mx-auto px-4">
-            <SectionHeading title="Case Studies" />
+            <SectionHeading title="Selected Projects I've Built" />
 
             {/* Dynamic Grid Layout (Responsive) */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-max md:auto-rows-[140px]">

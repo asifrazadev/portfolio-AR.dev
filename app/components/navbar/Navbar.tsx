@@ -21,9 +21,9 @@ import { createClient } from '@/app/lib/supabase/client'
 
 const baseNavItems = [
   { href: '/#about', icon: UserIcon, title: 'About' },
-  { href: '/#skills', icon: StackIcon, title: 'Skills' },
-  { href: '/#work', icon: BriefcaseIcon, title: 'Work' },
-  { href: '/#experience', icon: TrendUpIcon, title: 'Experience' },
+  { href: '/#skills', icon: StackIcon, title: 'Capabilities' },
+  { href: '/#work', icon: BriefcaseIcon, title: 'Case Studies' },
+  { href: '/#experience', icon: TrendUpIcon, title: 'Track Record' },
   { href: '/#contact', icon: EnvelopeIcon, title: 'Contact' },
 ]
 
@@ -49,7 +49,7 @@ export function Navbar() {
 
   const navItems = [
     ...baseNavItems,
-    ...(hasBlogs ? [{ href: '/blog', icon: ArticleIcon, title: 'Blog', external: true }] : [])
+    ...(hasBlogs ? [{ href: '/#blog', icon: ArticleIcon, title: 'Blog', external: true }] : [])
   ]
 
   useEffect(() => {

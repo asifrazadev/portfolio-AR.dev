@@ -11,7 +11,7 @@ export function About() {
     <section id="about" className="w-full py-16 md:py-24">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
-          <SectionHeading title="About Me" />
+          <SectionHeading title="Your Engineering Partner" />
           <div className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl relative overflow-hidden flex flex-col md:flex-row gap-8 items-center group hover:bg-white-[0.07] transition-colors duration-500">
 
             {/* Background glowing effects for premium feel */}
@@ -23,13 +23,13 @@ export function About() {
 
               <div className="text-gray-400 leading-relaxed text-lg space-y-4">
                 <p>
-                  As an engineering-driven creator, I bridge the gap between complex functionality and beautiful design.
+                  Instead of just writing code, I partner with businesses to solve complex technical challenges and deliver measurable ROI.
                 </p>
                 <p>
-                  My focus is on crafting intelligent, scalable, and visually striking applications that solve real business problems.
+                  My focus is on crafting intelligent, scalable, and high-performance applications that streamline your operations and enhance your digital presence.
                 </p>
                 <p>
-                  Whether designing intuitive interfaces or architecting robust backends, I deliver modern digital experiences that convert visitors into loyal users and drive measurable growth.
+                  Whether it&apos;s optimizing performance to increase conversion rates or architecting robust backends for internal tools, I build digital experiences designed to drive real business growth.
                 </p>
               </div>
             </div>

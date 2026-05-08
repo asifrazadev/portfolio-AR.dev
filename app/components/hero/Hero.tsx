@@ -11,6 +11,9 @@ import heroImage from '@/public/hero.png'
 
 export function Hero() {
   const { about } = usePortfolio()
+  const phoneNumber = '+923341045680'
+  const message = 'Hi Asif, I would like to book a free consultation for my business website.'
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
   return (
     <section className="w-full min-h-[calc(100vh-4rem)] flex items-center" id="hero">
@@ -22,41 +25,37 @@ export function Hero() {
 
           {/* Intro */}
           <p className="text-sm text-gray-500 mb-4 uppercase tracking-wider">
-            Full-Stack Developer
+            Websites for Businesses & Startups
           </p>
 
           {/* Heading */}
           <h1 className="font-heading font-bold leading-tight mb-6">
             <span className="block text-4xl md:text-5xl lg:text-6xl text-white">
-              I build websites
+              I build fast, modern websites
             </span>
             <span className="block text-4xl md:text-5xl lg:text-6xl text-white/60">
-              that grow your business
+              that get you more clients
             </span>
           </h1>
 
-          {/* Description */}
-          <p className="text-gray-400 text-lg max-w-xl leading-relaxed mb-8">
-            Fast, modern, and conversion-focused websites designed to turn visitors into real customers.
-          </p>
 
           {/* CTA */}
           <div className="flex flex-wrap items-center gap-4 mb-10">
             <FadeIn delay={0.5}>
               <a
-                href="#contact"
+                href={whatsappUrl}
                 className="px-8 py-4 bg-white text-black font-semibold rounded-full flex items-center gap-2 hover:-translate-y-1 transition transition-transform"
               >
-                Get Free Audit
+                Book Free Consultation
               </a>
             </FadeIn>
 
             <FadeIn delay={0.5}>
               <a
                 href="#work"
-                className="px-8 py-4 bg-white text-black font-semibold rounded-full flex items-center gap-2 transition-transform hover:-translate-y-1 "
+                className="px-8 py-4 bg-white/5 text-white border border-white/10 font-semibold rounded-full flex items-center gap-2 transition-transform hover:-translate-y-1 hover:bg-white/10"
               >
-                <span>View My Work</span>
+                <span>View Case Studies</span>
                 <ArrowDownRightIcon size={15} />
               </a>
             </FadeIn>

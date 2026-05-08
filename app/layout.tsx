@@ -7,6 +7,7 @@ import { Footer } from "./components/footer/footer"
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
 import GoogleAnalytics from "./components/Gtag"
 import { WebMCPProvider } from "./components/WebMCPProvider"
+import { WhatsAppButton } from "./components/ui/WhatsAppButton"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -191,6 +192,7 @@ export default function RootLayout({
           <ConditionalLayout>
             {children}
             <Footer />
+            <WhatsAppButton />
           </ConditionalLayout>
         </PortfolioWrapper>
       </body> 

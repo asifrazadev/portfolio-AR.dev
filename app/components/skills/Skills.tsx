@@ -10,7 +10,7 @@ export function Skills() {
   if (loading) {
     return (
       <section id="skills" className="py-16 max-w-7xl mx-auto md:py-24">
-        <SectionHeading title="Expertise" />
+        <SectionHeading title="Capabilities" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
             <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/5 animate-pulse h-[320px] flex flex-col">
@@ -43,7 +43,7 @@ export function Skills() {
   return (
     <section id="skills" className="py-12 md:py-16">
       <div className="">
-        <SectionHeading title="Expertise" />
+        <SectionHeading title="Capabilities" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -129,30 +129,56 @@ export default function RootLayout({
         <link rel="preconnect" href="https://chexuaukmzlbavwtehvp.supabase.co" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://chexuaukmzlbavwtehvp.supabase.co" />
        <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Asif Raza',
-      url: 'http://asifraza.site/',
-      sameAs: [
-        'https://www.linkedin.com/in/asifraza-dev/',
-        'https://github.com/asifrazadev',
-        'https://x.com/asifrazadev',
-      ],
-      jobTitle: 'Software Engineer',
-      description: 'Experienced Software Engineer in Rawalpindi, Pakistan specializing in React, Next.js, TypeScript, Node.js.',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Rawalpindi',
-        addressRegion: 'Punjab',
-        addressCountry: 'PK',
-      },
-      knowsAbout: ['React', 'Next.js', 'TypeScript', 'Node.js', 'MERN Stack'],
-    }),
-  }}
-/>
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Person',
+                  '@id': 'https://asifraza.site/#person',
+                  name: 'Asif Raza',
+                  url: 'https://asifraza.site/',
+                  sameAs: [
+                    'https://www.linkedin.com/in/asifraza-dev/',
+                    'https://github.com/asifrazadev',
+                    'https://x.com/asifrazadev',
+                  ],
+                  jobTitle: 'Software Engineer',
+                  description: 'Experienced Software Engineer in Rawalpindi, Pakistan specializing in React, Next.js, TypeScript, Node.js.',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Rawalpindi',
+                    addressRegion: 'Punjab',
+                    addressCountry: 'PK',
+                  },
+                  knowsAbout: ['React', 'Next.js', 'TypeScript', 'Node.js', 'MERN Stack'],
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://asifraza.site/#website',
+                  url: 'https://asifraza.site/',
+                  name: 'Asif Raza Portfolio',
+                  publisher: {
+                    '@id': 'https://asifraza.site/#person'
+                  }
+                },
+                {
+                  '@type': 'ProfilePage',
+                  '@id': 'https://asifraza.site/#profilepage',
+                  url: 'https://asifraza.site/',
+                  name: 'Asif Raza - Software Engineer Portfolio',
+                  isPartOf: {
+                    '@id': 'https://asifraza.site/#website'
+                  },
+                  about: {
+                    '@id': 'https://asifraza.site/#person'
+                  }
+                }
+              ]
+            }),
+          }}
+        />
       </head>
       <body>
         <GoogleAnalytics /> 

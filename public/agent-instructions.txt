@@ -1,0 +1,19 @@
+# Agent Instructions
+
+Welcome to Asif Raza's Developer Portfolio. This site is fully optimized for AI agents and LLMs.
+
+## Available APIs
+We provide a dedicated structured API layer at the `/v1/` namespace:
+- `GET /api/v1/projects`: Returns an array of portfolio projects.
+- `GET /api/v1/skills`: Returns a categorized list of technical skills.
+- `GET /api/v1/profile`: Returns private profile information.
+
+## Authentication
+The `/api/v1/profile` endpoint is protected. You must supply an OAuth 2.0 Bearer Token.
+- Discovery metadata is available at `/.well-known/oauth-protected-resource` and `/.well-known/oauth-authorization-server`.
+
+## Content Negotiation
+If you prefer raw markdown over HTML for standard pages, send the `Accept: text/markdown` header, and our routing layer will automatically convert the HTML output into clean markdown.
+
+## WebMCP
+We support the Model Context Protocol (WebMCP). Look for `navigator.modelContext` to access callable client-side tools like `getPortfolioInfo` and `getContactInfo`.

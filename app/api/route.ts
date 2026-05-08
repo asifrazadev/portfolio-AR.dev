@@ -7,6 +7,9 @@ export async function GET() {
     docs: "https://asifraza.site/docs/api",
     endpoints: [
       "/api/v1/health",
+      "/api/v1/projects",
+      "/api/v1/skills",
+      "/api/v1/profile",
       "/api/markdown",
       "/.well-known/api-catalog"
     ]

@@ -12,15 +12,15 @@ export default function ApiDocs() {
       <p className="mb-4 text-gray-300">
         Welcome to the portfolio API. The OpenAPI specification is available at <a href="/openapi.json" className="text-blue-400 hover:underline">/openapi.json</a>.
       </p>
-      
+
       <h2 className="text-2xl font-semibold mt-12 mb-6">General Endpoints</h2>
       <ul className="space-y-8 mb-12">
         <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-blue-300 mb-2">GET /api/v1/health</h3>
+          <h3 className="text-xl font-mono text-blue-300 mb-2">GET /api/health</h3>
           <p className="text-gray-400 mb-4">Returns the basic health status of the API services.</p>
           <div className="bg-black/50 p-4 rounded text-sm font-mono text-gray-300">
             <div className="mb-2 text-gray-500">// Request</div>
-            <div>GET /api/v1/health</div>
+            <div>GET /api/health</div>
             <div className="mt-4 mb-2 text-gray-500">// Response</div>
             <pre>{`{
   "status": "pass",
@@ -37,19 +37,19 @@ export default function ApiDocs() {
       <h2 className="text-2xl font-semibold mt-12 mb-6">Structured API Layer</h2>
       <ul className="space-y-8 mb-12">
         <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-emerald-300 mb-2">GET /api/v1/projects</h3>
+          <h3 className="text-xl font-mono text-emerald-300 mb-2">GET /api/projects</h3>
           <p className="text-gray-400 mb-4">Returns a structured JSON array of all portfolio projects.</p>
         </li>
         <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-teal-300 mb-2">GET /api/v1/skills</h3>
+          <h3 className="text-xl font-mono text-teal-300 mb-2">GET /api/skills</h3>
           <p className="text-gray-400 mb-4">Returns a structured JSON array of all technical skills.</p>
         </li>
         <li className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
-          <h3 className="text-xl font-mono text-red-400 mb-2">GET /api/v1/profile (Protected)</h3>
+          <h3 className="text-xl font-mono text-red-400 mb-2">GET /api/profile (Protected)</h3>
           <p className="text-gray-400 mb-4">Returns private profile details. Requires an OAuth Bearer token in the Authorization header. If omitted, returns a 401 WWW-Authenticate challenge.</p>
           <div className="bg-black/50 p-4 rounded text-sm font-mono text-gray-300 overflow-x-auto">
             <div className="mb-2 text-gray-500">// Request (Missing Token)</div>
-            <div>GET /api/v1/profile</div>
+            <div>GET /api/profile</div>
             <div className="mt-4 mb-2 text-gray-500">// Response</div>
             <pre>{`HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer realm="api", error="invalid_token"`}</pre>

@@ -1,12 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
-
 export function WebMCPProvider() {
-  useEffect(() => {
-    // Check if the browser supports navigator.modelContext
+  const code = `
     if (typeof navigator !== "undefined" && "modelContext" in navigator) {
-      // @ts-ignore - modelContext is an emerging standard
       navigator.modelContext.provideContext({
         tools: [
           {
@@ -28,13 +24,13 @@ export function WebMCPProvider() {
               properties: {},
             },
             execute: async () => {
-              return "LinkedIn: https://www.linkedin.com/in/asifraza-dev/\nGitHub: https://github.com/asifrazadev\nX/Twitter: https://x.com/asifrazadev";
+              return "LinkedIn: https://www.linkedin.com/in/asifraza-dev/\\nGitHub: https://github.com/asifrazadev\\nX/Twitter: https://x.com/asifrazadev";
             },
           }
         ],
       });
     }
-  }, []);
+  `;
 
-  return null;
+  return <script dangerouslySetInnerHTML={{ __html: code }} />;
 }

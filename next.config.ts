@@ -40,6 +40,14 @@ const nextConfig = {
         source: '/.well-known/api-catalog',
         destination: '/api/api-catalog',
       },
+      {
+        source: '/.well-known/oauth-protected-resource',
+        destination: '/api/oauth-protected-resource',
+      },
+      {
+        source: '/.well-known/oauth-authorization-server',
+        destination: '/api/oauth-authorization-server',
+      },
     ];
   },
 };

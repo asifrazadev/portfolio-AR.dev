@@ -34,6 +34,14 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/.well-known/api-catalog',
+        destination: '/api/api-catalog',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

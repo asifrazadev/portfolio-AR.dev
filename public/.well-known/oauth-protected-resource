@@ -1,0 +1,10 @@
+{
+  "resource": "https://asifraza.site/api",
+  "authorization_servers": [
+    "https://asifraza.site"
+  ],
+  "scopes_supported": [
+    "read",
+    "write"
+  ]
+}

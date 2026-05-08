@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/server-card.json",
+  "serverInfo": {
+    "name": "asifraza-portfolio-mcp",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://asifraza.site/api/mcp/sse"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  }
+}

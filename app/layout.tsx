@@ -6,6 +6,7 @@ import { SmoothScroll } from "./components/ui/SmoothScroll"
 import { Footer } from "./components/footer/footer"
 import { ConditionalLayout } from "./components/ui/ConditionalLayout"
 import GoogleAnalytics from "./components/Gtag"
+import { WebMCPProvider } from "./components/WebMCPProvider"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -155,6 +156,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleAnalytics /> 
+        <WebMCPProvider />
         
         <PortfolioWrapper>
           <SmoothScroll />

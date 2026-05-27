@@ -81,7 +81,7 @@ export function Hero() {
                 <FadeIn key={index} delay={0.3 + (index * 0.1)}>
                   <a
                     key={index}
-                    href={link.platform == "Email" ? "mailto:" + link.url : link.url}
+                    href={link.platform == "email" || link.platform == "Email" ? "mailto:" + link.url : link.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition"

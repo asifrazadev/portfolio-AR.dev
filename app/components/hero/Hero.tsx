@@ -1,101 +1,53 @@
 'use client'
 
-import { usePortfolio } from '@/app/context/PortfolioContext'
-import {
-  ArrowDownRightIcon,
-} from '@phosphor-icons/react'
-import { getSocialIcon } from '@/app/components/ui/SocialIcons'
+import { ArrowDownRightIcon } from '@phosphor-icons/react'
 import { FadeIn } from '../ui/FadeIn'
 import Image from 'next/image'
 import heroImage from '@/public/hero.png'
 
 export function Hero() {
-  const { about } = usePortfolio()
   const phoneNumber = '+923341045680'
   const message = 'Hi Asif, I would like to book a free consultation for my business website.'
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
   return (
-    <section className="w-full min-h-[calc(100vh-4rem)] flex items-center" id="hero">
-
-      <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-
-        {/* LEFT SIDE (Content) */}
+    <section className="hero-section w-full flex items-center" id="hero">
+      <div className="w-full grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
         <div className="text-left">
-
-          {/* Intro */}
-          <p className="text-sm text-gray-500 mb-4 uppercase tracking-wider">
-            Websites for Businesses & Startups
-          </p>
-
-          {/* Heading */}
-          <h1 className="font-heading font-bold leading-tight mb-6">
-            <span className="block text-4xl md:text-5xl lg:text-6xl text-white">
-              I build fast, modern websites
-            </span>
-            <span className="block text-4xl md:text-5xl lg:text-6xl text-white/60">
-              that get you more clients
-            </span>
+          <p className="eyebrow mb-5">Available for select opportunities</p>
+          <h1 className="hero-title font-heading font-bold mb-7">
+            I build digital products that <em>work.</em>
           </h1>
-
-
-          {/* CTA */}
-          <div className="flex flex-wrap items-center gap-4 mb-10">
+          <p className="hero-copy mb-8">
+            Full-stack developer focused on scalable web products and intelligent workflows—from polished interfaces to the systems behind them.
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
             <FadeIn delay={0.5}>
               <a
                 href={whatsappUrl}
-                className="px-8 py-4 bg-white text-black font-semibold rounded-full flex items-center gap-2 hover:-translate-y-1 transition transition-transform"
+                className="button-primary flex items-center gap-2 hover:-translate-y-0.5 transition-transform"
               >
-                Book Free Consultation
+                Book a consultation
               </a>
             </FadeIn>
-
             <FadeIn delay={0.5}>
               <a
                 href="#work"
-                className="px-8 py-4 bg-white/5 text-white border border-white/10 font-semibold rounded-full flex items-center gap-2 transition-transform hover:-translate-y-1 hover:bg-white/10"
+                className="button-secondary flex items-center gap-2 transition-transform hover:-translate-y-0.5"
               >
-                <span>View Case Studies</span>
+                <span>View case studies</span>
                 <ArrowDownRightIcon size={15} />
               </a>
             </FadeIn>
           </div>
-
-          {/* Socials */}
-
         </div>
-
-        {/* RIGHT SIDE (Visual space) */}
-        <div className="hidden md:flex items-center justify-center">
-
-          {/* Minimal abstract element (keeps your theme) */}
-          <div className="w-90 h-90 rounded-full border border-white/10 flex items-center justify-center">
-            <div className="w-80 h-80 bg-white/5 overflow-hidden rounded-full border border-white/10">
-              <Image src={heroImage} alt="Hero" fill className="object-cover  !static !w-full !h-full" />
-            </div>
-          </div>
-          <div className="absolute items-center right-0 space-y-4">
-            {about?.social_links?.map((link, index) => {
-              const Icon = getSocialIcon(link.icon)
-              return (
-                <FadeIn key={index} delay={0.3 + (index * 0.1)}>
-                  <a
-                    key={index}
-                    href={link.platform == "email" || link.platform == "Email" ? "mailto:" + link.url : link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black transition"
-                  >
-                    <Icon size={20} />
-                  </a>
-                </FadeIn>
-              )
-            })}
+        <div className="hero-art hidden md:block">
+          <div className="hero-orbit" />
+          <div className="hero-art-image">
+            <Image src={heroImage} alt="Selected work preview" width={640} height={480} className="w-full h-auto" priority />
           </div>
         </div>
-
       </div>
-
     </section>
   )
 }

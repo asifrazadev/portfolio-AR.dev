@@ -8,16 +8,15 @@ export function Contact() {
   const { about } = usePortfolio()
 
   return (
-    <section className="w-full" id="contact">
+    <section className="section-shell w-full" id="contact">
       <FadeIn>
-        <div className="bg-white/5 rounded-3xl p-8 mb-6 md:p-12 border border-white/10 relative overflow-hidden group flex flex-col items-center text-center">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-white/10 transition-all duration-700"></div>
-          
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-6">
-            Let&apos;s work together
+        <div className="contact-panel relative overflow-hidden group flex flex-col items-center">
+          <p className="eyebrow mb-6">Available for select opportunities</p>
+          <h2 className="font-heading font-bold">
+            Let&apos;s build something together.
           </h2>
-          <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
-            Interested in building something awesome? I&apos;m currently available for freelance projects and open to new opportunities.
+          <p className="muted-copy mb-8 max-w-xl mx-auto text-sm">
+            Tell me what you&apos;re building, where you want to go, and what a successful launch looks like.
           </p>
 
           <div className="flex flex-col items-center gap-8 w-full max-w-2xl">
@@ -33,16 +32,16 @@ export function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 group p-4 rounded-2xl border border-white/5 bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:!opacity-100 group-hover/socials:opacity-40"
+                    className="flex items-center gap-4 group p-4 rounded-xl border border-black/10 bg-black/5 transition-all duration-300 hover:bg-black/10 hover:border-black/20 hover:!opacity-100 group-hover/socials:opacity-40"
                     data-magnetic
                     aria-label={`${link.platform} Profile`}
                   >
-                  <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/20 transition-all duration-300">
-                    <Icon size={24} weight="light" className="text-white group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 rounded-full bg-black/5 border border-black/10 flex items-center justify-center group-hover:border-black/30 group-hover:bg-black/10 transition-all duration-300">
+                    <Icon size={24} weight="light" className="text-current transition-colors" />
                   </div>
                   <div className="text-left">
-                    <div className="text-xs text-gray-400 mb-1 group-hover:text-gray-300 transition-colors">{link.platform}</div>
-                    <div className="text-sm font-medium text-white group-hover:text-white transition-colors">
+                    <div className="text-xs opacity-60 mb-1 transition-colors">{link.platform}</div>
+                    <div className="text-sm font-medium transition-colors">
                       {isEmail ? 'Send Email' : 'Connect'}
                     </div>
                   </div>

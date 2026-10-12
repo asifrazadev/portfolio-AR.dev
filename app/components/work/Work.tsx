@@ -309,7 +309,7 @@ export function Work() {
 
    if (loading) {
       return (
-         <section id="work" className="py-12 md:py-24">
+         <section id="work" className="section-shell">
             <div className="max-w-[1600px] mx-auto px-4">
                <SectionHeading title="Selected Projects I've Built" />
                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-max md:auto-rows-[140px]">
@@ -345,12 +345,12 @@ export function Work() {
    }
 
    return (
-      <section id="work" className="py-12">
-         <div className="max-w-[1600px] mx-auto px-4">
+      <section id="work" className="section-shell">
+         <div>
             <SectionHeading title="Selected Projects I've Built" />
 
             {/* Dynamic Grid Layout (Responsive) */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-max md:auto-rows-[140px]">
+            <div className="project-grid">
                {sortedProjects.map((project, index) => {
                   // Use dynamic layout pattern, or fallback to standard if out of bounds (safe-guard)
                   const layout = layoutPattern[index] || { col: 'col-span-12 md:col-span-4', row: 'row-span-1', variant: 'standard' }
@@ -360,10 +360,8 @@ export function Work() {
                         key={project.id}
                         delay={index * 0.1}
                         className={`
-                        group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl 
-                        overflow-hidden transition-all duration-300 hover:bg-white/10 hover:shadow-2xl 
-                        hover:scale-[1.01] hover:border-white/20
-                        ${layout.col} ${layout.row}
+                        project-card group relative overflow-hidden transition-all duration-300 hover:shadow-2xl 
+                        hover:scale-[1.01]
                     `}
                      >
                         <ProjectCardContent

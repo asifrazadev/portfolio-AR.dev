@@ -84,7 +84,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5"
+        className="site-nav fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 py-4 backdrop-blur-xl border-b"
       >
         <div className="flex items-center gap-3">
           <Link href="/" aria-label="Asif Raza Home">
@@ -100,7 +100,7 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-8 items-center">
+        <div className="hidden md:flex gap-7 items-center">
           {navItems.map((item, index) => {
             const sectionId = item.href.startsWith('/#') ? item.href.slice(2) : null
             const isActive = sectionId ? activeSection === sectionId : false
@@ -113,7 +113,7 @@ export function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`text-2xl transition-all duration-300 block relative ${isActive ? 'text-white' : 'text-white/40'
+                  className={`nav-link transition-all duration-300 block relative ${isActive ? 'opacity-100' : 'opacity-45'
                     }`}
                   title={item.title}
                   aria-label={item.title}
@@ -122,13 +122,13 @@ export function Navbar() {
                     whileHover={{ scale: 1.2, color: '#ffffff' }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <item.icon size={24} />
+                    <span>{item.title}</span>
                   </motion.div>
 
                   {isActive && (
                     <motion.div
                       layoutId="active-nav-pill"
-                      className="absolute -bottom-2 left-1/2 w-1 h-1 bg-white rounded-full"
+                      className="absolute -bottom-2 left-1/2 w-1 h-1 bg-current rounded-full"
                       style={{ translateX: '-50%' }}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
@@ -145,7 +145,7 @@ export function Navbar() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           onClick={() => setIsMobileMenuOpen(true)}
-          className="md:hidden text-2xl text-white/80 hover:text-white transition-colors"
+          className="md:hidden transition-colors"
           aria-label="Toggle mobile menu"
           whileTap={{ scale: 0.9 }}
         >
@@ -166,7 +166,7 @@ export function Navbar() {
 
         {/* Sidebar */}
         <div
-          className={`absolute top-0 right-0 bottom-0 w-[280px] bg-[#0A0A0A] border-l border-white/10 p-6 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`absolute top-0 right-0 bottom-0 w-[280px] bg-[var(--paper)] border-l border-[var(--line)] p-6 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
         >
           {/* Header */}

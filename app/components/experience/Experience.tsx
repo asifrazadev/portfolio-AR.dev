@@ -10,7 +10,7 @@ export function Experience() {
 
   if (loading) {
     return (
-      <section id="experience" className="py-16 md:py-24">
+      <section id="experience" className="section-shell">
         <SectionHeading title="Track Record" />
         <div className="pl-0 md:pl-8 border-l-0 md:border-l border-white/10 flex flex-col gap-12">
            {[1, 2, 3].map((i) => (
@@ -40,15 +40,17 @@ export function Experience() {
   }
 
   return (
-    <section id="experience" className="py-16 md:py-24">
-      <SectionHeading title="Track Record" />
+    <section id="experience" className="section-shell">
+      <div className="surface-dark experience-panel">
+      <SectionHeading title="Across the stack. Close to the outcome." />
 
-      <div className="pl-0 md:pl-8 border-l-0 md:border-l-0  border-white/10 flex flex-col gap-8">
+      <div className="flex flex-col">
         {experience.map((item, index) => (
           <FadeIn key={item.id} delay={index * 0.1}>
             <ExperienceItem item={item} index={index} />
           </FadeIn>
         ))}
+      </div>
       </div>
     </section>
   )

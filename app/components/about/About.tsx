@@ -8,20 +8,13 @@ export function About() {
   const { about } = usePortfolio()
 
   return (
-    <section id="about" className="w-full py-16 md:py-24">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="section-shell w-full">
+      <div>
         <FadeIn>
           <SectionHeading title="Your Engineering Partner" />
-          <div className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl relative overflow-hidden flex flex-col md:flex-row gap-8 items-center group hover:bg-white-[0.07] transition-colors duration-500">
-
-            {/* Background glowing effects for premium feel */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-500/10 transition-colors duration-500" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/10 transition-colors duration-500" />
-
-            {/* Content */}
+          <div className="about-card relative overflow-hidden flex flex-col md:flex-row gap-8 items-center">
             <div className="flex-1 space-y-6 relative z-10">
-
-              <div className="text-gray-400 leading-relaxed text-lg space-y-4">
+              <div className="muted-copy leading-relaxed text-base md:text-lg space-y-4">
                 <p>
                   Instead of just writing code, I partner with businesses to solve complex technical challenges and deliver measurable ROI.
                 </p>
@@ -34,9 +27,8 @@ export function About() {
               </div>
             </div>
 
-            {/* Image (Conditionally rendered if uploaded through the admin panel) */}
             {about?.image_url && (
-              <div className="aspect-square w-48 md:w-64 rounded-2xl overflow-hidden border border-white/10 shrink-0 relative z-10 box-shadow p-2 bg-white/5">
+              <div className="aspect-square w-48 md:w-64 rounded-lg overflow-hidden border border-[var(--line)] shrink-0 relative z-10 p-2">
                 <div className="w-full h-full rounded-xl overflow-hidden">
                   <img
                     src={about.image_url}

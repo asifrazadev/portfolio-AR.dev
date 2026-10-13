@@ -16,7 +16,7 @@ export function BlogCard({ post }: BlogCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:bg-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1"
+      className="blog-card group block overflow-hidden transition-all duration-300 hover:-translate-y-1"
     >
       {post.cover_image && (
         <div className="relative w-full h-52 overflow-hidden">
@@ -28,19 +28,19 @@ export function BlogCard({ post }: BlogCardProps) {
           />
         </div>
       )}
-      <div className="p-6">
-        <div className="flex items-center gap-3 mb-3 text-xs text-gray-500">
+      <div className="blog-card-content">
+        <div className="blog-meta">
           <span className="font-mono">{date}</span>
           <span>·</span>
           <span>{post.reading_time} min read</span>
         </div>
 
-        <h2 className="font-heading text-xl font-bold text-white mb-2 group-hover:text-gray-100 transition-colors line-clamp-2">
+        <h2 className="font-heading text-xl font-bold mb-2 group-hover:text-[var(--violet)] transition-colors line-clamp-2">
           {post.title}
         </h2>
 
         {post.excerpt && (
-          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 mb-4">
+          <p className="muted-copy text-sm leading-relaxed line-clamp-3 mb-4">
             {post.excerpt}
           </p>
         )}
@@ -50,7 +50,7 @@ export function BlogCard({ post }: BlogCardProps) {
             {post.tags.map(tag => (
               <span
                 key={tag}
-                className="px-2 py-0.5 bg-white/5 border border-white/5 rounded-full text-xs text-gray-400"
+                className="blog-tag"
               >
                 {tag}
               </span>

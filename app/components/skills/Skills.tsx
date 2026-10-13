@@ -5,7 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { FadeIn } from '../ui/FadeIn'
 
 export function Skills() {
-  const { skills, loading } = usePortfolio()
+  const { skills, about, loading } = usePortfolio()
 
   if (loading) {
     return (
@@ -34,39 +34,52 @@ export function Skills() {
     Tools: skills.filter((s) => s.category === 'Tools'),
   }
 
-  const categoryIcons = {
-    Frontend: 'ph-browsers',
-    Backend: 'ph-server',
-    Tools: 'ph-toolbox',
-  }
-
   return (
-    <section id="skills" className="section-shell">
-      <div>
-        <SectionHeading title="Capabilities" />
+    <section id="skills" className="section-shell skills-section">
+      <div className="skills-intro">
+        <div>
+          <span className="eyebrow">Profile / toolkit</span>
+          <h2>Building with range.<br />Thinking in <em>systems.</em></h2>
+          <p>I&apos;m a software engineering student and full-stack developer who enjoys turning complex requirements into products that feel clear, fast, and dependable.</p>
+        </div>
+        <div className="skills-list">
+          {Object.entries(skillsByCategory).map(([category, items], index) => (
+            <FadeIn key={category} delay={index * 0.1}>
+              <div className="skills-row">
+                <span className="skills-index">0{index + 1}</span>
+                <span className="skills-icon">{category.slice(0, 2)}</span>
+                <strong>{category}</strong>
+                <span>{items.map(item => item.name).join(' · ')}</span>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {Object.entries(skillsByCategory).map(([category, items], index) => (
-          <FadeIn key={category} delay={index * 0.1} className="h-full">
-            <article className="skill-card p-6 h-full">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-[var(--line)]">
-                <i className={`ph ${categoryIcons[category as keyof typeof categoryIcons]} text-2xl`}></i>
-                <h3 className="font-heading text-lg font-semibold">{category}</h3>
+      <div className="certification-grid">
+        <article className="education-card">
+          <span className="eyebrow">Education</span>
+          <p className="education-period">{about?.education?.period || '2024-28'}</p>
+          <h3>{about?.education?.title || "Bachelor's in Software Engineering"}</h3>
+          <p>{about?.education?.school || 'National University of Modern Languages'}</p>
+          <strong>{about?.education?.grade || 'CGPA 3.5'}</strong>
+        </article>
+        <article className="certification-card">
+          <span className="eyebrow">Selected certifications</span>
+          <div>
+            {(about?.certifications?.length ? about.certifications : [
+              { issuer: 'IBM', title: 'Full Stack Software Developer' },
+              { issuer: 'Meta', title: 'React Native Specialization' },
+              { issuer: 'Meta', title: 'Front-End Developer' },
+            ]).map((certificate, index) => (
+              <div className="certification-row" key={`${certificate.issuer}-${index}`}>
+                <small>{certificate.issuer}</small>
+                <strong>{certificate.title}</strong>
+                <span>↗</span>
               </div>
-              <ul className="stack-list list-none">
-                {items.map((skill) => (
-                  <li
-                    key={skill.id}
-                    className="stack-item"
-                  >
-                    {skill.name}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </FadeIn>
-        ))}
+            ))}
+          </div>
+        </article>
       </div>
     </section>
   )

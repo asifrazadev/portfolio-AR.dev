@@ -51,6 +51,16 @@ export interface About {
         label: string
     }[]
     tech_ticker?: string[]
+    education?: {
+        period: string
+        title: string
+        school: string
+        grade?: string
+    }
+    certifications?: {
+        issuer: string
+        title: string
+    }[]
     social_links?: {
         platform: string
         url: string

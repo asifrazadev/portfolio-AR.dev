@@ -13,202 +13,55 @@ import { FadeIn } from '../ui/FadeIn'
 type CardVariant = 'hero' | 'pillar' | 'standard' | 'banner'
 
 const ProjectCardContent = ({ project, variant, index }: { project: Project, variant: CardVariant, index: number }) => {
-   // 1. HERO VARIANT (Massive, Immersive)
-   if (variant === 'hero') {
-      return (
-         <div className="relative h-full w-full flex flex-col justify-end px-4 md:px-10 p-8 md:p-10 z-10 group-hover:translate-y-[-2px] transition-transform duration-500">
-            {/* Background Image */}
-            {project.image_url && (
-               <div className="absolute inset-0 z-0">
-                  <Image
-                     src={project.image_url}
-                     alt={project.title}
-                     fill
-                     priority={index === 0}
-                     {...(index === 0 ? { fetchPriority: "high" } : {})}
-                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                     className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
-               </div>
-            )}
-
-            <div className="relative z-10">
-               <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 bg-white text-black text-[11px] font-black uppercase tracking-widest rounded shadow-[0_0_15px_rgba(255,255,255,0.3)]">Featured Project</span>
-               </div>
-
-               <h3 className="font-heading text-xl md:text-3xl font-black text-white mb-4 leading-[0.9] tracking-tighter drop-shadow-2xl">
-                  {project.title}
-               </h3>
-
-               <div className="bg-black/40 backdrop-blur-md border border-white/10 p-4 rounded-xl max-w-2xl mb-8">
-                  <div className="flex items-center gap-2 mb-2">
-                     <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                     <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Business Outcome</span>
-                  </div>
-                  <p className="text-gray-200 text-xs md:text-sm line-clamp-3 font-medium leading-relaxed drop-shadow-md">
-                     {project.description}
-                  </p>
-               </div>
-
-               <div className="flex flex-wrap items-center gap-4 border-t border-white/20 pt-3">
-                  <div className="flex flex-wrap gap-2">
-                     {project.tags?.slice(0, 3).map((tag: string) => (
-                        <span key={tag} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/10 text-xs font-semibold text-white rounded-full">{tag}</span>
-                     ))}
-                  </div>
-
-                  <div className="flex-1"></div>
-                  <div className="flex items-center gap-2">
-                     {project.github_url && <a href={project.github_url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} source code on GitHub`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</a>}
-                     {project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer" aria-label={`Visit ${project.title} live site`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</a>}
-                     <Link href={`/projects/${project.slug}`} aria-label={`View case study for ${project.title}`} className="group/btn flex items-center gap-2 bg-emerald-500 text-white px-4 py-2.5 rounded-full font-bold text-xs hover:bg-emerald-600 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105">
-                        Read Case Study <ArrowRightIcon className="hidden md:block group-hover/btn:translate-x-1 transition-transform" />
-                     </Link>
-
-                  </div>
-
-               </div>
-            </div>
-         </div>
-      )
-   }
-
-   // 2. PILLAR VARIANT (Vertical, Structural)
-   if (variant === 'pillar') {
-      return (
-         <div className="relative h-full p-6 md:p-8 flex flex-col z-10 bg-gradient-to-br from-white/[0.03] to-transparent">
-            <div className="flex justify-between items-start mb-4">
-               <div>
-                  <span className="text-xs font-mono text-emerald-400 block mb-2 tracking-widest uppercase opacity-80">{project.year}</span>
-                  <h3 className="font-heading text-xl md:text-3xl  font-bold text-white leading-none mb-3 tracking-tight">{project.title}</h3>
-                  <div className="w-12 h-1.5 bg-emerald-500 rounded-full"></div>
-               </div>
-            </div>
-
-            <div className="flex-1 flex flex-col gap-4">
-               <div className="bg-black/20 p-3 rounded-lg border-l-2 border-emerald-500/50">
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-1">The Result</span>
-                  <p className="text-gray-300 text-xs md:text-sm leading-relaxed line-clamp-4">
-                     {project.description}
-                  </p>
-               </div>
-
-               {/* Tech Stack List - Fills space nicely */}
-               <div className="mt-auto space-y-2">
-                  <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Technologies</span>
-                  <div className="flex flex-col gap-2">
-                     {project.tags?.slice(0, 5).map((tag: string) => (
-                        <div key={tag} className="flex items-center gap-3 text-xs text-gray-400 font-medium">
-                           <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-                           {tag}
-                        </div>
-                     ))}
-                  </div>
-               </div>
-
-               <Link href={`/projects/${project.slug}`} aria-label={`Explore ${project.title} details`} className="w-full py-3 mt-2 border border-white/10 rounded-xl text-center text-xs font-bold hover:bg-white/5 transition-all text-white uppercase tracking-widest hover:border-white/20">
-                  Explore
-               </Link>
-            </div>
-         </div>
-      )
-   }
-
-   // 3. BANNER VARIANT (Wide, Horizontal)
-   if (variant === 'banner') {
-      return (
-         <div className="relative h-full px-6 py-6 md:px-6 md:pr-12 md:flex flex-col md:flex-row items-start md:items-center justify-between z-10 bg-gradient-to-r from-blue-500/5 to-purple-500/5 gap-6 md:gap-0">
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-12 flex-1 w-full md:w-[calc(100%-48px)] ">
-               <div className="flex flex-row flex-shrink-0 md:max-w-1/2">
-                  <h3 className="font-heading text-xl md:text-3xl font-black text-white tracking-tight text-nowrap truncate ">{project.title}</h3>
-                  <div className="h-12 ml-4 w-px bg-white/10 hidden md:block"></div>
-               </div>
-
-               <div className="block w-full md:w-auto truncate">
-                  <p className="text-gray-400 text-xs md:text-sm max-w-xl text-wrap font-medium mb-3 line-clamp-4 md:line-clamp-2 mr-2">
-                     {project.description}
-                  </p>
-
-                  <div className="flex gap-2 flex-wrap h-7 overflow-hidden content-start">
-                     {project.tags?.map((tag: string) => (
-                        <span key={tag} className="px-3 py-1 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center text-[10px] font-bold text-gray-400 uppercase shadow-lg whitespace-nowrap">
-                           {tag}
-                        </span>
-                     ))}
-                  </div>
-               </div>
-            </div>
-
-            <Link href={`/projects/${project.slug}`} aria-label={`View case study for ${project.title}`} className="mt-2 md:w-12 md:h-12 md:mt-0 flex-shrink-0 py-2 md:py-0 md:px-0 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-               <span className="mr-2 block md:hidden font-medium text-xs">
-                  View Case Study
-               </span>
-               <ArrowRightIcon size={18} weight="bold" />
-
-            </Link>
-
-
-
-            {/* Decorative bg element */}
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
-         </div>
-      )
-   }
-
-   // 4. STANDARD VARIANT (Rest of cards)
    return (
-      <div aria-label={variant + index} className="project-content relative h-full p-5 md:p-6 flex flex-col z-10 transition-colors">
+      <article className={`project-content project-content--${variant}`}>
          {project.image_url && (
-            <div className="project-preview relative -mx-5 -mt-5 md:-mx-6 md:-mt-6 mb-5 overflow-hidden">
+            <div className="project-preview">
                <Image
                   src={project.image_url}
                   alt={project.title}
                   fill
+                  priority={index === 0}
+                  {...(index === 0 ? { fetchPriority: "high" } : {})}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                />
             </div>
          )}
-         {/* Header: Title + Year + Links */}
-         <div className="flex justify-between gap-5 items-center mb-2">
-            <div className="flex items-center  overflow-hidden">
-               <h3 className="font-heading text-xl font-bold text-white leading-tight tracking-tight transition-colors truncate">
-                  {project.title}
-               </h3>
+
+         <div className="project-content-body">
+            <div className="project-card-heading">
+               <div>
+                  {index === 0 && <span className="project-kicker">Featured work</span>}
+                  <h3>{project.title}</h3>
+               </div>
+               <span className="project-year">{project.year}</span>
             </div>
-            <span className="text-sm font-mono text-gray-500 opacity-60 flex-shrink-0">{project.year}</span>
 
+            {project.description && <p className="project-description">{project.description}</p>}
+
+            <div className="project-card-footer">
+               <div className="project-tags">
+                  {project.tags?.slice(0, 4).map((tag: string) => <span key={tag}>{tag}</span>)}
+               </div>
+               <div className="project-links">
+                  {project.github_url && (
+                     <a href={project.github_url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} source on GitHub`}>
+                        <GithubLogoIcon size={14} /> GitHub
+                     </a>
+                  )}
+                  {project.live_url && (
+                     <a href={project.live_url} target="_blank" rel="noreferrer" aria-label={`Visit ${project.title} live site`}>
+                        <GlobeIcon size={14} /> Live
+                     </a>
+                  )}
+                  <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title} details`}>
+                     View <ArrowRightIcon size={14} />
+                  </Link>
+               </div>
+            </div>
          </div>
-
-         {project.description && variant === 'standard' && index < 2 && <p className="text-gray-400 text-xs md:text-sm mb-2 leading-relaxed line-clamp-4 flex-1 font-light opacity-80">
-            {project.description}
-         </p>}
-
-         {/* Spacer to push footer down if description is hidden */}
-         <div className="flex gap-1.5 flex-wrap md:max-w-[90%] truncate">
-            {project.tags && project.tags.length > 0 ? (
-               project.tags.slice(0, 3).map((tag: string) => (
-                  <span key={tag} className="text-[9px] text-gray-400 bg-white/5 px-2 py-0.5 rounded border border-white/5">
-                     {tag}
-                  </span>
-               ))
-            ) : (
-               <span className="text-[9px] text-gray-600">No tags</span>
-            )}
-         </div>
-         {/* Footer: Tags + View Button */}
-         <div className="flex text-xs items-center justify-start pt-3">
-            {project.github_url && <a href={project.github_url} aria-label={`View ${project.title} source on GitHub`} className="flex mr-2 items-center gap-2 px-2 py-1 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all "><GithubLogoIcon size={14} />{" "} GitHub</a>}
-
-            {project.live_url && <a href={project.live_url} aria-label={`Visit ${project.title} live`} className="flex mr-2 items-center gap-1 px-3 py-1.5 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all"><GlobeIcon size={14} />{" "} Live</a>}
-
-            <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title} details`} className="flex items-center gap-1  font-bold text-white hover:text-blue-400 transition-colors uppercase tracking-wider group/link bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10">
-               View <ArrowRightIcon className="group-hover/link:translate-x-1 transition-transform" />
-            </Link>
-         </div>
-      </div>
+      </article>
    )
 }
 
@@ -375,7 +228,7 @@ export function Work() {
                         key={project.id}
                         delay={index * 0.1}
                         className={`
-                        project-card group relative overflow-hidden transition-all duration-300 hover:shadow-2xl
+                        project-card group project-card--${layout.variant}
                     `}
                      >
                         <ProjectCardContent

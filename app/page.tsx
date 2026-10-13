@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 import { Hero } from "./components/hero/Hero"
-import { About } from "./components/about/About"
 import { Work } from "./components/work/Work"
 import { RecentBlogs } from "./components/blog/RecentBlogs"
 
@@ -16,7 +15,6 @@ export default function Home() {
       <Work />
       <Experience />
       <Skills />
-      <About />
       <RecentBlogs />
       <Contact />
     </main>

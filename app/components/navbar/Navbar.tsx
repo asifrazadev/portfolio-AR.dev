@@ -10,7 +10,6 @@ import {
   BriefcaseIcon,
   TrendUpIcon,
   StackIcon,
-  UserIcon,
   EnvelopeIcon,
   ListIcon,
   XIcon,
@@ -20,7 +19,6 @@ import {
 import { createClient } from '@/app/lib/supabase/client'
 
 const baseNavItems = [
-  { href: '/#about', icon: UserIcon, title: 'About' },
   { href: '/#skills', icon: StackIcon, title: 'Capabilities' },
   { href: '/#work', icon: BriefcaseIcon, title: 'Case Studies' },
   { href: '/#experience', icon: TrendUpIcon, title: 'Track Record' },
@@ -28,7 +26,7 @@ const baseNavItems = [
 ]
 
 export function Navbar() {
-  const [activeSection, setActiveSection] = useState('about')
+  const [activeSection, setActiveSection] = useState('work')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hasBlogs, setHasBlogs] = useState(false)
 

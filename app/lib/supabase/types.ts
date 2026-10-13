@@ -46,6 +46,11 @@ export interface Skill {
 
 export interface About {
     id: string
+    hero_stats?: {
+        value: string
+        label: string
+    }[]
+    tech_ticker?: string[]
     social_links?: {
         platform: string
         url: string

@@ -2,6 +2,7 @@
 
 import { usePortfolio } from '@/app/context/PortfolioContext'
 import { useState } from 'react'
+import type { ComponentType } from 'react'
 import * as PhosphorIcons from '@phosphor-icons/react'
 import { PencilIcon, PlusCircleIcon, TrashIcon, XIcon, ArrowUpIcon, ArrowDownIcon, UploadSimpleIcon, SpinnerIcon } from '@phosphor-icons/react'
 import { createClient } from '@/app/lib/supabase/client'
@@ -15,7 +16,7 @@ const getIconComponent = (iconName: string) => {
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
     .join('') + 'Icon'
   
-  const Icon = (PhosphorIcons as any)[pascalName]
+  const Icon = (PhosphorIcons as unknown as Record<string, ComponentType<{ size?: number }>>)[pascalName]
   return Icon ? Icon : PhosphorIcons.QuestionIcon
 }
 
@@ -27,6 +28,8 @@ export default function AdminAboutPage() {
   // Form state
   const [imageUrl, setImageUrl] = useState(about?.image_url || '')
   const [socialLinks, setSocialLinks] = useState<Array<{platform: string, url: string, icon: string}>>(about?.social_links || [])
+  const [heroStats, setHeroStats] = useState(about?.hero_stats || [])
+  const [techTicker, setTechTicker] = useState((about?.tech_ticker || []).join(', '))
 
   const [uploading, setUploading] = useState(false)
 
@@ -36,6 +39,8 @@ export default function AdminAboutPage() {
   const startEditing = () => {
     setImageUrl(about?.image_url || '')
     setSocialLinks(about?.social_links || [])
+    setHeroStats(about?.hero_stats || [])
+    setTechTicker((about?.tech_ticker || []).join(', '))
     setEditing(true)
   }
 
@@ -45,7 +50,9 @@ export default function AdminAboutPage() {
 
     const aboutData = {
       image_url: imageUrl,
-      social_links: socialLinks
+      social_links: socialLinks,
+      hero_stats: heroStats.filter(stat => stat.value.trim() && stat.label.trim()),
+      tech_ticker: techTicker.split(',').map(item => item.trim()).filter(Boolean),
     }
 
     await updateAbout(aboutData)
@@ -125,8 +132,9 @@ export default function AdminAboutPage() {
                         if (uploadError) throw uploadError
                         const { data } = supabase.storage.from('Project Images').getPublicUrl(fileName)
                         if (data) setImageUrl(data.publicUrl)
-                      } catch (error: any) {
-                        alert('Error uploading image: ' + error.message)
+                      } catch (error) {
+                        const message = error instanceof Error ? error.message : 'Unknown upload error'
+                        alert('Error uploading image: ' + message)
                       } finally {
                         setUploading(false)
                       }
@@ -164,6 +172,50 @@ export default function AdminAboutPage() {
 
           {/* Bio Paragraphs */}
 
+
+          {/* Social Links */}
+          <div className="mb-8">
+            <label className="block text-sm font-medium mb-2">Hero metrics</label>
+            <div className="space-y-3">
+              {heroStats.map((stat, index) => (
+                <div key={index} className="grid grid-cols-[0.35fr_1fr_auto] gap-3">
+                  <input
+                    value={stat.value}
+                    onChange={(e) => setHeroStats(heroStats.map((item, i) => i === index ? { ...item, value: e.target.value } : item))}
+                    placeholder="01"
+                    className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl"
+                  />
+                  <input
+                    value={stat.label}
+                    onChange={(e) => setHeroStats(heroStats.map((item, i) => i === index ? { ...item, label: e.target.value } : item))}
+                    placeholder="Year of experience"
+                    className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl"
+                  />
+                  <button type="button" onClick={() => setHeroStats(heroStats.filter((_, i) => i !== index))} className="px-3 text-red-400">
+                    <TrashIcon size={18} />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => setHeroStats([...heroStats, { value: '', label: '' }])}
+              className="mt-3 px-4 py-2 bg-white/10 border border-white/20 rounded-xl"
+            >
+              Add metric
+            </button>
+          </div>
+
+          <div className="mb-8">
+            <label className="block text-sm font-medium mb-2">Hero technology ticker</label>
+            <input
+              value={techTicker}
+              onChange={(e) => setTechTicker(e.target.value)}
+              placeholder="Node.js, AI workflows, TypeScript, Product thinking, React, Next.js"
+              className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl"
+            />
+            <p className="text-xs text-gray-400 mt-2">Separate items with commas. They appear in the animated strip below the metrics.</p>
+          </div>
 
           {/* Social Links */}
           <div className="mb-6">

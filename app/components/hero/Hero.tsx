@@ -2,8 +2,28 @@
 
 import { ArrowDownRightIcon } from '@phosphor-icons/react'
 import { FadeIn } from '../ui/FadeIn'
+import { usePortfolio } from '@/app/context/PortfolioContext'
+
+const defaultStats = [
+  { value: '01', label: 'Year of experience' },
+  { value: '20+', label: 'Reusable components' },
+  { value: '50+', label: 'APIs in one platform' },
+  { value: '80+', label: 'Problems solved' },
+]
+
+const defaultTicker = [
+  'Node.js',
+  'AI workflows',
+  'TypeScript',
+  'Product thinking',
+  'React',
+  'Next.js',
+]
 
 export function Hero() {
+  const { about } = usePortfolio()
+  const stats = about?.hero_stats?.length ? about.hero_stats : defaultStats
+  const ticker = about?.tech_ticker?.length ? about.tech_ticker : defaultTicker
   const phoneNumber = '+923341045680'
   const message = 'Hi Asif, I would like to book a free consultation for my business website.'
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
@@ -63,10 +83,16 @@ return product.scale();`}</pre>
         </div>
       </div>
       <div className="hero-stats">
-        <div><strong>01</strong><span>focused discipline</span></div>
-        <div><strong>20+</strong><span>successful projects</span></div>
-        <div><strong>50+</strong><span>systems shipped</span></div>
-        <div><strong>80+</strong><span>happy collaborators</span></div>
+        {stats.map((stat, index) => (
+          <div key={`${stat.value}-${index}`}><strong>{stat.value}</strong><span>{stat.label}</span></div>
+        ))}
+      </div>
+      <div className="hero-ticker" aria-label="Technology focus">
+        <div className="hero-ticker-track">
+          {[...ticker, ...ticker].map((item, index) => (
+            <span key={`${item}-${index}`}><b>/</b>{item}</span>
+          ))}
+        </div>
       </div>
     </section>
   )

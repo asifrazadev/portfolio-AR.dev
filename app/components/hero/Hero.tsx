@@ -11,8 +11,8 @@ export function Hero() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
   return (
-    <section className="hero-section w-full flex items-center" id="hero">
-      <div className="w-full grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
+    <section className="hero-section w-full" id="hero">
+      <div className="w-full grid md:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-20 items-center">
         <div className="text-left">
           <p className="eyebrow mb-5">Available for select opportunities</p>
           <h1 className="hero-title font-heading font-bold mb-7">
@@ -43,10 +43,18 @@ export function Hero() {
         </div>
         <div className="hero-art hidden md:block">
           <div className="hero-orbit" />
+          <span className="hero-badge hero-badge-top">open to work</span>
           <div className="hero-art-image">
             <Image src={heroImage} alt="Selected work preview" width={640} height={480} className="w-full h-auto" priority />
           </div>
+          <span className="hero-badge hero-badge-bottom">React / Next.js / TypeScript</span>
         </div>
+      </div>
+      <div className="hero-stats">
+        <div><strong>01</strong><span>focused discipline</span></div>
+        <div><strong>20+</strong><span>successful projects</span></div>
+        <div><strong>50+</strong><span>systems shipped</span></div>
+        <div><strong>80+</strong><span>happy collaborators</span></div>
       </div>
     </section>
   )

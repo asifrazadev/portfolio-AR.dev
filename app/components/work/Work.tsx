@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePortfolio } from '@/app/context/PortfolioContext'
+import type { Project } from '@/app/lib/supabase/types'
 import { GithubLogoIcon, GlobeIcon, ArrowRightIcon } from '@phosphor-icons/react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { FadeIn } from '../ui/FadeIn'
@@ -11,7 +12,7 @@ import { FadeIn } from '../ui/FadeIn'
 // Project Card Component
 type CardVariant = 'hero' | 'pillar' | 'standard' | 'banner'
 
-const ProjectCardContent = ({ project, variant, index }: { project: any, variant: CardVariant, index: number }) => {
+const ProjectCardContent = ({ project, variant, index }: { project: Project, variant: CardVariant, index: number }) => {
    // 1. HERO VARIANT (Massive, Immersive)
    if (variant === 'hero') {
       return (
@@ -60,8 +61,8 @@ const ProjectCardContent = ({ project, variant, index }: { project: any, variant
 
                   <div className="flex-1"></div>
                   <div className="flex items-center gap-2">
-                     <Link href={project.github_url} aria-label={`View ${project.title} source code on GitHub`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</Link>
-                     <Link href={project.live_url} aria-label={`Visit ${project.title} live site`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</Link>
+                     {project.github_url && <a href={project.github_url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} source code on GitHub`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GithubLogoIcon size={14} className="hidden md:block" />{" "} GitHub</a>}
+                     {project.live_url && <a href={project.live_url} target="_blank" rel="noreferrer" aria-label={`Visit ${project.title} live site`} className="flex items-center gap-2 px-3 py-2 justify-center rounded-full border border-white/5 hover:bg-white/10 text-gray-500 hover:text-blue-400 transition-all text-xs"><GlobeIcon size={14} className="hidden md:block" />{" "} Live</a>}
                      <Link href={`/projects/${project.slug}`} aria-label={`View case study for ${project.title}`} className="group/btn flex items-center gap-2 bg-emerald-500 text-white px-4 py-2.5 rounded-full font-bold text-xs hover:bg-emerald-600 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105">
                         Read Case Study <ArrowRightIcon className="hidden md:block group-hover/btn:translate-x-1 transition-transform" />
                      </Link>
@@ -158,11 +159,11 @@ const ProjectCardContent = ({ project, variant, index }: { project: any, variant
 
    // 4. STANDARD VARIANT (Rest of cards)
    return (
-      <div aria-label={variant + index} className="relative h-full p-4 flex flex-col z-10 group-hover:bg-white/[0.03] transition-colors">
+      <div aria-label={variant + index} className="project-content relative h-full p-5 md:p-6 flex flex-col z-10 transition-colors">
          {/* Header: Title + Year + Links */}
          <div className="flex justify-between gap-5 items-center mb-2">
             <div className="flex items-center  overflow-hidden">
-               <h3 className="font-heading text-xl font-bold text-white leading-tight tracking-tight group-hover:text-blue-300 transition-colors truncate">
+               <h3 className="font-heading text-xl font-bold text-white leading-tight tracking-tight transition-colors truncate">
                   {project.title}
                </h3>
             </div>
@@ -345,9 +346,12 @@ export function Work() {
    }
 
    return (
-      <section id="work" className="section-shell">
+      <section id="work" className="section-shell work-section">
          <div>
-            <SectionHeading title="Selected Projects I've Built" />
+            <div className="work-intro">
+               <span className="eyebrow">Selected work / 2024-2026</span>
+               <h2 className="work-title">Built for real people, <br /><em>not just portfolios.</em></h2>
+            </div>
 
             {/* Dynamic Grid Layout (Responsive) */}
             <div className="project-grid">
@@ -360,8 +364,7 @@ export function Work() {
                         key={project.id}
                         delay={index * 0.1}
                         className={`
-                        project-card group relative overflow-hidden transition-all duration-300 hover:shadow-2xl 
-                        hover:scale-[1.01]
+                        project-card group relative overflow-hidden transition-all duration-300 hover:shadow-2xl
                     `}
                      >
                         <ProjectCardContent

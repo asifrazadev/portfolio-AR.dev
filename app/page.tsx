@@ -13,11 +13,11 @@ export default function Home() {
   return (
     <main className="main-container" id="home">
       <Hero />
-      <About />
-      <Skills />
       <Work />
-      <RecentBlogs />
       <Experience />
+      <Skills />
+      <About />
+      <RecentBlogs />
       <Contact />
     </main>
   )

@@ -21,7 +21,7 @@ export function Contact() {
 
           <div className="flex flex-col items-center gap-8 w-full max-w-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full group/socials">
-              {about?.social_links?.slice().sort((a, b) => (a.platform === 'Email' ? -1 : 1)).map((link) => {
+              {about?.social_links?.slice().sort((a, b) => Number(b.platform === 'Email') - Number(a.platform === 'Email')).map((link) => {
                 const Icon = getSocialIcon(link.icon)
                 const isEmail = link.platform === 'Email' || link.platform ==="email"
                 const href = isEmail && !link.url.startsWith('mailto:') ? `mailto:${link.url}` : link.url

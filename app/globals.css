@@ -186,6 +186,67 @@ html {
     box-shadow: 1rem 1rem 0 rgba(117, 99, 232, 0.18);
 }
 
+.hero-badge {
+    position: absolute;
+    z-index: 3;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.45rem 0.7rem;
+    text-transform: uppercase;
+}
+
+.hero-badge-top {
+    left: 10%;
+    top: 18%;
+    transform: rotate(-8deg);
+}
+
+.hero-badge-bottom {
+    bottom: 13%;
+    right: 4%;
+    transform: rotate(4deg);
+}
+
+.hero-stats {
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 5rem;
+}
+
+.hero-stats > div {
+    align-items: baseline;
+    border-right: 1px solid var(--line);
+    display: flex;
+    gap: 0.55rem;
+    padding: 1rem 1rem 0 0;
+}
+
+.hero-stats > div:not(:first-child) {
+    padding-left: 1rem;
+}
+
+.hero-stats > div:last-child {
+    border-right: 0;
+}
+
+.hero-stats strong {
+    font-size: 1.1rem;
+    letter-spacing: -0.06em;
+}
+
+.hero-stats span {
+    color: var(--muted);
+    font-size: 0.55rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
 .section-shell {
     padding: 6rem 0;
 }
@@ -255,11 +316,52 @@ html {
     gap: 0.75rem;
 }
 
+.work-intro {
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.65fr) 1.35fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.work-title {
+    color: var(--ink);
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    letter-spacing: -0.08em;
+    line-height: 0.87;
+}
+
+.work-title em {
+    color: var(--violet);
+    font-style: italic;
+    font-weight: 400;
+}
+
 .project-card {
     min-height: 20rem;
     background: var(--panel);
     border: 1px solid var(--panel-line);
     border-radius: 0.7rem;
+}
+
+.project-card .project-content {
+    min-height: 100%;
+}
+
+.project-card .project-content h3 {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.project-card .project-content p {
+    color: rgba(255,255,255,0.62);
+}
+
+.project-card:nth-child(2),
+.project-card:nth-child(3) {
+    min-height: 26rem;
+}
+
+.project-card:nth-child(n+5) {
+    min-height: 14rem;
 }
 
 .project-card:first-child,
@@ -269,6 +371,22 @@ html {
 
 .experience-panel {
     padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.experience-panel .section-heading {
+    align-items: start;
+    display: block;
+    max-width: 30rem;
+}
+
+.experience-panel .section-heading h2 {
+    color: #f6f4ee;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    white-space: normal;
+}
+
+.experience-panel .section-heading > div {
+    display: none;
 }
 
 .experience-row {
@@ -336,6 +454,10 @@ html {
 
     .hero-section { min-height: auto; padding: 3.5rem 0 2rem; }
     .hero-art { min-height: 18rem; margin-top: 2rem; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); margin-top: 3rem; }
+    .hero-stats > div:nth-child(2) { border-right: 0; }
+    .hero-stats > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .work-intro { grid-template-columns: 1fr; gap: 1rem; }
     .project-grid { grid-template-columns: 1fr; }
     .project-card,
     .project-card:first-child,

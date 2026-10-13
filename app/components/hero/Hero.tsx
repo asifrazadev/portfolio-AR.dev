@@ -2,8 +2,6 @@
 
 import { ArrowDownRightIcon } from '@phosphor-icons/react'
 import { FadeIn } from '../ui/FadeIn'
-import Image from 'next/image'
-import heroImage from '@/public/hero-reference.png'
 
 export function Hero() {
   const phoneNumber = '+923341045680'
@@ -16,7 +14,9 @@ export function Hero() {
         <div className="text-left">
           <p className="eyebrow mb-5">Available for select opportunities</p>
           <h1 className="hero-title font-heading font-bold mb-7">
-            I build digital products that <em>work.</em>
+            <span>I build digital</span>
+            <span>products that</span>
+            <em>work.</em>
           </h1>
           <p className="hero-copy mb-8">
             Full-stack developer focused on scalable web products and intelligent workflows—from polished interfaces to the systems behind them.
@@ -27,7 +27,7 @@ export function Hero() {
                 href={whatsappUrl}
                 className="button-primary flex items-center gap-2 hover:-translate-y-0.5 transition-transform"
               >
-                Book a consultation
+                Book a free consultation
               </a>
             </FadeIn>
             <FadeIn delay={0.5}>
@@ -41,10 +41,25 @@ export function Hero() {
             </FadeIn>
           </div>
         </div>
-        <div className="hero-art hidden md:block">
-          <div className="hero-art-image">
-            <Image src={heroImage} alt="Developer working at a laptop" width={422} height={422} className="w-full h-auto" priority />
+        <div className="hero-art hidden md:block" aria-label="Code product illustration">
+          <div className="hero-orbit hero-orbit-back" />
+          <div className="hero-orbit hero-orbit-front" />
+          <span className="hero-badge hero-badge-top">full-stack</span>
+          <div className="hero-code-card">
+            <div className="hero-code-bar">
+              <span>product.ts</span>
+              <span>•••</span>
+            </div>
+            <pre>{`const idea = "ambitious";
+
+const product =
+  await build(idea);
+
+return product.scale();`}</pre>
+            <span className="hero-code-status">● Shipped with intent</span>
           </div>
+          <div className="hero-contact-pill"><span>AVAILABLE</span> WHATSAPP <strong>↗</strong></div>
+          <span className="hero-location">Rawalpindi, PK · 33.6° N</span>
         </div>
       </div>
       <div className="hero-stats">

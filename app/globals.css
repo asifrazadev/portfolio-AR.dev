@@ -140,6 +140,20 @@ html {
 .hero-section {
     min-height: 39rem;
     padding: 5rem 0 3rem;
+    position: relative;
+    isolation: isolate;
+}
+
+.hero-section::before {
+    position: absolute;
+    inset: 0 -2.25rem;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(17, 18, 23, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 18, 23, 0.055) 1px, transparent 1px);
+    background-size: 4.25rem 4.25rem;
+    content: "";
+    mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.6) 75%, transparent 100%);
 }
 
 .hero-title {
@@ -284,6 +298,11 @@ html {
 .hero-contact-pill strong {
     font-size: 0.85rem;
     margin-left: 0.35rem;
+}
+
+.hero-contact-pill,
+.hero-badge {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
 }
 
 .hero-location {
@@ -578,6 +597,53 @@ html {
     .button-primary {
         background: #f4f2ec;
         color: #101116;
+    }
+
+    .hero-section::before {
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    }
+
+    .hero-title {
+        color: #f7f6f2;
+    }
+
+    .hero-copy {
+        color: #aaaab5;
+    }
+
+    .hero-orbit-front {
+        border-color: rgba(194, 185, 255, 0.38);
+    }
+
+    .hero-orbit-back {
+        background: rgba(93, 79, 191, 0.42);
+    }
+
+    .hero-code-card {
+        background: #111217;
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0.8rem 1rem 0 rgba(89, 76, 180, 0.2);
+    }
+
+    .hero-code-bar {
+        color: #f6f4ee;
+    }
+
+    .hero-code-card pre {
+        color: #d9d0ff;
+    }
+
+    .hero-badge,
+    .hero-contact-pill {
+        background: #171820;
+        border-color: rgba(255, 255, 255, 0.72);
+        color: #f6f4ee;
+    }
+
+    .hero-location {
+        color: #9b9ba2;
     }
 }
 

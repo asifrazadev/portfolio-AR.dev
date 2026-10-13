@@ -3,7 +3,7 @@
 import { ArrowDownRightIcon } from '@phosphor-icons/react'
 import { FadeIn } from '../ui/FadeIn'
 import Image from 'next/image'
-import heroImage from '@/public/hero.png'
+import heroImage from '@/public/hero-reference.png'
 
 export function Hero() {
   const phoneNumber = '+923341045680'
@@ -42,12 +42,9 @@ export function Hero() {
           </div>
         </div>
         <div className="hero-art hidden md:block">
-          <div className="hero-orbit" />
-          <span className="hero-badge hero-badge-top">open to work</span>
           <div className="hero-art-image">
-            <Image src={heroImage} alt="Selected work preview" width={640} height={480} className="w-full h-auto" priority />
+            <Image src={heroImage} alt="Developer working at a laptop" width={422} height={422} className="w-full h-auto" priority />
           </div>
-          <span className="hero-badge hero-badge-bottom">React / Next.js / TypeScript</span>
         </div>
       </div>
       <div className="hero-stats">

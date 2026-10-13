@@ -479,17 +479,16 @@ html {
 }
 
 .work-intro {
-    display: grid;
-    grid-template-columns: minmax(8rem, 0.65fr) 1.35fr;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2.25rem;
+    max-width: 34rem;
+    text-align: center;
 }
 
 .work-title {
     color: var(--ink);
-    font-size: clamp(2.4rem, 5vw, 4.5rem);
-    letter-spacing: -0.08em;
-    line-height: 0.87;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    letter-spacing: -0.07em;
+    line-height: 0.92;
 }
 
 .work-title em {
@@ -499,8 +498,8 @@ html {
 }
 
 .project-card {
-    grid-column: span 6;
-    min-height: 24rem;
+    grid-column: span 4;
+    min-height: 11rem;
     background: var(--panel);
     border: 1px solid var(--panel-line);
     border-radius: 0.35rem;
@@ -516,12 +515,12 @@ html {
 
 .project-card--hero {
     grid-column: span 8;
-    min-height: 31rem;
+    min-height: 10.5rem;
 }
 
 .project-card--banner {
     grid-column: span 12;
-    min-height: 13rem;
+    min-height: 7rem;
 }
 
 .project-content {
@@ -531,30 +530,40 @@ html {
 }
 
 .project-content--hero {
-    min-height: 31rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.72fr);
+    min-height: 10.5rem;
 }
 
 .project-content--pillar {
-    min-height: 31rem;
+    min-height: 11rem;
 }
 
 .project-content--banner {
-    min-height: 13rem;
+    min-height: 7rem;
 }
 
 .project-preview {
-    min-height: 10rem;
+    min-height: 5.5rem;
     position: relative;
     background: var(--violet-soft);
     overflow: hidden;
 }
 
 .project-content--hero .project-preview {
-    min-height: 15rem;
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 100%;
+    order: 2;
 }
 
 .project-content--banner .project-preview {
     display: none;
+}
+
+.project-content--pillar .project-preview,
+.project-content--standard .project-preview {
+    min-height: 4.5rem;
 }
 
 .project-preview img {
@@ -575,8 +584,19 @@ html {
     display: flex;
     flex: 1;
     flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.8rem;
+}
+
+.project-content--hero .project-content-body {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.project-content--banner .project-content-body {
+    align-items: center;
+    flex-direction: row;
     gap: 1rem;
-    padding: 1.35rem;
 }
 
 .project-card-heading {
@@ -592,13 +612,13 @@ html {
     font-family: var(--font-mono), monospace;
     font-size: 0.62rem;
     letter-spacing: 0.12em;
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.35rem;
     text-transform: uppercase;
 }
 
 .project-card-heading h3 {
     color: var(--ink);
-    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    font-size: clamp(0.95rem, 1.8vw, 1.35rem);
     letter-spacing: -0.05em;
     line-height: 0.95;
 }
@@ -612,8 +632,8 @@ html {
 
 .project-description {
     color: var(--muted);
-    font-size: 0.8rem;
-    line-height: 1.55;
+    font-size: 0.62rem;
+    line-height: 1.35;
     max-width: 42rem;
 }
 
@@ -622,10 +642,10 @@ html {
     border-top: 1px solid var(--line);
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
     justify-content: space-between;
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: 0.6rem;
 }
 
 .project-tags,
@@ -643,9 +663,9 @@ html {
     color: var(--muted);
     display: inline-flex;
     font-family: var(--font-mono), monospace;
-    font-size: 0.62rem;
+    font-size: 0.53rem;
     gap: 0.3rem;
-    padding: 0.4rem 0.6rem;
+    padding: 0.28rem 0.45rem;
     transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
@@ -1056,11 +1076,26 @@ html {
     .project-grid { grid-template-columns: 1fr; }
     .project-card,
     .project-card:first-child,
-    .project-card:nth-child(4) { min-height: 24rem; }
+    .project-card:nth-child(4) { min-height: 0; }
     .project-card,
     .project-card--hero,
     .project-card--banner { grid-column: span 1; }
-    .project-content--hero .project-preview { min-height: 12rem; }
+    .project-content--hero {
+        display: flex;
+        min-height: 0;
+    }
+    .project-content--hero .project-preview {
+        min-height: 12rem;
+        order: 0;
+    }
+    .project-content--hero .project-content-body {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .project-content--banner .project-content-body {
+        align-items: stretch;
+        flex-direction: column;
+    }
     .experience-row { grid-template-columns: 1fr; gap: 0.35rem; }
     .experience-date,
     .experience-role,

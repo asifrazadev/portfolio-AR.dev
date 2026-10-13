@@ -213,8 +213,7 @@ export function Work() {
       <section id="work" className="section-shell work-section">
          <div>
             <div className="work-intro">
-               <span className="eyebrow">Selected work / 2024-2026</span>
-               <h2 className="work-title">Built for real people, <br /><em>not just portfolios.</em></h2>
+               <h2 className="work-title">Built for real people,<br /><em>not just portfolios.</em></h2>
             </div>
 
             {/* Dynamic Grid Layout (Responsive) */}

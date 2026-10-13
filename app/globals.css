@@ -311,6 +311,27 @@ html {
     min-height: 100%;
 }
 
+.project-preview {
+    min-height: 8rem;
+    background: #22232c;
+}
+
+.project-preview img {
+    position: absolute !important;
+    inset: 0;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.project-card:nth-child(2) .project-preview,
+.project-card:nth-child(3) .project-preview {
+    min-height: 9.5rem;
+}
+
+.project-card:nth-child(4) .project-preview {
+    min-height: 12rem;
+}
+
 .project-card .project-content h3 {
     font-size: clamp(1.2rem, 2vw, 1.8rem);
 }
@@ -355,11 +376,23 @@ html {
 
 .experience-row {
     display: grid;
-    grid-template-columns: 4rem 9rem 1fr;
+    grid-template-columns: 4rem minmax(10rem, 0.6fr) minmax(0, 1.4fr);
     gap: 1rem;
     align-items: start;
     border-top: 1px solid rgba(255,255,255,0.1);
     padding: 1.25rem 0;
+}
+
+.experience-date {
+    padding-top: 0.15rem;
+}
+
+.experience-role h3 {
+    line-height: 1.1;
+}
+
+.experience-detail {
+    min-width: 0;
 }
 
 .stack-list {
@@ -426,8 +459,10 @@ html {
     .project-card,
     .project-card:first-child,
     .project-card:nth-child(4) { min-height: 24rem; }
-    .experience-row { grid-template-columns: 2.5rem 1fr; }
-    .experience-row > :last-child { grid-column: 2; }
+    .experience-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .experience-date,
+    .experience-role,
+    .experience-detail { grid-column: 1; }
     .stack-list { grid-template-columns: 1fr; }
 }
 

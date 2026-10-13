@@ -160,6 +160,17 @@ const ProjectCardContent = ({ project, variant, index }: { project: Project, var
    // 4. STANDARD VARIANT (Rest of cards)
    return (
       <div aria-label={variant + index} className="project-content relative h-full p-5 md:p-6 flex flex-col z-10 transition-colors">
+         {project.image_url && (
+            <div className="project-preview relative -mx-5 -mt-5 md:-mx-6 md:-mt-6 mb-5 overflow-hidden">
+               <Image
+                  src={project.image_url}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+               />
+            </div>
+         )}
          {/* Header: Title + Year + Links */}
          <div className="flex justify-between gap-5 items-center mb-2">
             <div className="flex items-center  overflow-hidden">
